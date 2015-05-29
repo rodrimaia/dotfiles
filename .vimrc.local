@@ -3,3 +3,4 @@ color molokai
 map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
 map  <C-n> :tabnew<CR>
+Plugin 'Chiel92/vim-autoformat'
