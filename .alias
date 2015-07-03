@@ -4,3 +4,4 @@ alias v="vim"
 alias mv="mvim"
 alias valias="vim ~/dotfiles/.alias"
 alias act="source env/bin/activate"
+hash -d projs=~/projects/
