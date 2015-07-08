@@ -7,3 +7,4 @@ alias act="source env/bin/activate"
 hash -d projs=~/projects/
 alias npmclean="rm -rf node_modules && npm install"
 alias salias="source ~/dotfiles/.alias"
+alias nr="npm run"
