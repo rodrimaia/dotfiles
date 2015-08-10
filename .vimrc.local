@@ -8,6 +8,8 @@ Plugin 'vim-scripts/vim-auto-save'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'wavded/vim-stylus'
 Plugin 'wikitopian/hardmode'
+Plugin 'Yggdroot/indentLine'
 set autoread
 set nospell
 inoremap jj <ESC>
+let g:indent_guides_enable_on_vim_startup = 0

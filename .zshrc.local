@@ -1,6 +1,9 @@
 alias ~/dotfiles/.alias
 bindkey -v
 bindkey -M viins ‘jj’ vi-cmd-mode
-bindkey ‘^R’ history-incremental-search-backward
 export GOPATH=~/.go
-
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=("dir" rbenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
+export DEFAULT_USER=rmaia
+source dnvm.sh
