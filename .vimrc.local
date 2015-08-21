@@ -9,7 +9,11 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'wavded/vim-stylus'
 Plugin 'wikitopian/hardmode'
 Plugin 'Yggdroot/indentLine'
+UnBundle 'pythoncomplete'
 set autoread
 set nospell
 inoremap jj <ESC>
 let g:indent_guides_enable_on_vim_startup = 0
+:au FocusLost * :wa
+set relativenumber
+nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
