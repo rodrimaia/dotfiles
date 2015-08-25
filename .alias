@@ -32,3 +32,4 @@ case "$OSTYPE" in
       ;;
 esac
 alias irb="pry"
+alias topm="top -o MEM"

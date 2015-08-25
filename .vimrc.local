@@ -1,5 +1,3 @@
-colorscheme molokai
-color molokai
 map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
 map  <C-n> :tabnew<CR>
@@ -9,11 +7,48 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'wavded/vim-stylus'
 Plugin 'wikitopian/hardmode'
 Plugin 'Yggdroot/indentLine'
-UnBundle 'pythoncomplete'
+Plugin 'spf13/vim-colors'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'myusuf3/numbers.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'bling/vim-airline'
+"allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+set showcmd     "show incomplete cmds down the bottom
+set showmode    "show current mode down the bottom
+set number      "show line numbers
+set wrap        "dont wrap lines
+set linebreak   "wrap lines at convenient points
+set mouse=a
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'molokai'
+set encoding=utf-8
+set laststatus=2 
+set hidden
 set autoread
 set nospell
+set expandtab
+set tabstop=2
+set shiftwidth=2
 inoremap jj <ESC>
 let g:indent_guides_enable_on_vim_startup = 0
-:au FocusLost * :wa
 set relativenumber
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+syntax on
+colorscheme molokai
+
+map <C-e> :NERDTreeToggle<CR>
+map <leader>e :NERDTreeFind<CR>
+nmap <leader>nt :NERDTreeFind<CR>
+
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=1
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+let g:nerdtree_tabs_open_on_gui_startup=0
