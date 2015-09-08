@@ -1,3 +1,4 @@
+let mapleader=","
 map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
 map  <C-n> :tabnew<CR>
@@ -7,7 +8,7 @@ set showcmd     "show incomplete cmds down the bottom
 set showmode    "show current mode down the bottom
 set number      "show line numbers
 set wrap        "dont wrap lines
-set linebreak   "wrap lines at convenient points
+"set linebreak   "wrap lines at convenient points
 set mouse=a
 set encoding=utf-8
 set laststatus=2 
@@ -23,5 +24,20 @@ set relativenumber
 Plugin 'spf13/vim-colors'
 syntax on
 colorscheme molokai
+set undofile                " So is persistent undo ...
+set undolevels=1000         " Maximum number of changes that can be undone
+set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+set backupdir=~/temp
+set directory=~/temp
+set undodir=~/temp
+set autowrite                       " Automatically write a file when leaving
+set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit
+set viewoptions=folds,options,cursor,unix,slash " Better Unix /
+set virtualedit=onemore             " Allow for cursor beyond
+set history=1000                    " Store a ton of history
+set hidden                          " Allow buffer
+set iskeyword-=.                    " '.' is an
+set iskeyword-=#                    " '#' is
+set iskeyword-=-                    " '-'
 
-source ./.vimrc.plugins
+source ~/dotfiles/.vimrc.plugins

@@ -33,3 +33,7 @@ case "$OSTYPE" in
 esac
 alias irb="pry"
 alias topm="top -o MEM"
+alias ber="bundle exec ruby"
+alias beg="bundle exec guard"
+alias pltr="platformio run"
+alias pltu="platformio run --target upload"
