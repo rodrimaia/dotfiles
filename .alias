@@ -13,6 +13,7 @@ alias npmclean="rm -rf node_modules && npm install"
 alias salias="source ~/dotfiles/.alias"
 alias nr="npm run"
 alias gaas="gaa & gst"
+alias ns="npm start"
 alias ni="npm install"
 alias nis="npm install --save"
 alias nisd="npm install --save-dev"
@@ -31,9 +32,8 @@ case "$OSTYPE" in
       alias start="open"
       ;;
 esac
-alias irb="pry"
 alias topm="top -o MEM"
 alias ber="bundle exec ruby"
 alias beg="bundle exec guard"
-alias pltr="platformio run"
-alias pltu="platformio run --target upload"
+alias py="python"
+alias fuck='sudo $(fc -ln -1)' 

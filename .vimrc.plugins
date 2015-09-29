@@ -12,12 +12,15 @@ Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bling/vim-airline'
 Plugin 'Shougo/neocomplete'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'easymotion/vim-easymotion'
 
+" If you prefer the Omni-Completion tip window to close when a selection is
+" " made, these lines close it on movement in insert mode or when leaving
+" " insert mode
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 nmap s <Plug>(easymotion-s)
 "Custons config
 let g:airline_powerline_fonts = 1
