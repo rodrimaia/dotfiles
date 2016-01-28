@@ -1,5 +1,5 @@
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'vim-scripts/vim-auto-save'
+"Plugin 'vim-scripts/vim-auto-save'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'wavded/vim-stylus'
 Plugin 'wikitopian/hardmode'
@@ -110,5 +110,4 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 "****************** end configure neocomplete **********************
 
-
-
+au BufNewFile,BufReadPost *.jade set filetype=jade

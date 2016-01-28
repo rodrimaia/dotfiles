@@ -5,7 +5,6 @@ alias va="vagrant"
 alias vap="vagrant provision"
 alias vas="vagrant ssh"
 alias vau="vagrant up"
-alias mv="mvim"
 alias valias="vim ~/dotfiles/.alias"
 alias act="source env/bin/activate"
 hash -d projs=~/projects/

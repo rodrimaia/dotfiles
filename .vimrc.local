@@ -41,6 +41,6 @@ set iskeyword-=#                    " '#' is
 set iskeyword-=-                    " '-'
 
 au FocusGained,BufEnter * :silent! !
-au FocusLost,WinLeave * :silent! w
+"au FocusLost,WinLeave * :silent! w
 
 source ~/dotfiles/.vimrc.plugins
