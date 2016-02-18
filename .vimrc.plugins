@@ -2,7 +2,7 @@ Plugin 'Chiel92/vim-autoformat'
 "Plugin 'vim-scripts/vim-auto-save'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'wavded/vim-stylus'
-Plugin 'wikitopian/hardmode'
+Plugin 'takac/vim-hardtime'
 Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
@@ -11,6 +11,7 @@ Plugin 'myusuf3/numbers.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Shougo/neocomplete'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'pangloss/vim-javascript'
@@ -21,9 +22,13 @@ Plugin 'dermusikman/sonicpi.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'honza/vim-snippets'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+"let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+"let g:vim_markdown_emphasis_multiline = 0
 filetype plugin on
 
 " If you prefer the Omni-Completion tip window to close when a selection is
@@ -99,6 +104,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType markdown nested NeoCompleteDisable
 
 " Enable heavy omni completion.
 "if !exists('g:neocomplete#sources#omni#input_patterns')
