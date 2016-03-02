@@ -26,6 +26,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 
+let g:indentLine_faster = 1
+
 let g:loaded_python3_provider = 1
 let g:loaded_python_provider = 1
 
