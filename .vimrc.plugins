@@ -27,6 +27,15 @@ Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+Plugin 'klen/python-mode' 
+Plugin 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-rooter'
+Plugin 'tpope/vim-sensible'
+Plugin 'raimondi/delimitmate'
+
+
+Plugin 'rking/ag.vim'
+let g:ag_working_path_mode="r"
 
 let g:indentLine_faster = 1
 
