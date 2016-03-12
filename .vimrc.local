@@ -2,6 +2,7 @@ let mapleader=","
 map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
 map  <C-n> :tabnew<CR>
+nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 set showcmd     "show incomplete cmds down the bottom
