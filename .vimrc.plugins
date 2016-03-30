@@ -1,3 +1,18 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.config/nvim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+call vundle#begin('~/.config/nvim/bundle')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'Chiel92/vim-autoformat'
@@ -20,13 +35,13 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'tell-k/vim-autopep8'
-Plugin 'dermusikman/sonicpi.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'honza/vim-snippets'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+colorscheme dracula
 Plugin 'klen/python-mode' 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'airblade/vim-rooter'

@@ -22,10 +22,6 @@ set shiftwidth=2
 inoremap jj <ESC>
 let g:indent_guides_enable_on_vim_startup = 0
 set relativenumber
-Plugin 'spf13/vim-colors'
-syntax on
-"colorscheme molokai
-"color dracula
 set undofile                " So is persistent undo ...
 set undolevels=1000         " Maximum number of changes that can be undone
 set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
