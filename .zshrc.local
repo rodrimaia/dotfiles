@@ -1,4 +1,5 @@
-ZSH_THEME="muse"
+#ZSH_THEME="muse"
+ZSH_THEME="dracula"
 source ~/dotfiles/.alias
 export GOPATH=~/.go
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
