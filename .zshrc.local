@@ -1,7 +1,7 @@
-alias ~/dotfiles/.alias
+ZSH_THEME="muse"
+source ~/dotfiles/.alias
 export GOPATH=~/.go
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=("dir" rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
 export DEFAULT_USER=rmaia
-source ~/dotfiles/.envs
