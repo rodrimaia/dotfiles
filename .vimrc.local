@@ -39,6 +39,8 @@ set iskeyword-=#                    " '#' is
 set iskeyword-=-                    " '-'
 set foldlevelstart=20
 
+let g:python3_host_prog = '/Users/rmaia/.pyenv/versions/3.4.4/bin/python'
+
 au FocusGained,BufEnter * :silent! !
 "au FocusLost,WinLeave * :silent! w
 "
