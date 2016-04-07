@@ -44,9 +44,9 @@ Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 colorscheme dracula
 Plugin 'klen/python-mode' 
 Plugin 'airblade/vim-gitgutter'
-Plugin 'airblade/vim-rooter'
 Plugin 'tpope/vim-sensible'
 Plugin 'raimondi/delimitmate'
+Plugin 'terryma/vim-multiple-cursors'
 
 
 Plugin 'rking/ag.vim'
