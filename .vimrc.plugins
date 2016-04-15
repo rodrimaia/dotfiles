@@ -55,20 +55,20 @@ let g:ag_working_path_mode="r"
 let g:indentLine_faster = 1
 
 " Use deoplete.
-let g:python3_host_prog = '/usr/local/opt/pyenv/shims/python3'
-let g:python_host_prog = '/usr/local/opt/pyenv/shims/python'
+let g:python3_host_prog = '/Users/rmaia/.pyenv/shims/python3'
+let g:python_host_prog = '/Users/rmaia/.pyenv/shims/python'
 
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
-" let g:deoplete#disable_auto_complete = 1
+let g:deoplete#disable_auto_complete = 1
 
-" deoplete tab-complete
-"inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+ "deoplete tab-complete
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
 
-" ,<Tab> for regular tab
-"inoremap <Leader><Tab> <Space><Space>
+ ",<Tab> for regular tab
+inoremap <Leader><Tab> <Space><Space>
 
 Plugin 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "<c-n>"
