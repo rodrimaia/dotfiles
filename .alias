@@ -33,6 +33,7 @@ case "$OSTYPE" in
       alias start="open"
       ;;
 esac
+alias ropen='reattach-to-user-namespace open'
 alias topm="top -o MEM"
 alias ber="bundle exec ruby"
 alias beg="bundle exec guard"
@@ -51,3 +52,4 @@ alias gdh='git diff HEAD'
 alias glf='git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -10'
 alias cta='ctags --recurse .'
 alias wifi='networksetup -setairportpower en0 off && networksetup -setairportpower en0 on'
+alias ipy='ipython'
