@@ -13,7 +13,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
-Plugin 'Shougo/deoplete.nvim'
+"Plugin 'Shougo/deoplete.nvim'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'Chiel92/vim-autoformat'
 "Plugin 'vim-scripts/vim-auto-save'
@@ -42,7 +42,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 colorscheme dracula
-Plugin 'klen/python-mode' 
+"Plugin 'klen/python-mode' 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-sensible'
 Plugin 'raimondi/delimitmate'
@@ -55,18 +55,6 @@ let g:ag_working_path_mode="r"
 
 let g:indentLine_faster = 1
 
-" Use deoplete.
-let g:python3_host_prog = '/Users/rmaia/.pyenv/shims/python3'
-let g:python_host_prog = '/Users/rmaia/.pyenv/shims/python'
-
-let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#disable_auto_complete = 1
-
- "deoplete tab-complete
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
 
  ",<Tab> for regular tab
 inoremap <Leader><Tab> <Space><Space>
@@ -95,7 +83,7 @@ augroup end
     autocmd FileType javascript setlocal omnifunc=tern#Complete
   endif
 
-  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+  "autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
   "let g:python3_host_prog = '/usr/local/opt/pyenv/shims/python3'
   let g:python_host_prog = '/usr/local/opt/pyenv/shims/python'
 

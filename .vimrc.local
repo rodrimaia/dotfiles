@@ -1,3 +1,4 @@
+inoremap jj <ESC>
 let mapleader=","
 map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
@@ -11,7 +12,7 @@ set number      "show line numbers
 set wrap        "dont wrap lines
 "set linebreak   "wrap lines at convenient points
 set mouse=a
-set encoding=utf-8
+"set encoding=utf-8
 set laststatus=2 
 set hidden
 set autoread
@@ -19,7 +20,6 @@ set nospell
 set expandtab
 set tabstop=2
 set shiftwidth=2
-inoremap jj <ESC>
 let g:indent_guides_enable_on_vim_startup = 0
 set relativenumber
 set undofile                " So is persistent undo ...
