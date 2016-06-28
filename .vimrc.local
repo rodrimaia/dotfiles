@@ -13,7 +13,8 @@ set wrap        "dont wrap lines
 "set linebreak   "wrap lines at convenient points
 set mouse=a
 "set encoding=utf-8
-set laststatus=2 
+set noruler
+set ls=0 
 set hidden
 set autoread
 set nospell

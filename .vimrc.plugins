@@ -2,10 +2,10 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.config/nvim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-call vundle#begin('~/.config/nvim/bundle')
+" call vundle#begin('~/.config/nvim/bundle')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -14,11 +14,11 @@ filetype plugin indent on    " required
 
 
 "Plugin 'Shougo/deoplete.nvim'
-Plugin 'ternjs/tern_for_vim'
+"Plugin 'ternjs/tern_for_vim'
 Plugin 'Chiel92/vim-autoformat'
 "Plugin 'vim-scripts/vim-auto-save'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'wavded/vim-stylus'
+"Plugin 'digitaltoad/vim-jade'
+"Plugin 'wavded/vim-stylus'
 Plugin 'takac/vim-hardtime'
 Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
@@ -27,23 +27,25 @@ Plugin 'tpope/vim-surround'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'bling/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'Shougo/neocomplete'
-Plugin 'Shougo/vimshell.vim'
-Plugin 'pangloss/vim-javascript'
+"Plugin 'Shougo/vimshell.vim'
+"Plugin 'pangloss/vim-javascript'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'chase/vim-ansible-yaml'
-Plugin 'tell-k/vim-autopep8'
+"Plugin 'tell-k/vim-autopep8'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'honza/vim-snippets'
+"Plugin 'honza/vim-snippets'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-colorscheme dracula
+Plugin 'dracula/vim'
+"colorscheme dracula
 "Plugin 'klen/python-mode' 
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
+"let g:gitgutter_realtime = 0
+"let g:gitgutter_eager = 0
 Plugin 'tpope/vim-sensible'
 Plugin 'raimondi/delimitmate'
 Plugin 'terryma/vim-multiple-cursors'
@@ -56,7 +58,7 @@ let g:ag_working_path_mode="r"
 let g:indentLine_faster = 1
 
 
- ",<Tab> for regular tab
+",<Tab> for regular tab
 inoremap <Leader><Tab> <Space><Space>
 
 Plugin 'ervandew/supertab'
@@ -75,45 +77,45 @@ augroup omnifuncs
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup end
 
-  " tern
-  if exists('g:plugs["tern_for_vim"]')
-    let g:tern_show_argument_hints = 'on_hold'
-    let g:tern_show_signature_in_pum = 1
+" tern
+if exists('g:plugs["tern_for_vim"]')
+  let g:tern_show_argument_hints = 'on_hold'
+  let g:tern_show_signature_in_pum = 1
 
-    autocmd FileType javascript setlocal omnifunc=tern#Complete
-  endif
+  autocmd FileType javascript setlocal omnifunc=tern#Complete
+endif
 
-  "autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-  "let g:python3_host_prog = '/usr/local/opt/pyenv/shims/python3'
-  let g:python_host_prog = '/usr/local/opt/pyenv/shims/python'
+"autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+"let g:python3_host_prog = '/usr/local/opt/pyenv/shims/python3'
+let g:python_host_prog = '/usr/local/opt/pyenv/shims/python'
 
-  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-  autocmd BufNewFile,BufReadPost *.elm set filetype=elm
-  "let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
-  "let g:vim_markdown_emphasis_multiline = 0
-  filetype plugin on
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.elm set filetype=elm
+"let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+"let g:vim_markdown_emphasis_multiline = 0
+filetype plugin on
 
-  " If you prefer the Omni-Completion tip window to close when a selection is
-  " " made, these lines close it on movement in insert mode or when leaving
-  " " insert mode
-  autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-  " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-  nmap s <Plug>(easymotion-s)
-  "Custons config
-  let g:airline_powerline_fonts = 1
-  let g:airline_theme = 'molokai'
+" If you prefer the Omni-Completion tip window to close when a selection is
+" " made, these lines close it on movement in insert mode or when leaving
+" " insert mode
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+nmap s <Plug>(easymotion-s)
+"Custons config
+"let g:airline_powerline_fonts = 1
+"let g:airline_theme = 'molokai'
 
-  map <C-e> :NERDTreeToggle<CR>
-  map <leader>e :NERDTreeFind<CR>
-  nmap <leader>nt :NERDTreeFind<CR>
+map <C-e> :NERDTreeToggle<CR>
+map <leader>e :NERDTreeFind<CR>
+nmap <leader>nt :NERDTreeFind<CR>
 
-  let NERDTreeShowBookmarks=1
-  let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-  let NERDTreeChDirMode=0
-  let NERDTreeQuitOnOpen=1
-  let NERDTreeMouseMode=2
-  let NERDTreeShowHidden=1
-  let NERDTreeKeepTreeInNewTab=1
-  let g:nerdtree_tabs_open_on_gui_startup=0
-  let g:syntastic_html_tidy_ignore_errors = [ '<template> is not recognized!' ]
-  noremap <leader>h <Esc>:call ToggleHardMode()<CR>
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=1
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+let g:nerdtree_tabs_open_on_gui_startup=0
+let g:syntastic_html_tidy_ignore_errors = [ '<template> is not recognized!' ]
+noremap <leader>h <Esc>:call ToggleHardMode()<CR>
