@@ -47,6 +47,7 @@ alias dmstart='docker-machine start default || true && eval $(docker-machine env
 alias dmstop='docker-machine stop default'
 alias gdh='git diff HEAD'
 alias glf='git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -10'
+alias glr='git pull --rebase'
 alias cta='ctags --recurse .'
 alias wifi='networksetup -setairportpower en0 off && networksetup -setairportpower en0 on'
 alias ipy='ipython'
