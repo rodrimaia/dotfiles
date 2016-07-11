@@ -12,24 +12,24 @@ Plugin 'VundleVim/Vundle.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-
 "Plugin 'Shougo/deoplete.nvim'
 "Plugin 'ternjs/tern_for_vim'
 Plugin 'Chiel92/vim-autoformat'
-"Plugin 'vim-scripts/vim-auto-save'
+"Plugin 'vim-scriets/vim-auto-save'
 "Plugin 'digitaltoad/vim-jade'
 "Plugin 'wavded/vim-stylus'
 Plugin 'takac/vim-hardtime'
-Plugin 'Yggdroot/indentLine'
+"Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'myusuf3/numbers.vim'
+"Plugin 'myusuf3/numbers.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 "Plugin 'bling/vim-airline'
 "Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'Shougo/neocomplete'
+Plugin 'Shougo/neocomplete'
+Plugin 'SirVer/ultisnips'
 "Plugin 'Shougo/vimshell.vim'
 "Plugin 'pangloss/vim-javascript'
 Plugin 'easymotion/vim-easymotion'
@@ -37,6 +37,8 @@ Plugin 'chase/vim-ansible-yaml'
 "Plugin 'tell-k/vim-autopep8'
 Plugin 'editorconfig/editorconfig-vim'
 "Plugin 'honza/vim-snippets'
+"Plugin 'SirVer/ultisnips'
+Plugin 'm-kat/aws-vim'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
@@ -57,12 +59,35 @@ let g:ag_working_path_mode="r"
 
 let g:indentLine_faster = 1
 
+let g:ctrlp_open_func = { 'files': 'CustomOpenFunc' }
+function! CustomOpenFunc(action, line)
+  call call('ctrlp#acceptfile', [':t', a:line])
+endfunction
+
+let g:ctrlp_prompt_mappings = {
+      \ 'AcceptSelection("e")': ['<c-t>'],
+      \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+      \ }
 
 ",<Tab> for regular tab
 inoremap <Leader><Tab> <Space><Space>
 
-Plugin 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = "<c-n>"
+"Plugin 'ervandew/supertab'
+"let g:SuperTabDefaultCompletionType = "<c-n>"
+"
+" neosnippet neocomplete
+ " Snippets are separated from the engine. Add this if you want them:
+ Plugin 'honza/vim-snippets'
+ let g:neocomplete#enable_at_startup = 1
+
+ " <TAB>: completion.
+ inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>""
+
+ " Trigger configuration. Do not use <tab> if you use
+ "https://github.com/Valloric/YouCompleteMe.
+ let g:UltiSnipsExpandTrigger="<tab>"
+ let g:UltiSnipsJumpForwardTrigger="<c-b>"
+ let g:UltiSnipsJumpBackwardTrigger="<c-z>""
 
 " tern
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
