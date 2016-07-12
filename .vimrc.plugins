@@ -57,3 +57,5 @@ Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'rking/ag.vim'
 let g:ag_working_path_mode="r"
+
+Plugin 'airblade/vim-gitgutter'
