@@ -1,3 +1,47 @@
+inoremap jj <ESC>
+let mapleader=","
+map  <C-l> :tabn<CR>
+map  <C-h> :tabp<CR>
+map  <C-n> :tabnew<CR>
+nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
+"allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+set showcmd     "show incomplete cmds down the bottom
+set showmode    "show current mode down the bottom
+set number      "show line numbers
+set wrap        "dont wrap lines
+"set linebreak   "wrap lines at convenient points
+set mouse=a
+set encoding=utf-8
+set noruler
+set ls=0 
+set hidden
+set autoread
+set nospell
+set expandtab
+set tabstop=2
+set shiftwidth=2
+let g:indent_guides_enable_on_vim_startup = 0
+"set relativenumber
+set undofile                " So is persistent undo ...
+set undolevels=1000         " Maximum number of changes that can be undone
+set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+set backupdir=~/temp
+set directory=~/temp
+set undodir=~/temp
+set autowrite                       " Automatically write a file when leaving
+set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit
+set viewoptions=folds,options,cursor,unix,slash " Better Unix /
+set virtualedit=onemore             " Allow for cursor beyond
+set history=1000                    " Store a ton of history
+set hidden                          " Allow buffer
+set iskeyword-=.                    " '.' is an
+set iskeyword-=#                    " '#' is
+set iskeyword-=-                    " '-'
+set foldlevelstart=20
+
+
+
 call plug#begin()
 
 Plug 'scrooloose/nerdtree'
@@ -22,7 +66,7 @@ nmap s <Plug>(easymotion-s)
 
 Plug 'dracula/vim'
 syntax on
-color dracula
+autocmd VimEnter * colorscheme dracula
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'airblade/vim-gitgutter'
