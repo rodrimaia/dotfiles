@@ -71,5 +71,12 @@ Plug 'terryma/vim-multiple-cursors'
 
 Plug 'airblade/vim-gitgutter'
 
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
 " Add plugins to &runtimepath
 call plug#end()
