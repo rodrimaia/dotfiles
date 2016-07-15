@@ -41,7 +41,6 @@ set iskeyword-=-                    " '-'
 set foldlevelstart=20
 
 
-
 call plug#begin()
 
 Plug 'scrooloose/nerdtree'
@@ -77,6 +76,8 @@ endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+Plug 'kien/ctrlp.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
