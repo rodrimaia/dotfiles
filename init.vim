@@ -79,5 +79,7 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 Plug 'kien/ctrlp.vim'
 
+Plug 'rking/ag.vim'
+
 " Add plugins to &runtimepath
 call plug#end()
