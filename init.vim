@@ -39,12 +39,13 @@ set iskeyword-=.                    " '.' is an
 set iskeyword-=#                    " '#' is
 set iskeyword-=-                    " '-'
 set foldlevelstart=20
+set smartcase
 
 
 call plug#begin()
 
 Plug 'scrooloose/nerdtree'
-map <C-e> :NERDTreeToggle<CR>
+map <C-e> :NERDTreeToggle<CR> %
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
