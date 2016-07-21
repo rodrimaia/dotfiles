@@ -3,7 +3,6 @@ let mapleader=","
 map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
 map  <C-n> :tabnew<CR>
-nmap <c-]> :tab tag <c-r><c-w><cr>
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 set showcmd     "show incomplete cmds down the bottom
@@ -22,7 +21,6 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 let g:indent_guides_enable_on_vim_startup = 0
-set relativenumber
 set undofile                " So is persistent undo ...
 set undolevels=1000         " Maximum number of changes that can be undone
 set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
@@ -78,12 +76,19 @@ Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-Plug 'kien/ctrlp.vim'
-
 Plug 'rking/ag.vim'
 
 Plug 'takac/vim-hardtime'
-let g:hardtime_default_on = 1
+let g:hardtime_default_on = 0
+let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
+
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/unite.vim'
+Plug 'rstacruz/vim-fastunite'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/unite-outline'
+Plug 'tsukkee/unite-tag'
+map <C-p> [unite]p
 
 " Add plugins to &runtimepath
 call plug#end()
