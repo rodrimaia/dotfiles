@@ -43,10 +43,9 @@ set smartcase
 call plug#begin()
 
 Plug 'scrooloose/nerdtree'
-map <C-e> :NERDTreeToggle<CR> %
+map <C-e> :NERDTreeToggle<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
-
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$','^\.hg$', '^\.svn$', '\.bzr$']
 let NERDTreeChDirMode=0
@@ -82,13 +81,20 @@ Plug 'takac/vim-hardtime'
 let g:hardtime_default_on = 0
 let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'Shougo/unite.vim'
-Plug 'rstacruz/vim-fastunite'
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/unite-outline'
-Plug 'tsukkee/unite-tag'
-map <C-p> [unite]p
+Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40 
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)$',
+  \ 'file': '\v\.(exe|so|dll)$'
+  \ }
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
 
 " Add plugins to &runtimepath
 call plug#end()
