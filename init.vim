@@ -93,8 +93,5 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
-Plug 'xolox/vim-easytags'
-Plug 'xolox/vim-misc'
-
 " Add plugins to &runtimepath
 call plug#end()
