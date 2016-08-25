@@ -12,8 +12,8 @@ set wrap        "dont wrap lines
 "set linebreak   "wrap lines at convenient points
 set mouse=a
 set encoding=utf-8
-set noruler
-set ls=0 
+set ruler
+set ls=2 
 set hidden
 set autoread
 set nospell
@@ -39,6 +39,14 @@ set iskeyword-=-                    " '-'
 set foldlevelstart=20
 set smartcase
 
+au BufNewFile,BufRead *.py " python PEP8 settings
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
 
 call plug#begin()
 
@@ -56,11 +64,16 @@ let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 let g:syntastic_html_tidy_ignore_errors = [ '<template> is not recognized!']
 
+Plug 'godlygeek/tabular'
+
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'easymotion/vim-easymotion'
 nmap s <Plug>(easymotion-s)
 
+
+Plug 'flazz/vim-colorschemes'
+"Plug 'daylerees/colour-schemes' ,{ 'rtp': 'vim/' }
 Plug 'dracula/vim'
 syntax on
 autocmd VimEnter * colorscheme dracula
@@ -92,6 +105,17 @@ let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_powerline_fonts = 1
+let g:airline_section_warning = ''
+let g:airline_theme='bubblegum'
 
 " Add plugins to &runtimepath
 call plug#end()
