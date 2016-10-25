@@ -89,6 +89,7 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 Plug 'rking/ag.vim'
+ca ag Ag!
 
 Plug 'takac/vim-hardtime'
 let g:hardtime_default_on = 0
