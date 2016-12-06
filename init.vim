@@ -7,6 +7,7 @@ map  <C-n> :tabnew<CR>
 set backspace=indent,eol,start
 set showcmd     "show incomplete cmds down the bottom
 set showmode    "show current mode down the bottom
+"set relativenumber
 set number      "show line numbers
 set wrap        "dont wrap lines
 "set linebreak   "wrap lines at convenient points
@@ -47,6 +48,9 @@ au BufNewFile,BufRead *.py " python PEP8 settings
     \ set expandtab
     \ set autoindent
     \ set fileformat=unix
+
+highlight htmlArg gui=bold
+highlight htmlArg cterm=bold
 
 call plug#begin()
 
@@ -109,7 +113,7 @@ endif
 
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'pangloss/vim-javascript'
+"Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
 Plug 'vim-airline/vim-airline'
@@ -117,6 +121,19 @@ Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 let g:airline_section_warning = ''
 let g:airline_theme='bubblegum'
+
+Plug 'c0r73x/neotags.nvim'
+let g:neotags_appendpath = 0
+let g:neotags_ctags_bin = 'ag -g "" '. getcwd() .' | ctags'
+let g:neotags_ctags_args = [
+            \ '-L -',
+            \ '--fields=+l',
+            \ '--c-kinds=+p',
+            \ '--c++-kinds=+p',
+            \ '--sort=no',
+            \ '--extra=+q'
+            \ ]
+
 
 " Add plugins to &runtimepath
 call plug#end()

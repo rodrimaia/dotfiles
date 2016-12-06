@@ -53,3 +53,4 @@ alias gap="git add -p"
 alias cta='ctags --recurse .'
 alias wifi='networksetup -setairportpower en0 off && networksetup -setairportpower en0 on'
 alias ipy='ipython'
+alias findn='find . -name'
