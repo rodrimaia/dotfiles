@@ -137,3 +137,8 @@ let g:neotags_ctags_args = [
 
 " Add plugins to &runtimepath
 call plug#end()
+
+" My Highlight Words
+match Statement /then/ 
+match Question /console.log/ 
+
