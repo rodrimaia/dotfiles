@@ -66,6 +66,7 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
+Plug 'vim-syntastic/syntastic'
 let g:syntastic_html_tidy_ignore_errors = [ '<template> is not recognized!']
 
 Plug 'godlygeek/tabular'
@@ -134,6 +135,8 @@ let g:neotags_ctags_args = [
             \ '--extra=+q'
             \ ]
 
+
+Plug 'mhinz/vim-startify'
 
 " Add plugins to &runtimepath
 call plug#end()
