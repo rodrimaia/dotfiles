@@ -52,6 +52,10 @@ au BufNewFile,BufRead *.py " python PEP8 settings
 highlight htmlArg gui=bold
 highlight htmlArg cterm=bold
 
+" You'll be able to move selected block up/down in Visual block mode.
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 call plug#begin()
 
 Plug 'scrooloose/nerdtree'
@@ -123,8 +127,8 @@ let g:airline_powerline_fonts = 1
 let g:airline_section_warning = ''
 let g:airline_theme='bubblegum'
 
+" TAGS:
 Plug 'c0r73x/neotags.nvim'
-let g:neotags_appendpath = 0
 let g:neotags_ctags_bin = 'ag -g "" '. getcwd() .' | ctags'
 let g:neotags_ctags_args = [
             \ '-L -',
@@ -134,8 +138,7 @@ let g:neotags_ctags_args = [
             \ '--sort=no',
             \ '--extra=+q'
             \ ]
-
-
+            "
 Plug 'mhinz/vim-startify'
 
 " Add plugins to &runtimepath
