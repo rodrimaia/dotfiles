@@ -139,7 +139,7 @@ let g:neotags_ctags_args = [
             \ '--extra=+q'
             \ ]
             "
-Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-surround'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -148,3 +148,6 @@ call plug#end()
 match Statement /then/ 
 match Question /console.log/ 
 
+" PyEnv
+let g:python_host_prog = '/Users/rmaia/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/rmaia/.pyenv/versions/neovim3/bin/python'

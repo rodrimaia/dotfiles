@@ -43,3 +43,4 @@ if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; then
   alias v='nvr -O'
   alias t='nvr --remote-tab'
 fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
