@@ -141,6 +141,8 @@ let g:neotags_ctags_args = [
             "
 Plug 'tpope/vim-surround'
 
+Plug 'godlygeek/tabular'
+
 " Add plugins to &runtimepath
 call plug#end()
 
