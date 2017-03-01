@@ -143,6 +143,8 @@ Plug 'tpope/vim-surround'
 
 Plug 'godlygeek/tabular'
 
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1
 " Add plugins to &runtimepath
 call plug#end()
 
