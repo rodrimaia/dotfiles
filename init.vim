@@ -1,4 +1,5 @@
 inoremap jj <ESC>
+inoremap fd <ESC>
 let mapleader=","
 map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
@@ -93,9 +94,36 @@ Plug 'airblade/vim-gitgutter'
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+
+Plug 'ervandew/supertab'
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:UltiSnipsExpandTrigger="<C-j>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.javascript = [
+  \ 'tern#Complete',
+\]
+set completeopt=longest,menuone,preview
+let g:deoplete#sources = {}
+let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
+" close the preview window when you're not using it
+let g:SuperTabClosePreviewOnPopupClose = 1
+
+
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+let g:tern_show_argument_hints='on_hold'
+" and 
+let g:tern_map_keys=1
+
+Plug 'honza/vim-snippets'
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 Plug 'rking/ag.vim'
 ca ag Ag!
@@ -115,17 +143,28 @@ let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+let g:ctrlp_show_hidden = 1
 
 Plug 'jiangmiao/auto-pairs'
 
-"Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
+let g:javascript_plugin_flow = 1
 Plug 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
+Plug 'leshill/vim-json'
+
+Plug 'editorconfig/editorconfig-vim'
+
+Plug 'SirVer/ultisnips'
+set runtimepath+=~/dotfiles/my-snippets
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 let g:airline_section_warning = ''
 let g:airline_theme='bubblegum'
+
+
 
 " TAGS:
 Plug 'c0r73x/neotags.nvim'
@@ -144,7 +183,16 @@ Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 
 Plug 'luochen1990/rainbow'
+
+Plug 'airblade/vim-rooter'
+
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
+Plug 'vim-scripts/utl.vim'
+
+Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
+
 " Add plugins to &runtimepath
 call plug#end()
 
