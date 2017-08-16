@@ -91,10 +91,6 @@ Plug 'terryma/vim-multiple-cursors'
 
 Plug 'airblade/vim-gitgutter'
 
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-
 Plug 'ervandew/supertab'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -115,13 +111,15 @@ let g:tern#arguments = ['--persistent']
 let g:SuperTabClosePreviewOnPopupClose = 1
 
 
+Plug 'SirVer/ultisnips'
+set runtimepath+=~/dotfiles/my-snippets
+
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 let g:tern_show_argument_hints='on_hold'
 " and 
 let g:tern_map_keys=1
 
-Plug 'honza/vim-snippets'
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
@@ -154,9 +152,6 @@ let g:jsx_ext_required = 0
 Plug 'leshill/vim-json'
 
 Plug 'editorconfig/editorconfig-vim'
-
-Plug 'SirVer/ultisnips'
-set runtimepath+=~/dotfiles/my-snippets
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
