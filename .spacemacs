@@ -393,8 +393,6 @@ you should place your code here."
   '(org-agenda-files (quote ("~/notas/index.org")))
   (setq org-log-done nil)
 
-  (find-file "~/notas/index.org")
-
   (focus-autosave-mode)
 
   ;; Enable mouse support
@@ -404,6 +402,11 @@ you should place your code here."
 
   ;; Neotree shows current file
   (setq neo-smart-open t)
+
+  (setq-default evil-escape-key-sequence "jj")
+  (setq-default evil-escape-delay 0.2)
+
+  (find-file "~/notas/index.org")
 
   )
 
