@@ -158,6 +158,7 @@ Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 let g:airline_section_warning = ''
 let g:airline_theme='bubblegum'
+let g:airline_exclude_preview = 1
 
 
 
@@ -187,6 +188,12 @@ Plug 'vim-scripts/utl.vim'
 
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
+
+Plug 'vim-ctrlspace/vim-ctrlspace'
+let g:CtrlSpaceDefaultMappingKey = "<C-space> "
+if executable("ag")
+    let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+endif
 
 " Add plugins to &runtimepath
 call plug#end()
