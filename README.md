@@ -1,3 +1,3 @@
 # dotfiles
 
-a man without a dotfile repo is a man without honor
+a dev without dotfiles is a dev without honor
