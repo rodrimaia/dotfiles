@@ -73,6 +73,7 @@ let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 Plug 'vim-syntastic/syntastic'
 let g:syntastic_html_tidy_ignore_errors = [ '<template> is not recognized!']
+let g:airline#extensions#syntastic#enabled = 1
 
 Plug 'godlygeek/tabular'
 
@@ -123,25 +124,10 @@ let g:tern_map_keys=1
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
-Plug 'rking/ag.vim'
-ca ag Ag!
-
 Plug 'takac/vim-hardtime'
 let g:hardtime_default_on = 0
 let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 
-Plug 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40 
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)$',
-  \ 'file': '\v\.(exe|so|dll)$'
-  \ }
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
-let g:ctrlp_show_hidden = 1
 
 Plug 'jiangmiao/auto-pairs'
 
@@ -155,11 +141,11 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline_section_warning = ''
-let g:airline_theme='bubblegum'
+let g:airline_theme='dracula'
 let g:airline_exclude_preview = 1
-
+let g:airline#extensions#tabline#enabled = 0
 
 
 " TAGS:
@@ -178,8 +164,6 @@ Plug 'tpope/vim-surround'
 
 Plug 'godlygeek/tabular'
 
-Plug 'luochen1990/rainbow'
-
 Plug 'airblade/vim-rooter'
 
 Plug 'jceb/vim-orgmode'
@@ -189,11 +173,51 @@ Plug 'vim-scripts/utl.vim'
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
-Plug 'vim-ctrlspace/vim-ctrlspace'
-let g:CtrlSpaceDefaultMappingKey = "<C-space> "
-if executable("ag")
-    let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
-endif
+"Fzf configuration
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+imap <c-x><c-l> <plug>(fzf-complete-line)
+nnoremap <silent> <C-p> :Files<CR>
+
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" In Neovim, you can set up fzf window using a Vim command
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+
+
+Plug 'tpope/vim-fugitive'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -205,4 +229,3 @@ match Question /console.log/
 " PyEnv
 let g:python_host_prog = '/Users/rmaia/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '/Users/rmaia/.pyenv/versions/neovim3/bin/python'
-
