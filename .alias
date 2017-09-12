@@ -59,7 +59,8 @@ alias vinit='v ~/dotfiles/init.vim'
 alias gcal='cd ~/projects/gcalcli && gcalcli agenda --nodeclined --calendar rmaia@thoughtworks.com '
 alias gcalw='while true ; do (clear && gcal); sleep 300; done'
 alias psa='ps aux | grep'
-alias e='~/dotfiles/run-emacs.sh'
+#alias e='~/dotfiles/run-emacs.sh'
+alias e='emacsclient -nw -a=""'
 alias update_spacemacs='brew upgrade emacs-plus; cd ~/.emacs.d && git pull --rebase && cd -'
 alias update_vim='brew upgrade neovim; nvim +PlugUpdate +:q +:q';
 alias update_tools="brew update ; upgrade_oh_my_zsh ; update_spacemacs ; update_vim ; cowsay 'TUDO ATUALIZADO, PODE SEGUIR O BAILE'"
