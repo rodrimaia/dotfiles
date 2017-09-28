@@ -4,6 +4,7 @@ let mapleader=","
 map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
 map  <C-n> :tabnew<CR>
+map <CR> o<Esc>k
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 set showcmd     "show incomplete cmds down the bottom
@@ -215,12 +216,18 @@ let g:fzf_colors =
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
-
-
 Plug 'tpope/vim-fugitive'
 
+Plug 'sheerun/vim-polyglot'
+
+Plug 'moll/vim-node'
+
 " Add plugins to &runtimepath
+"
 call plug#end()
+
+" reloads .vimrc -- making all changes active
+map <silent> <Leader>v :source ~/.vimrc<CR>:PlugInstall<CR>:bdelete<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " My Highlight Words
 match Statement /then/ 
