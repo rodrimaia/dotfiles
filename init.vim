@@ -95,35 +95,8 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'ervandew/supertab'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
-autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-let g:UltiSnipsExpandTrigger="<C-j>"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = [
-  \ 'tern#Complete',
-\]
-set completeopt=longest,menuone,preview
-let g:deoplete#sources = {}
-let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
-let g:tern#command = ['tern']
-let g:tern#arguments = ['--persistent']
-" close the preview window when you're not using it
-let g:SuperTabClosePreviewOnPopupClose = 1
-
-
 Plug 'SirVer/ultisnips'
 set runtimepath+=~/dotfiles/my-snippets
-
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
-let g:tern_show_argument_hints='on_hold'
-" and 
-let g:tern_map_keys=1
-
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 Plug 'takac/vim-hardtime'
 let g:hardtime_default_on = 0
@@ -132,8 +105,6 @@ let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'pangloss/vim-javascript'
-let g:javascript_plugin_flow = 1
 Plug 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
 Plug 'leshill/vim-json'
@@ -148,19 +119,6 @@ let g:airline_theme='dracula'
 let g:airline_exclude_preview = 1
 let g:airline#extensions#tabline#enabled = 0
 
-
-" TAGS:
-Plug 'c0r73x/neotags.nvim'
-let g:neotags_ctags_bin = 'ag -g "" '. getcwd() .' | ctags'
-let g:neotags_ctags_args = [
-            \ '-L -',
-            \ '--fields=+l',
-            \ '--c-kinds=+p',
-            \ '--c++-kinds=+p',
-            \ '--sort=no',
-            \ '--extra=+q'
-            \ ]
-            "
 Plug 'tpope/vim-surround'
 
 Plug 'godlygeek/tabular'
