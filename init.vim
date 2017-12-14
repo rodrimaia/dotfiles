@@ -6,7 +6,7 @@ map  <C-h> :tabp<CR>
 map  <C-n> :tabnew<CR>
 map <CR> o<Esc>k
 "allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+"set backspace=indent,eol,start
 set showcmd     "show incomplete cmds down the bottom
 set showmode    "show current mode down the bottom
 "set relativenumber
@@ -93,15 +93,9 @@ Plug 'terryma/vim-multiple-cursors'
 
 Plug 'airblade/vim-gitgutter'
 
-Plug 'ervandew/supertab'
-
-Plug 'SirVer/ultisnips'
-set runtimepath+=~/dotfiles/my-snippets
-
 Plug 'takac/vim-hardtime'
 let g:hardtime_default_on = 0
 let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
-
 
 Plug 'jiangmiao/auto-pairs'
 
@@ -121,7 +115,6 @@ let g:airline#extensions#tabline#enabled = 0
 
 Plug 'tpope/vim-surround'
 
-Plug 'godlygeek/tabular'
 
 Plug 'airblade/vim-rooter'
 
