@@ -8,14 +8,7 @@ alias vau="vagrant up"
 alias valias="nvim ~/dotfiles/.alias && salias"
 alias vrc="nvim ~/dotfiles/init.vim"
 alias act="source env/bin/activate"
-alias npmclean="rm -rf node_modules && npm install"
 alias salias="source ~/dotfiles/.alias"
-alias nr="npm run"
-alias ns="npm start"
-alias ni="npm install"
-alias nis="npm install --save"
-alias nisd="npm install --save-dev"
-alias nig="npm install -g"
 alias cpav="cp -av"
 alias rmrf="rm -rf"
 case "$OSTYPE" in
@@ -67,3 +60,21 @@ alias update_tools="brew update ; upgrade_oh_my_zsh ; update_spacemacs ; update_
 alias f=fzf
 alias vf='v $(f)'
 alias vn='v ~/notas'
+
+# Yarn
+alias y="yarn"
+alias yisd="yarn install save-dev"
+alias yisd="yarn install --save-dev"
+alias yig="yarn install -g"
+alias yr="yarn run"
+alias yrd="yarn run dev"
+alias yrt="yarn run test"
+
+# npm
+alias npmclean="rm -rf node_modules && npm install"
+alias nr="npm run"
+alias ns="npm start"
+alias ni="npm install"
+alias nis="npm install --save"
+alias nisd="npm install --save-dev"
+alias nig="npm install -g"

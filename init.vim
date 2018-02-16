@@ -5,6 +5,7 @@ map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
 map  <C-n> :tabnew<CR>
 map <CR> o<Esc>k
+set t_BE=
 "allow backspacing over everything in insert mode
 "set backspace=indent,eol,start
 set showcmd     "show incomplete cmds down the bottom
@@ -16,7 +17,7 @@ set wrap        "dont wrap lines
 set mouse=a
 set encoding=utf-8
 set ruler
-set ls=2 
+set ls=2
 set hidden
 set autoread
 set nospell
@@ -31,7 +32,7 @@ set backupdir=~/temp
 set directory=~/temp
 set undodir=~/temp
 set autowrite                       " Automatically write a file when leaving
-set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit
+set shortmess+=a
 set viewoptions=folds,options,cursor,unix,slash " Better Unix /
 set virtualedit=onemore             " Allow for cursor beyond
 set history=1000                    " Store a ton of history
@@ -43,13 +44,13 @@ set foldlevelstart=20
 set smartcase
 
 au BufNewFile,BufRead *.py " python PEP8 settings
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
+      \ set tabstop=4
+      \ set softtabstop=4
+      \ set shiftwidth=4
+      \ set textwidth=79
+      \ set expandtab
+      \ set autoindent
+      \ set fileformat=unix
 
 highlight htmlArg gui=bold
 highlight htmlArg cterm=bold
@@ -59,6 +60,8 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 call plug#begin()
+
+Plug 'tpope/vim-sensible'
 
 Plug 'scrooloose/nerdtree'
 map <C-e> :NERDTreeToggle<CR>
@@ -72,13 +75,13 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
-Plug 'vim-syntastic/syntastic'
-let g:syntastic_html_tidy_ignore_errors = [ '<template> is not recognized!']
-let g:airline#extensions#syntastic#enabled = 1
+"Plug 'vim-syntastic/syntastic'
+"let g:syntastic_html_tidy_ignore_errors = [ '<template> is not recognized!']
+"let g:airline#extensions#syntastic#enabled = 1
 
 Plug 'godlygeek/tabular'
 
-Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdommenter'
 
 Plug 'easymotion/vim-easymotion'
 nmap s <Plug>(easymotion-s)
@@ -89,6 +92,8 @@ Plug 'flazz/vim-colorschemes'
 Plug 'dracula/vim'
 syntax on
 autocmd VimEnter * colorscheme dracula
+
+
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'airblade/vim-gitgutter'
@@ -134,9 +139,9 @@ nnoremap <silent> <C-p> :Files<CR>
 
 " This is the default extra key bindings
 let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-x': 'split',
+      \ 'ctrl-v': 'vsplit' }
 
 " Default fzf layout
 " - down / up / left / right
@@ -148,18 +153,18 @@ let g:fzf_layout = { 'window': '-tabnew' }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+      \ { 'fg':      ['fg', 'Normal'],
+      \ 'bg':      ['bg', 'Normal'],
+      \ 'hl':      ['fg', 'Comment'],
+      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+      \ 'hl+':     ['fg', 'Statement'],
+      \ 'info':    ['fg', 'PreProc'],
+      \ 'prompt':  ['fg', 'Conditional'],
+      \ 'pointer': ['fg', 'Exception'],
+      \ 'marker':  ['fg', 'Keyword'],
+      \ 'spinner': ['fg', 'Label'],
+      \ 'header':  ['fg', 'Comment'] }
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
@@ -173,17 +178,40 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'moll/vim-node'
 
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+Plug 'Chiel92/vim-autoformat'
+
+Plug 'othree/yajs.vim'
+Plug 'othree/html5.vim'
+
 " Add plugins to &runtimepath
 "
 call plug#end()
 
 " reloads .vimrc -- making all changes active
-map <silent> <Leader>v :source ~/.vimrc<CR>:PlugInstall<CR>:bdelete<CR>:exe ":echo 'vimrc reloaded'"<CR>
+map <silent> <Leader>v :source ~/dotfiles/init.vim<CR>:PlugInstall<CR>:bdelete<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " My Highlight Words
-match Statement /then/ 
-match Question /console.log/ 
+match Statement /then/
+match Question /console.log/
 
 " PyEnv
-let g:python_host_prog = '/Users/rmaia/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/rmaia/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = '/Users/rodrigo/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/rodrigo/.pyenv/versions/neovim3/bin/python'
