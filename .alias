@@ -60,6 +60,7 @@ alias update_tools="brew update ; upgrade_oh_my_zsh ; update_spacemacs ; update_
 alias f=fzf
 alias vf='v $(f)'
 alias vn='v ~/notas'
+alias reddit="rtv"
 
 # Yarn
 alias y="yarn"
@@ -78,3 +79,4 @@ alias ni="npm install"
 alias nis="npm install --save"
 alias nisd="npm install --save-dev"
 alias nig="npm install -g"
+
