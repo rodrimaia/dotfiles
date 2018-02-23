@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import
+# key: import
+# --
+import ${1:defaultMember}${2:, { ${3:member} }} from '${4:module}';
