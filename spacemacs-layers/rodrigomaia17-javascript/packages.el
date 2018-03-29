@@ -29,9 +29,11 @@
 
 ;;; Code:
 
-(defconst rodrigomaia17-org-packages
+(defconst rodrigomaia17-javascript-packages
   '(
-    toc-org
+    prettier-js
+    vue-mode
+    ;; toc-org
     )
   "The list of Lisp packages required by the rodrigomaia17-org layer.
 
@@ -59,6 +61,14 @@ Each entry is either:
 
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
+
+(defun rodrigomaia17-javascript/init-prettier-js ()
+  (use-package prettier-js
+    :defer t))
+
+(defun rodrigomaia17-javascript/init-vue-mode ()
+  (use-package vue-mode
+   :defer t))
 
 
 ;;; packages.el ends here

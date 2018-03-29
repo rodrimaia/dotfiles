@@ -81,7 +81,7 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 
 Plug 'godlygeek/tabular'
 
-Plug 'scrooloose/nerdommenter'
+Plug 'scrooloose/nerdcommenter'
 
 Plug 'easymotion/vim-easymotion'
 nmap s <Plug>(easymotion-s)
