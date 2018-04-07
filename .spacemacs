@@ -501,18 +501,6 @@ you should place your code here."
 
   (spacemacs/toggle-indent-guide-globally-on)
 
-  (setq
-   ;; js2-mode
-   js2-basic-offset 2
-   js2-indent-level 2
-   ;; web-mode
-   css-indent-offset 2
-   web-mode-markup-indent-offset 2
-   web-mode-css-indent-offset 2
-   web-mode-code-indent-offset 2
-   web-mode-attr-indent-offset 2)
-
-  '(js2-strict-trailing-comma-warning nil)
 
   (focus-autosave-mode)
 
@@ -528,9 +516,7 @@ you should place your code here."
   ;;(setq-default evil-escape-key-sequence "jj")
   (setq-default evil-escape-delay 0.2)
 
-  (add-hook 'react-mode-hook 'prettier-js-mode)
 
-  ; Snippets
   (setq auto-completion-private-snippets-directory "~/dotfiles/snippets")
   (setq yas-snippet-dirs '("~/dotfiles/snippets"))
   ;; (setq-default dotspacemacs-configuration-layers
