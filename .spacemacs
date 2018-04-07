@@ -11,7 +11,8 @@ This function should only modify configuration layer settings."
    ;; or `spacemacs'. (default 'spacemacs)
    dotspacemacs-distribution 'spacemacs
 
-   ;; Lazy installation of layers (i.e. layers are installed only when a file ;; with a supported type is opened). Possible values are `all', `unused'
+   ;; Lazy installation of layers (i.e. layers are installed only when a file
+   ;; with a supported type is opened). Possible values are `all', `unused'
    ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
    ;; not listed in variable `dotspacemacs-configuration-layers'), `all' will
    ;; lazy install any layer that support lazy installation even the layers
@@ -45,8 +46,14 @@ This function should only modify configuration layer settings."
      javascript
      react
      org
-     markdown
+     (org :variables
+          org-enable-org-journal-support t
+          org-journal-dir "~/notas/journal/"
+     
+          org-journal-date-format "%A, %B %d %Y"
+          org-journal-time-prefix "* ")
 
+     markdown
      shell-scripts
      helm
      ;;ivy
@@ -83,6 +90,7 @@ This function should only modify configuration layer settings."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
       dracula-theme
+      challenger-deep-theme
       focus-autosave-mode
       helm-spotify-plus
       olivetti
@@ -386,6 +394,7 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; (default nil)
    dotspacemacs-line-numbers nil
+
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -548,5 +557,3 @@ you should place your code here."
   (when (file-exists-p custom-file)
     (load-file custom-file))
   )
-
-
