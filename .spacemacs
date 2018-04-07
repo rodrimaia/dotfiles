@@ -49,7 +49,6 @@ This function should only modify configuration layer settings."
      (org :variables
           org-enable-org-journal-support t
           org-journal-dir "~/notas/journal/"
-     
           org-journal-date-format "%A, %B %d %Y"
           org-journal-time-prefix "* ")
 
