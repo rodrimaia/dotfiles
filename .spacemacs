@@ -36,26 +36,16 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     ;;csv
-     ;;go
-     ;;ruby
      gtags
      python
      yaml
      html
      javascript
      react
-     org
-     (org :variables
-          org-enable-org-journal-support t
-          org-journal-dir "~/notas/journal/"
-          org-journal-date-format "%A, %B %d %Y"
-          org-journal-time-prefix "* ")
-
      markdown
+     (markdown :variables markdown-live-preview-engine 'vmd)
      shell-scripts
      helm
-     ;;ivy
      auto-completion
      (auto-completion :variables
                         auto-completion-enable-snippets-in-popup t)
@@ -65,22 +55,19 @@ This function should only modify configuration layer settings."
      osx
      docker
      themes-megapack
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
-     ;; `M-m f e R' (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
      shell
      (shell :variables
             shell-default-shell 'ansi-term
             shell-default-term-shell "/bin/zsh"
             )
-     ;; spell-checking
      syntax-checking
-     ;; version-control
+
+     elfeed
+     (elfeed :variables rmh-elfeed-org-files (list "~/dotfiles/elfeed.org" ))
 
      rodrigomaia17-org
      rodrigomaia17-javascript
+     rodrigomaia17-mu4e
      )
 
    ;; List of additional packages that will be installed without being
@@ -93,6 +80,7 @@ This function should only modify configuration layer settings."
       focus-autosave-mode
       helm-spotify-plus
       olivetti
+      circadian
       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -473,6 +461,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
   )
 
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -480,7 +469,6 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-
 
   (setq create-lockfiles nil)
 
@@ -537,6 +525,10 @@ you should place your code here."
     (term-send-raw-string "\C-r"))
 
   (add-hook 'term-mode-hook 'bb/setup-term-mode)
+
+  (setq circadian-themes '(("6:00" . molokai)
+                           ("18:30" . tangotango)))
+  (circadian-setup)
 
 ;; Lastly, load custom-file (but only if the file exists).
   (when (file-exists-p custom-file)

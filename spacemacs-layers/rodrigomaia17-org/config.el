@@ -1,8 +1,12 @@
-;; OrgMode
-(setq org-log-done nil)
-(setq org-agenda-files (list "~/notas/"
-                             ))
-;; set up org mode
-(setq org-startup-indented t)
-(setq org-startup-folded "showall")
-(setq org-directory "~/notas")
+(setq
+ ;; OrgMode
+ org-log-done nil
+ org-agenda-files (list "~/notas/")
+ ;; set up org mode
+ org-startup-indented t
+ org-startup-folded "showall"
+ org-directory "~/notas"
+ org-enable-org-journal-support t
+ org-journal-dir "~/notas/journal/"
+ org-journal-date-format "%A, %B %d %Y"
+ org-journal-time-prefix "* ")

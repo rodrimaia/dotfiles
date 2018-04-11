@@ -1,4 +1,4 @@
-;;; packages.el --- rodrigomaia17-org layer packages file for Spacemacs.
+;;; packages.el --- rodrigomaia17-javascript layer packages file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2018 Sylvain Benner & Contributors
 ;;
@@ -18,14 +18,14 @@
 ;;
 ;;
 ;; Briefly, each package to be installed or configured by this layer should be
-;; added to `rodrigomaia17-org-packages'. Then, for each package PACKAGE:
+;; added to `rodrigomaia17-javascript-packages'. Then, for each package PACKAGE:
 ;;
 ;; - If PACKAGE is not referenced by any other Spacemacs layer, define a
-;;   function `rodrigomaia17-org/init-PACKAGE' to load and initialize the package.
+;;   function `rodrigomaia17-javascript/init-PACKAGE' to load and initialize the package.
 
 ;; - Otherwise, PACKAGE is already referenced by another Spacemacs layer, so
-;;   define the functions `rodrigomaia17-org/pre-init-PACKAGE' and/or
-;;   `rodrigomaia17-org/post-init-PACKAGE' to customize the package as it is loaded.
+;;   define the functions `rodrigomaia17-javascript/pre-init-PACKAGE' and/or
+;;   `rodrigomaia17-javascript/post-init-PACKAGE' to customize the package as it is loaded.
 
 ;;; Code:
 
@@ -33,9 +33,8 @@
   '(
     prettier-js
     vue-mode
-    ;; toc-org
     )
-  "The list of Lisp packages required by the rodrigomaia17-org layer.
+  "The list of Lisp packages required by the rodrigomaia17-javascript layer.
 
 Each entry is either:
 
