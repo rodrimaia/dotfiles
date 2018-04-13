@@ -1,3 +1,7 @@
+(defconst rodrigomaia17-mu4e-packages
+  '(
+    ))
+
 (defun rodrigomaia17-mu4e/post-init-mu4e-alert ()
 
   (mu4e-alert-set-default-style 'notifier)

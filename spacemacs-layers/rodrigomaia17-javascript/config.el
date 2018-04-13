@@ -12,3 +12,5 @@
 '(js2-strict-trailing-comma-warning nil)
 
 (add-hook 'react-mode-hook 'prettier-js-mode)
+
+(add-to-list 'auto-mode-alist '("\\.js" . react-mode))

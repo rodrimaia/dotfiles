@@ -3,6 +3,7 @@
 (setq mu4e-drafts-folder "/[Gmail].Rascunhos")
 (setq mu4e-sent-folder   "/[Gmail].E-mails enviados")
 (setq mu4e-trash-folder  "/[Gmail].Lixeira")
+(setq mu4e-refile-folder "/[Gmail].Todos os e-mails")
 (setq mu4e-maildir-shortcuts
       '( ("/INBOX"               . ?i)
          ("/[Gmail].E-mails enviados"   . ?s)
@@ -11,8 +12,12 @@
 ;; allow for updating mail msing 'U' in the main view:
 (setq mu4e-get-mail-command "offlineimap")
 
-;; don't keep message buffers around
+;; Why would I want to leave my message open after I've sent it?
 (setq message-kill-buffer-on-exit t)
+;; Don't ask for a 'context' upon opening mu4e
+(setq mu4e-context-policy 'pick-first)
+;; Don't ask to quit... why is this the default?
+(setq mu4e-confirm-quit nil)
 
 
 ;;(add-to-list 'mu4e-view-actions '("ViewInBrowser" . mu4e-action-view-in-browser) t)
