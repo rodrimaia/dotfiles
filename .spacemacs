@@ -51,6 +51,9 @@ This function should only modify configuration layer settings."
                         auto-completion-enable-snippets-in-popup t)
      better-defaults
      emacs-lisp
+     common-lisp
+     (common-lisp :variables
+                  inferior-lisp-program "/usr/local/bin/sbcl")
      git
      osx
      docker
@@ -64,6 +67,9 @@ This function should only modify configuration layer settings."
 
      elfeed
      (elfeed :variables rmh-elfeed-org-files (list "~/dotfiles/elfeed.org" ))
+     xkcd
+     selectric
+     games
 
      rodrigomaia17-org
      rodrigomaia17-javascript
@@ -185,6 +191,7 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         solarized-dark
                          molokai
                          tangotango
                          dracula
@@ -208,8 +215,8 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    ;; dotspacemacs-default-font '("Meslo LG M for Powerline"
-   dotspacemacs-default-font '("Fira Code Retina"
-                               :size 14
+   dotspacemacs-default-font '("Inconsolata for Powerline"
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -526,9 +533,9 @@ you should place your code here."
 
   (add-hook 'term-mode-hook 'bb/setup-term-mode)
 
-  (setq circadian-themes '(("6:00" . molokai)
-                           ("18:30" . tangotango)))
-  (circadian-setup)
+  ;; (setq circadian-themes '(("6:00" . molokai)
+  ;;                          ("18:30" . tangotango)))
+  ;;(circadian-setup)
 
 ;; Lastly, load custom-file (but only if the file exists).
   (when (file-exists-p custom-file)

@@ -14,3 +14,8 @@
 (add-hook 'react-mode-hook 'prettier-js-mode)
 
 (add-to-list 'auto-mode-alist '("\\.js" . react-mode))
+(add-to-list 'auto-mode-alist '("\\.scss" . sass-mode))
+
+(add-hook 'react-mode-hook
+          (lambda()
+            (local-unset-key (kbd "C-c C-j")))) ;; I use this for Org-Journal
