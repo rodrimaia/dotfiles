@@ -38,6 +38,7 @@ This function should only modify configuration layer settings."
    '(
      gtags
      python
+     elm
      yaml
      html
      javascript
@@ -194,6 +195,7 @@ It should only modify the values of Spacemacs settings."
                          solarized-dark
                          molokai
                          tangotango
+                         tango-2
                          dracula
                          monokai
                          spacemacs-dark
