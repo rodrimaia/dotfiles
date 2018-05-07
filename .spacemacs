@@ -71,6 +71,8 @@ This function should only modify configuration layer settings."
      xkcd
      selectric
      games
+     ranger
+     emoji
 
      rodrigomaia17-org
      rodrigomaia17-javascript
@@ -192,14 +194,17 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         underwater
                          solarized-dark
+                         solarized-light
                          molokai
                          tangotango
                          tango-2
                          dracula
                          monokai
                          spacemacs-dark
-                         spacemacs-light)
+                         spacemacs-light
+                         )
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `vim-powerline' and `vanilla'. The first three
@@ -480,6 +485,8 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   (setq create-lockfiles nil)
+
+  (setq neo-theme 'icons)
 
   (add-hook 'term-mode-hook (lambda()
                                (yas-minor-mode -1)))
