@@ -20,3 +20,7 @@
 (add-hook 'react-mode-hook
           (lambda()
             (local-unset-key (kbd "C-c C-j")))) ;; I use this for Org-Journal
+
+(add-hook 'js2-mode-hook
+          (lambda()
+            (local-unset-key (kbd "C-c C-j")))) ;; I use this for Org-Journal
