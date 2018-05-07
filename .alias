@@ -57,6 +57,8 @@ alias vf='v $(f)'
 alias vn='v ~/notas'
 alias reddit="rtv"
 
+alias envg="env | grep "
+
 # Yarn
 alias y="yarn"
 alias yisd="yarn install save-dev"
