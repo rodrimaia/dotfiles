@@ -1,15 +1,21 @@
 (setq
  ;; set up org mode
- org-log-done nil
+ org-log-done 'time
  org-startup-indented t
  org-startup-folded "content"
  org-directory "~/notas"
  org-enable-org-journal-support t org-journal-dir "~/notas/journal/"
  org-journal-date-format "%A, %B %d %Y"
- org-agenda-todo-ignore-scheduled 5  ;; Ignore todos for 5 days in the future
+ org-agenda-todo-ignore-scheduled 'future  ;; Ignore todos for 5 days in the future
  org-agenda-todo-ignore-timestamp 5  ;; Ignore todos for 5 days in the future
  org-agenda-tags-todo-honor-ignore-options t
+ org-agenda-skip-scheduled-if-done t
+ org-agenda-skip-deadline-if-done t
+ org-agenda-start-on-weekday nil
  org-journal-time-prefix "* ")
+
+
+;; gtd in org-mode https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
 
 (setq org-agenda-files '("~/notas/inbox.org"
                          "~/notas/gtd.org"
@@ -18,7 +24,11 @@
 
 (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                (file+headline "~/notas/inbox.org" "Tasks")
-                               "* TODO %i%?")))
+                               "* TODO %i%?")
+                              ("T" "Tickler" entry
+                               (file+headline "~/notas/tickler.org" "Tickler")
+                               "* %i%? \n %U")
+                              ))
 
 (setq org-refile-targets '((org-agenda-files :maxlevel . 3)
                            ("~/notas/someday.org" :level . 1)

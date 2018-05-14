@@ -43,6 +43,8 @@ This function should only modify configuration layer settings."
      html
      javascript
      react
+     ruby-on-rails
+     typescript
      markdown
      (markdown :variables markdown-live-preview-engine 'vmd)
      shell-scripts
@@ -89,7 +91,6 @@ This function should only modify configuration layer settings."
       focus-autosave-mode
       helm-spotify-plus
       olivetti
-      circadian
       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -343,7 +344,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
-   dotspacemacs-loading-progress-bar nil
+   dotspacemacs-loading-progress-bar t
 
    ;; If non-nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
@@ -485,26 +486,25 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   (setq create-lockfiles nil)
-
   (setq neo-theme 'icons)
+  ;; Disable some warnings, but let's take a second look at these later
+  (setq ensime-startup-snapshot-notification nil)
+  (setq exec-path-from-shell-check-startup-files nil)
+  ;; Stop asking about following symlinks
+  (setq vc-follow-symlinks t)
+  ;; Stop asking me "Keep current list of tags tables also?"
+  (setq tags-add-tables nil)
+  ;; Neotree shows current file
+  (setq neo-smart-open t)
+  (setq-default evil-escape-key-sequence "fd")
+  (setq-default evil-escape-delay 0.2)
 
   (add-hook 'term-mode-hook (lambda()
                                (yas-minor-mode -1)))
 
-  ;; Disable some warnings, but let's take a second look at these later
-  (setq ensime-startup-snapshot-notification nil)
-  (setq exec-path-from-shell-check-startup-files nil)
-
-  ;; Stop asking about following symlinks
-  (setq vc-follow-symlinks t)
-
-  ;; Stop asking me "Keep current list of tags tables also?"
-  (setq tags-add-tables nil)
-
   (spacemacs/set-leader-keys "pg" 'helm-projectile-ag)
 
   (spacemacs/toggle-indent-guide-globally-on)
-
 
   (focus-autosave-mode)
 
@@ -513,24 +513,10 @@ you should place your code here."
     (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
     (global-set-key (kbd "<mouse-5>") 'scroll-up-line))
 
-  ;; Neotree shows current file
-  (setq neo-smart-open t)
-
-  (setq-default evil-escape-key-sequence "fd")
-  ;;(setq-default evil-escape-key-sequence "jj")
-  (setq-default evil-escape-delay 0.2)
-
 
   (setq auto-completion-private-snippets-directory "~/dotfiles/snippets")
   (setq yas-snippet-dirs '("~/dotfiles/snippets"))
-  ;; (setq-default dotspacemacs-configuration-layers
-  ;;               '((auto-completion :variables
-  ;;                                  auto-completion-enable-snippets-in-popup t)))
   (yas-global-mode 1)
-
-  ;; disable :q
-  ;;(evil-ex-define-cmd "q[uit]" nil)
-  ;;(evil-ex-define-cmd "x[it]" nil)
 
   ;; Use Ctrl+R in terminal
   (defun bb/setup-term-mode ()
@@ -542,9 +528,11 @@ you should place your code here."
 
   (add-hook 'term-mode-hook 'bb/setup-term-mode)
 
-  ;; (setq circadian-themes '(("6:00" . molokai)
-  ;;                          ("18:30" . tangotango)))
-  ;;(circadian-setup)
+  (defun open-org-config-file ()
+    (interactive)
+    (find-file "~/dotfiles/spacemacs-layers/rodrigomaia17-org/config.el"))
+  (spacemacs/set-leader-keys "oc" 'open-org-config-file)
+
 
 ;; Lastly, load custom-file (but only if the file exists).
   (when (file-exists-p custom-file)
