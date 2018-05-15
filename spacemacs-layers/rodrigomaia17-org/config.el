@@ -12,6 +12,7 @@
  org-agenda-skip-scheduled-if-done t
  org-agenda-skip-deadline-if-done t
  org-agenda-start-on-weekday nil
+ org-want-todo-bindings t
  org-journal-time-prefix "* ")
 
 
@@ -41,7 +42,6 @@
 ;; explanation: https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
 
 (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
-
 
 (defun org-current-is-todo ()
   (string= "TODO" (org-get-todo-state)))
