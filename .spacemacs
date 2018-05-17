@@ -195,10 +195,10 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         underwater
-                         solarized-dark
                          solarized-light
+                         solarized-dark
                          molokai
+                         underwater
                          tangotango
                          tango-2
                          dracula
@@ -498,6 +498,10 @@ you should place your code here."
   (setq neo-smart-open t)
   (setq-default evil-escape-key-sequence "fd")
   (setq-default evil-escape-delay 0.2)
+
+  (setq spaceline-minor-modes-p nil)
+  (setq spaceline-purpose-p nil)
+  (setq spaceline-version-control-p nil)
 
   (add-hook 'term-mode-hook (lambda()
                                (yas-minor-mode -1)))
