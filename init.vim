@@ -89,16 +89,16 @@ nmap s <Plug>(easymotion-s)
 
 Plug 'flazz/vim-colorschemes'
 "Plug 'daylerees/colour-schemes' ,{ 'rtp': 'vim/' }
-Plug 'dracula/vim'
+"Plug 'dracula/vim'
 syntax on
-autocmd VimEnter * colorscheme dracula
-
+autocmd VimEnter * colorscheme solarized
 
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'airblade/vim-gitgutter'
 
 Plug 'takac/vim-hardtime'
+
 let g:hardtime_default_on = 0
 let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 
@@ -114,7 +114,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 0
 let g:airline_section_warning = ''
-let g:airline_theme='dracula'
+let g:airline_theme='solarized'
 let g:airline_exclude_preview = 1
 let g:airline#extensions#tabline#enabled = 0
 
