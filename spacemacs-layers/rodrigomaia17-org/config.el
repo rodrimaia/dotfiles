@@ -12,9 +12,33 @@
  org-agenda-skip-scheduled-if-done t
  org-agenda-skip-deadline-if-done t
  org-agenda-start-on-weekday nil
+ org-enforce-todo-dependencies t
  org-want-todo-bindings t
  org-journal-time-prefix "* ")
 
+(setq org-modules '(org-bbdb
+                    org-gnus
+                    org-checklist
+                    org-drill
+                    org-info
+                    org-jsinfo
+                    org-habit
+                    org-irc
+                    org-mouse
+                    org-protocol
+                    org-annotate-file
+                    org-eval
+                    org-expiry
+                    org-interactive-query
+                    org-man
+                    org-collector
+                    org-panel
+                    org-screen
+                    org-toc))
+(eval-after-load 'org
+  '(org-load-modules-maybe t))
+;; Prepare stuff for org-export-backends
+(setq org-export-backends '(org latex icalendar html ascii))
 
 ;; org-habit
 (setq org-habit-following-days 4)
@@ -27,7 +51,6 @@
                          "~/notas/gtd.org"
                          "~/notas/saude.org"
                          "~/notas/tickler.org"))
-
 
 (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                (file+headline "~/notas/inbox.org" "Tasks")
@@ -49,6 +72,26 @@
 
 (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
 
+
+(setq org-agenda-custom-commands
+      '(("n" "Agenda and all TODOs"
+  ((agenda "")
+   (alltodo ""
+     ((org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)))))))
+
+(defun my-org-agenda-skip-all-siblings-but-first ()
+  "Skip all but the first non-done entry."
+  (let (should-skip-entry)
+    (unless (org-current-is-todo)
+      (setq should-skip-entry t))
+    (save-excursion
+      (while (and (not should-skip-entry) (org-goto-sibling t))
+        (when (org-current-is-todo)
+          (setq should-skip-entry t))))
+    (when should-skip-entry
+      (or (outline-next-heading)
+          (goto-char (point-max))))))
+
 (defun org-current-is-todo ()
   (string= "TODO" (org-get-todo-state)))
 
@@ -56,7 +99,6 @@
   (interactive)
   (find-file "~/notas/inbox.org"))
 (spacemacs/set-leader-keys "oi" 'open-inbox-file)
-
 
 (defun open-gtd-file ()
   (interactive)
@@ -72,3 +114,8 @@
   (interactive)
   (find-file "~/notas/tickler.org"))
 (spacemacs/set-leader-keys "ot" 'open-tickler-file)
+
+:init
+(setq org-brain-path "~/notas/brain")
+(with-eval-after-load 'evil
+  (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
