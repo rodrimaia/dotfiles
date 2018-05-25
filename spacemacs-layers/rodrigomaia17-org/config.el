@@ -77,20 +77,34 @@
       '(("n" "Agenda and all TODOs"
   ((agenda "")
    (alltodo ""
-     ((org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)))))))
+     ((org-agenda-skip-function 'rodrigomaia17-skip-todos-from-project-but-first)))))))
 
-(defun my-org-agenda-skip-all-siblings-but-first ()
-  "Skip all but the first non-done entry."
-  (let (should-skip-entry)
-    (unless (org-current-is-todo)
-      (setq should-skip-entry t))
-    (save-excursion
-      (while (and (not should-skip-entry) (org-goto-sibling t))
-        (when (org-current-is-todo)
-          (setq should-skip-entry t))))
-    (when should-skip-entry
-      (or (outline-next-heading)
-          (goto-char (point-max))))))
+(defun rodrigomaia17-skip-todos-from-project-but-first ()
+  "Pular se ele nao for primeiro HEADING e se nao for o primeiro da lista que ainda esta para fazer"
+  (unless
+      (and
+       (org-current-is-todo)
+       (not (org-current-is-habit))
+       (or
+        (org-current-is-first-heading)
+        (org-current-is-first-pending-in-project)))
+
+       (outline-next-heading)
+  ))
+
+(defun org-current-is-first-pending-in-project ()
+  (let (is-not-first-todo)
+  (save-excursion
+    (while (org-goto-sibling t)
+      (if (org-current-is-todo)
+          (setq is-not-first-todo t))))
+   (not is-not-first-todo)))
+
+(defun org-current-is-first-heading ()
+  (not (org-get-outline-path)))
+
+(defun org-current-is-habit ()
+  (string= (org-entry-get nil "STYLE") "habit"))
 
 (defun org-current-is-todo ()
   (string= "TODO" (org-get-todo-state)))
