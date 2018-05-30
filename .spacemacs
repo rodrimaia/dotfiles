@@ -60,7 +60,7 @@ This function should only modify configuration layer settings."
                   inferior-lisp-program "/usr/local/bin/sbcl")
      git
      osx
-     docker
+     ;;docker
      themes-megapack
      shell
      (shell :variables
@@ -197,10 +197,10 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         underwater
                          solarized-light
                          solarized-dark
                          molokai
-                         underwater
                          tangotango
                          tango-2
                          dracula
@@ -539,10 +539,9 @@ you should place your code here."
     (find-file "~/dotfiles/spacemacs-layers/rodrigomaia17-org/config.el"))
   (spacemacs/set-leader-keys "oc" 'open-org-config-file)
 
-  (setq circadian-themes '(("6:00" . solarized-light)
-                            ("17:30" . dracula)))
-  (circadian-setup)
-
+  ;; (setq circadian-themes '(("6:00" . solarized-light)
+  ;;                           ("17:30" . dracula)))
+  ;; (circadian-setup)
 
 
 ;; Lastly, load custom-file (but only if the file exists).

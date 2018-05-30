@@ -89,9 +89,9 @@ nmap s <Plug>(easymotion-s)
 
 Plug 'flazz/vim-colorschemes'
 "Plug 'daylerees/colour-schemes' ,{ 'rtp': 'vim/' }
-"Plug 'dracula/vim'
+Plug 'dracula/vim'
 syntax on
-autocmd VimEnter * colorscheme solarized
+autocmd VimEnter * colorscheme dracula
 
 Plug 'terryma/vim-multiple-cursors'
 

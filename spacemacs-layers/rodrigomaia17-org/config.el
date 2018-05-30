@@ -52,12 +52,22 @@
                          "~/notas/saude.org"
                          "~/notas/tickler.org"))
 
+;; O
+(defun org-journal-find-location ()
+  ;; Open today's journal, but specify a non-nil prefix argument in order to
+  ;; inhibit inserting the heading; org-capture will insert the heading.
+  (org-journal-new-entry t)
+  ;; Position point on the journal's top-level heading so that org-capture
+  ;; will add the new entry as a child entry.
+  (goto-char (point-min)))
+
 (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                (file+headline "~/notas/inbox.org" "Tasks")
                                "* TODO %i%?")
                               ("T" "Tickler" entry
                                (file+headline "~/notas/tickler.org" "Tickler")
                                "* %i%? \n %U")
+                              ("w" "Revisão semanal" entry (function org-journal-find-location) (file "~/notas/templates/weekly-review.org"))
                               ))
 
 (setq org-refile-targets '((org-agenda-files :maxlevel . 3)
