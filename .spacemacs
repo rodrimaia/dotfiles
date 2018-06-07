@@ -543,6 +543,7 @@ you should place your code here."
   ;;                           ("17:30" . dracula)))
   ;; (circadian-setup)
 
+  (spacemacs/toggle-centered-point-globally-on)
 
 ;; Lastly, load custom-file (but only if the file exists).
   (when (file-exists-p custom-file)

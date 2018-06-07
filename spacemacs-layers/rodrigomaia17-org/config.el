@@ -9,6 +9,7 @@
  org-agenda-todo-ignore-scheduled 'future  ;; Ignore todos for 5 days in the future
  org-agenda-todo-ignore-timestamp 5  ;; Ignore todos for 5 days in the future
  org-agenda-tags-todo-honor-ignore-options t
+ org-agenda-include-diary t
  org-agenda-skip-scheduled-if-done t
  org-agenda-skip-deadline-if-done t
  org-agenda-start-on-weekday nil
@@ -52,7 +53,8 @@
                          "~/notas/saude.org"
                          "~/notas/tickler.org"))
 
-;; O
+(setq diary-file "~/notas/diario.org")
+
 (defun org-journal-find-location ()
   ;; Open today's journal, but specify a non-nil prefix argument in order to
   ;; inhibit inserting the heading; org-capture will insert the heading.
@@ -132,6 +134,7 @@
 (defun open-someday-file ()
   (interactive)
   (find-file "~/notas/someday.org"))
+
 (spacemacs/set-leader-keys "os" 'open-someday-file)
 
 (defun open-tickler-file ()
@@ -139,7 +142,16 @@
   (find-file "~/notas/tickler.org"))
 (spacemacs/set-leader-keys "ot" 'open-tickler-file)
 
-:init
-(setq org-brain-path "~/notas/brain")
-(with-eval-after-load 'evil
-  (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
+(defun open-diary-file ()
+  (interactive)
+  (find-file "~/notas/diario.org"))
+(spacemacs/set-leader-keys "od" 'open-diary-file)
+
+(defun rodrigomaia17-org-agenda-show-agendas ()
+  (interactive)
+  (org-agenda nil "n"))
+
+
+(load "~/dotfiles/brazilian-holidays.el")
+
+(spacemacs/set-leader-keys "an" 'rodrigomaia17-org-agenda-show-agendas)
