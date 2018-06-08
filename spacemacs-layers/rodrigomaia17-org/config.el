@@ -152,6 +152,6 @@
   (org-agenda nil "n"))
 
 
-(load "~/dotfiles/brazilian-holidays.el")
+;(load "~/dotfiles/brazilian-holidays.el")
 
 (spacemacs/set-leader-keys "an" 'rodrigomaia17-org-agenda-show-agendas)
