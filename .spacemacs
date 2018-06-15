@@ -540,9 +540,6 @@ you should place your code here."
     (find-file "~/dotfiles/spacemacs-layers/rodrigomaia17-org/config.el"))
   (spacemacs/set-leader-keys "oc" 'open-org-config-file)
 
-  (evil-goggles-mode)
-  (evil-goggles-use-diff-faces)
-
   ;; (setq circadian-themes '(("6:00" . solarized-light)
   ;;                           ("17:30" . dracula)))
   ;; (circadian-setup)
