@@ -509,8 +509,6 @@ you should place your code here."
   (add-hook 'term-mode-hook (lambda()
                                (yas-minor-mode -1)))
 
-  (spacemacs/set-leader-keys "pg" 'helm-projectile-ag)
-
   (spacemacs/toggle-indent-guide-globally-on)
 
   (focus-autosave-mode)
