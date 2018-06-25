@@ -1,11 +1,13 @@
 (setq
  ;; set up org mode
+ org-confirm-babel-evaluate nil
  org-log-done 'time
  org-startup-indented t
  org-startup-folded "content"
  org-directory "~/notas"
  org-enable-org-journal-support t org-journal-dir "~/notas/journal/"
  org-journal-date-format "%A, %B %d %Y"
+ org-agenda-span 2
  org-agenda-todo-ignore-scheduled 'future  ;; Ignore todos for 5 days in the future
  org-agenda-todo-ignore-timestamp 5  ;; Ignore todos for 5 days in the future
  org-agenda-tags-todo-honor-ignore-options t
@@ -43,7 +45,7 @@
 
 ;; org-habit
 (setq org-habit-following-days 4)
-;;(setq org-habit-show-all-today t) ;; show completed tasks too
+(setq org-habit-show-all-today t) ;; show completed tasks too
 ;;(setq org-habit-show-habits-only-for-today nil)
 
 ;; gtd in org-mode https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
