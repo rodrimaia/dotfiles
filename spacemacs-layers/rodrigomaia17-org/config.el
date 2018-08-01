@@ -7,7 +7,8 @@
  org-directory "~/notas"
  org-enable-org-journal-support t org-journal-dir "~/notas/journal/"
  org-journal-date-format "%A, %B %d %Y"
- org-agenda-span 2
+ org-journal-file-format "%Y%m%d.org"
+ org-agenda-span 3
  org-agenda-todo-ignore-scheduled 'future  ;; Ignore todos for 5 days in the future
  org-agenda-todo-ignore-timestamp 5  ;; Ignore todos for 5 days in the future
  org-agenda-tags-todo-honor-ignore-options t
@@ -15,9 +16,10 @@
  org-agenda-skip-scheduled-if-done t
  org-agenda-skip-deadline-if-done t
  org-agenda-start-on-weekday nil
+ org-agenda-start-with-follow-mode nil
  org-enforce-todo-dependencies t
  org-want-todo-bindings t
- org-journal-time-prefix "* ")
+ org-journal-time-prefix "** ")
 
 (setq org-modules '(org-bbdb
                     org-gnus
@@ -45,7 +47,7 @@
 
 ;; org-habit
 (setq org-habit-following-days 4)
-(setq org-habit-show-all-today t) ;; show completed tasks too
+(setq org-habit-show-all-today nil) ;; show completed tasks too
 ;;(setq org-habit-show-habits-only-for-today nil)
 
 ;; gtd in org-mode https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
@@ -92,7 +94,8 @@
       '(("n" "Agenda and all TODOs"
   ((agenda "")
    (alltodo ""
-     ((org-agenda-skip-function 'rodrigomaia17-skip-todos-from-project-but-first)))))))
+            ;; ((org-agenda-skip-function 'rodrigomaia17-skip-todos-from-project-but-first))
+            )))))
 
 (defun rodrigomaia17-skip-todos-from-project-but-first ()
   "Pular se ele nao for primeiro HEADING e se nao for o primeiro da lista que ainda esta para fazer"

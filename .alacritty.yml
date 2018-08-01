@@ -457,4 +457,4 @@ key_bindings:
   - { key: F11,      mods: Command, chars: "\x1b[23;3~"                  }
   - { key: F12,      mods: Command, chars: "\x1b[24;3~"                  }
   - { key: Apostrophe,              chars: "\u0061"                      }  # tilde (~)
-  - { key: RBracket, mods: Shift,   chars: "\u007E"                     }  # grave accent (`)
+    #  - { key: RBracket, mods: Shift,   chars: "\u007E"                     }  # grave accent (`)

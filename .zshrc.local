@@ -1,5 +1,6 @@
 #ZSH_THEME="muse"
-ZSH_THEME="dracula"
+ZSH_THEME="spaceship"
+export SPACESHIP_KUBECONTEXT_SHOW=false
 source ~/dotfiles/.alias
 export GOPATH=~/.go
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true

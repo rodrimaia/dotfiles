@@ -4,3 +4,5 @@
 ** https://www.reddit.com/r/spacemacs/top/.rss?sort=top&t=year       :emacs: 
 ** https://emacs.cafe/                                               :emacs: 
 ** http://sachachua.com/blog/feed/                                   :emacs:
+** https://leosalesblog.wordpress.com/                               :other:
+** https://pudding.cool                                              :other:
