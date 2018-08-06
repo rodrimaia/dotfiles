@@ -8,7 +8,7 @@
  org-enable-org-journal-support t org-journal-dir "~/notas/journal/"
  org-journal-date-format "%A, %B %d %Y"
  org-journal-file-format "%Y%m%d.org"
- org-agenda-span 3
+ org-agenda-span 5
  org-agenda-todo-ignore-scheduled 'future  ;; Ignore todos for 5 days in the future
  org-agenda-todo-ignore-timestamp 5  ;; Ignore todos for 5 days in the future
  org-agenda-tags-todo-honor-ignore-options t
@@ -17,6 +17,8 @@
  org-agenda-skip-deadline-if-done t
  org-agenda-start-on-weekday nil
  org-agenda-start-with-follow-mode nil
+ org-agenda-todo-ignore-deadlines (quote far)
+ org-agenda-todo-ignore-scheduled "far"
  org-enforce-todo-dependencies t
  org-want-todo-bindings t
  org-journal-time-prefix "** ")
@@ -55,7 +57,6 @@
 (setq org-agenda-files '("~/notas/inbox.org"
                          "~/notas/gtd.org"
                          "~/notas/saude.org"
-                         "~/notas/world-cup-2018.org"
                          "~/notas/tickler.org"))
 
 (setq diary-file "~/notas/diario.org")
@@ -87,15 +88,18 @@
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 ;; explanation: https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
 
-(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
+(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "SKIP(k)" "CANCELLED(c)")))
+ 
 
 
 (setq org-agenda-custom-commands
       '(("n" "Agenda and all TODOs"
-  ((agenda "")
-   (alltodo ""
-            ;; ((org-agenda-skip-function 'rodrigomaia17-skip-todos-from-project-but-first))
-            )))))
+         ((agenda "")
+          (tags-todo "-TODO/!TODO"
+                     ((org-agenda-overriding-header "Tasks"))
+                     )
+          ;; ((org-agenda-skip-function 'rodrigomaia17-skip-todos-from-project-but-first))
+          ))))
 
 (defun rodrigomaia17-skip-todos-from-project-but-first ()
   "Pular se ele nao for primeiro HEADING e se nao for o primeiro da lista que ainda esta para fazer"
