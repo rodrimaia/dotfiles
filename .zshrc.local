@@ -48,6 +48,8 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 
+. ~/dotfiles/z.sh
+
 # Automagically sets GOPATH to every dir containing .gopath
 cd () {
     builtin cd "$@"

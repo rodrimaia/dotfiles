@@ -5,7 +5,8 @@
  org-startup-indented t
  org-startup-folded "content"
  org-directory "~/notas"
- org-enable-org-journal-support t org-journal-dir "~/notas/journal/"
+ org-enable-org-journal-support t
+ org-journal-dir "~/notas/journal/"
  org-journal-date-format "%A, %B %d %Y"
  org-journal-file-format "%Y%m%d.org"
  org-agenda-span 5
@@ -69,6 +70,10 @@
   ;; will add the new entry as a child entry.
   (goto-char (point-min)))
 
+;;(spacemacs/declare-prefix "aj" "journal")
+(spacemacs/set-leader-keys
+  "ajj" 'org-journal-new-entry)
+
 (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                (file+headline "~/notas/inbox.org" "Tasks")
                                "* TODO %i%?")
@@ -95,24 +100,28 @@
 (setq org-agenda-custom-commands
       '(("n" "Agenda and all TODOs"
          ((agenda "")
+          (alltodo "INBOX"
+                   (
+                    (org-agenda-overriding-header "Para Processar")
+                    (org-agenda-files '("~/notas/inbox.org")))
+           )
           (tags-todo "-TODO/!TODO"
-                     ((org-agenda-overriding-header "Tasks"))
-                     )
-          ;; ((org-agenda-skip-function 'rodrigomaia17-skip-todos-from-project-but-first))
+                     ((org-agenda-overriding-header "Tasks")
+                      (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)))
           ))))
 
-(defun rodrigomaia17-skip-todos-from-project-but-first ()
-  "Pular se ele nao for primeiro HEADING e se nao for o primeiro da lista que ainda esta para fazer"
-  (unless
-      (and
-       (org-current-is-todo)
-       (not (org-current-is-habit))
-       (or
-        (org-current-is-first-heading)
-        (org-current-is-first-pending-in-project)))
-
-       (outline-next-heading)
-  ))
+(defun my-org-agenda-skip-all-siblings-but-first ()
+  "Skip all but the first non-done entry."
+  (let (should-skip-entry)
+    (unless (org-current-is-todo)
+      (setq should-skip-entry t))
+    (save-excursion
+      (while (and (not should-skip-entry) (org-goto-sibling t))
+        (when (org-current-is-todo)
+                (setq should-skip-entry t))))
+       (when should-skip-entry
+         (or (outline-next-heading)
+             (goto-char (point-max))))))
 
 (defun org-current-is-first-pending-in-project ()
   (let (is-not-first-todo)
@@ -130,6 +139,41 @@
 
 (defun org-current-is-todo ()
   (string= "TODO" (org-get-todo-state)))
+
+(defun org-agenda-delete-empty-blocks ()
+    "Remove empty agenda blocks.
+  A block is identified as empty if there are fewer than 2
+  non-empty lines in the block (excluding the line with
+  `org-agenda-block-separator' characters)."
+    (when org-agenda-compact-blocks
+      (user-error "Cannot delete empty compact blocks"))
+    (setq buffer-read-only nil)
+    (save-excursion
+      (goto-char (point-min))
+      (let* ((blank-line-re "^\\s-*$")
+             (content-line-count (if (looking-at-p blank-line-re) 0 1))
+             (start-pos (point))
+             (block-re (format "%c\\{10,\\}" org-agenda-block-separator)))
+        (while (and (not (eobp)) (forward-line))
+          (cond
+           ((looking-at-p block-re)
+            (when (< content-line-count 2)
+              (delete-region start-pos (1+ (point-at-bol))))
+            (setq start-pos (point))
+            (forward-line)
+            (setq content-line-count (if (looking-at-p blank-line-re) 0 1)))
+           ((not (looking-at-p blank-line-re))
+            (setq content-line-count (1+ content-line-count)))))
+        (when (< content-line-count 2)
+          (delete-region start-pos (point-max)))
+        (goto-char (point-min))
+        ;; The above strategy can leave a separator line at the beginning
+        ;; of the buffer.
+        (when (looking-at-p block-re)
+          (delete-region (point) (1+ (point-at-eol))))))
+    (setq buffer-read-only t))
+
+  (add-hook 'org-agenda-finalize-hook #'org-agenda-delete-empty-blocks)
 
 (defun open-inbox-file ()
   (interactive)
