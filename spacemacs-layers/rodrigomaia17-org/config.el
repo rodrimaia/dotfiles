@@ -48,6 +48,11 @@
 ;; Prepare stuff for org-export-backends
 (setq org-export-backends '(org latex icalendar html ascii))
 
+;; org-reveal
+(setq org-enable-reveal-js-support t
+      org-reveal-root "file:///Users/rodrigo/projects/reveal.js" )
+
+
 ;; org-habit
 (setq org-habit-following-days 4)
 (setq org-habit-show-all-today nil) ;; show completed tasks too
