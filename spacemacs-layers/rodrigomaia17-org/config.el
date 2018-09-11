@@ -52,6 +52,13 @@
 (setq org-enable-reveal-js-support t
       org-reveal-root "file:///Users/rodrigo/projects/reveal.js" )
 
+;; disable holidays
+(setq
+ holiday-bahai-holidays nil
+ holiday-hebrew-holidays nil
+ holiday-islamic-holidays nil
+ )
+
 
 ;; org-habit
 (setq org-habit-following-days 4)
@@ -63,6 +70,7 @@
 (setq org-agenda-files '("~/notas/inbox.org"
                          "~/notas/gtd.org"
                          "~/notas/saude.org"
+                         "~/notas/cal.org"
                          "~/notas/tickler.org"))
 
 (setq diary-file "~/notas/diario.org")
@@ -82,6 +90,8 @@
 (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                (file+headline "~/notas/inbox.org" "Tasks")
                                "* TODO %i%?")
+                              ("a" "Appointment" entry (file  "~/notas/cal.org" )
+	                             "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
                               ("T" "Tickler" entry
                                (file+headline "~/notas/tickler.org" "Tickler")
                                "* %i%? \n %U")
@@ -113,6 +123,8 @@
           (tags-todo "-TODO/!TODO"
                      ((org-agenda-overriding-header "Tasks")
                       (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)))
+          (stuck ""
+                 ((org-agenda-overriding-header "Esperando")) )
           ))))
 
 (defun my-org-agenda-skip-all-siblings-but-first ()
@@ -205,6 +217,11 @@
   (interactive)
   (find-file "~/notas/diario.org"))
 (spacemacs/set-leader-keys "od" 'open-diary-file)
+
+(defun open-gcal-file ()
+  (interactive)
+  (find-file "~/notas/cal.org"))
+(spacemacs/set-leader-keys "oa" 'open-gcal-file)
 
 (defun rodrigomaia17-org-agenda-show-agendas ()
   (interactive)
