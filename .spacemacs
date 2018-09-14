@@ -495,6 +495,8 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   (setq create-lockfiles nil)
+
+  (spacemacs/toggle-visual-line-navigation-on)
   (setq neo-theme 'icons)
   ;; Disable some warnings, but let's take a second look at these later
   (setq ensime-startup-snapshot-notification nil)
