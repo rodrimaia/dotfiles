@@ -18,9 +18,15 @@ case "$OSTYPE" in
    linux*)
       alias start="xdg-open"
       alias open="xdg-open"
+      alias update_spacemacs='cd ~/.emacs.d && git pull --rebase && cd -'
+      alias update_vim='nvim +PlugUpdate +:q +:q';
+      alias update_tools="upgrade_oh_my_zsh ; update_spacemacs ; update_vim ; cowsay 'TUDO ATUALIZADO, PODE SEGUIR O BAILE'"
       ;;
    darwin*)
       alias start="open"
+      alias update_spacemacs='brew upgrade emacs-plus; cd ~/.emacs.d && git pull --rebase && cd -'
+      alias update_vim='brew upgrade neovim; nvim +PlugUpdate +:q +:q';
+      alias update_tools="brew update && brew cleanup -s ; upgrade_oh_my_zsh ; update_spacemacs ; update_vim ; cowsay 'TUDO ATUALIZADO, PODE SEGUIR O BAILE'"
       ;;
 esac
 alias ropen='reattach-to-user-namespace open'
@@ -49,9 +55,6 @@ alias vinit='v ~/dotfiles/init.vim'
 alias psa='ps aux | grep'
 #alias e='~/dotfiles/run-emacs.sh'
 alias e='emacsclient -nw -a=""'
-alias update_spacemacs='brew upgrade emacs-plus; cd ~/.emacs.d && git pull --rebase && cd -'
-alias update_vim='brew upgrade neovim; nvim +PlugUpdate +:q +:q';
-alias update_tools="brew update && brew cleanup -s ; upgrade_oh_my_zsh ; update_spacemacs ; update_vim ; cowsay 'TUDO ATUALIZADO, PODE SEGUIR O BAILE'"
 alias f=fzf
 alias vf='v $(f)'
 alias vn='v ~/notas'
@@ -77,3 +80,6 @@ alias nis="npm install --save"
 alias nisd="npm install --save-dev"
 alias nig="npm install -g"
 
+# arch
+alias y="yaourt"
+alias ys="yaourt -S"
