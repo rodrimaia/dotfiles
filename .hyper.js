@@ -12,10 +12,11 @@ module.exports = {
     fontSize: 15,
 
     // font family with optional fallbacks
-    fontFamily: '"Fira Code", Meslo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily: '"Consolas NF","Meslo LG L DZ for Powerline","Fira Code", Meslo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+
 
     // default font weight: 'normal' or 'bold'
-    fontWeight: 'normal',
+    fontWeight: 'book',
 
     // font weight for bold characters: 'normal' or 'bold'
     fontWeightBold: 'bold',
@@ -131,7 +132,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ["hyper-dracula"],
+  plugins: ["hyper-snazzy"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here

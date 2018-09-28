@@ -104,10 +104,6 @@ let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'mxw/vim-jsx'
-let g:jsx_ext_required = 0
-Plug 'leshill/vim-json'
-
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'vim-airline/vim-airline'
@@ -176,30 +172,7 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'sheerun/vim-polyglot'
 
-Plug 'moll/vim-node'
-
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
 Plug 'Chiel92/vim-autoformat'
-
-Plug 'othree/yajs.vim'
-Plug 'othree/html5.vim'
 
 " Add plugins to &runtimepath
 "
@@ -211,7 +184,3 @@ map <silent> <Leader>v :source ~/dotfiles/init.vim<CR>:PlugInstall<CR>:bdelete<C
 " My Highlight Words
 match Statement /then/
 match Question /console.log/
-
-" PyEnv
-let g:python_host_prog = '/Users/rodrigo/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/rodrigo/.pyenv/versions/neovim3/bin/python'

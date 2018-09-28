@@ -62,7 +62,7 @@
 
 ;; org-habit
 (setq org-habit-following-days 4)
-(setq org-habit-show-all-today nil) ;; show completed tasks too
+(setq org-habit-show-all-today t) ;; show completed tasks too
 ;;(setq org-habit-show-habits-only-for-today nil)
 
 ;; gtd in org-mode https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
@@ -71,6 +71,7 @@
                          "~/notas/gtd.org"
                          "~/notas/saude.org"
                          "~/notas/cal.org"
+                         "~/notas/cal-work.org"
                          "~/notas/tickler.org"))
 
 (setq diary-file "~/notas/diario.org")

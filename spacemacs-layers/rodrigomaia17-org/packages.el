@@ -10,7 +10,6 @@
   )
 
 (defun rodrigomaia17-org/init-org-alert ()
-  (add-to-list 'load-path "path/to/org-alert")
   (use-package org-alert
     :defer t)
   )

@@ -31,6 +31,7 @@ case "$OSTYPE" in
 esac
 alias ropen='reattach-to-user-namespace open'
 alias topm="top -o MEM"
+alias be="bundle exec"
 alias ber="bundle exec ruby"
 alias beg="bundle exec guard"
 alias py="python"

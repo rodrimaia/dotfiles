@@ -7,6 +7,7 @@
  css-indent-offset 2
  web-mode-markup-indent-offset 2
  web-mode-css-indent-offset 2
+grep-find-ignored-directories '("node_modules" "SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}")
  web-mode-code-indent-offset 2
  web-mode-attr-indent-offset 2)
 
@@ -24,3 +25,4 @@
 (add-hook 'js2-mode-hook
           (lambda()
             (local-unset-key (kbd "C-c C-j")))) ;; I use this for Org-Journal
+
