@@ -18,17 +18,17 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -
 eval "$(pyenv init -)"
 
 
-function preexec() {
-  timer=${timer:-$SECONDS}
-}
-
-function precmd() {
-  if [ $timer ]; then
-    timer_show=$(($SECONDS - $timer))
-    export RPROMPT="%F{cyan}${timer_show}s %{$reset_color%}"
-    unset timer
-  fi
-}
+#function preexec() {
+#  timer=${timer:-$SECONDS}
+#}
+#
+#function precmd() {
+#  if [ $timer ]; then
+#    timer_show=$(($SECONDS - $timer))
+#    export RPROMPT="%F{cyan}${timer_show}s %{$reset_color%}"
+#    unset timer
+#  fi
+#}
 
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
