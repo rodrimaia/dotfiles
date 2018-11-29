@@ -134,12 +134,15 @@
     (unless (org-current-is-todo)
       (setq should-skip-entry t))
     (save-excursion
-      (while (and (not should-skip-entry) (org-goto-sibling t))
+      (while (and (not should-skip-entry) (org-goto-sibling t) (not (org-current-is-heading-outros)))
         (when (org-current-is-todo)
                 (setq should-skip-entry t))))
        (when should-skip-entry
          (or (outline-next-heading)
              (goto-char (point-max))))))
+
+(defun org-current-is-heading-outros () 
+  (string= (first (org-get-outline-path)) "Outros"))
 
 (defun org-current-is-first-pending-in-project ()
   (let (is-not-first-todo)
@@ -232,6 +235,11 @@
 ;(load "~/dotfiles/brazilian-holidays.el")
 
 (spacemacs/set-leader-keys "an" 'rodrigomaia17-org-agenda-show-agendas)
+
+;; Global key for org-mode
+;; org-mode helps me more than help-command :P
+(global-set-key (kbd "<f1>") 'rodrigomaia17-org-agenda-show-agendas)
+(global-set-key (kbd "<f5>") 'org-capture)
 
 (defun org-todo-with-date (&optional arg)
   (interactive "P")

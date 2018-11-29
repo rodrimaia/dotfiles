@@ -8,11 +8,13 @@ module.exports = {
     // or `'canary'` for less polished but more frequent updates
     updateChannel: 'stable',
 
+    commands: ['tmux'],
+
     // default font size in pixels for all tabs
     fontSize: 15,
 
     // font family with optional fallbacks
-    fontFamily: '"Consolas NF","Meslo LG L DZ for Powerline","Fira Code", Meslo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily: '"Roboto Mono for Powerline","Consolas NF","Meslo LG L DZ for Powerline","Fira Code", Meslo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
 
     // default font weight: 'normal' or 'bold'
@@ -132,7 +134,8 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ["hyper-snazzy", "hyper-transparent"],
+  plugins: ["hyper-snazzy", "hyper-transparent", //"hyper-solarized-light"
+  "hyper-startup", "hyper-dracula"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here

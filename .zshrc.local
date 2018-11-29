@@ -1,5 +1,5 @@
 #ZSH_THEME="muse"
-ZSH_THEME="spaceship"
+#ZSH_THEME="spaceship"
 export SPACESHIP_KUBECONTEXT_SHOW=false
 source ~/dotfiles/.alias
 export GOPATH=~/.go
@@ -46,19 +46,6 @@ if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; then
 fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
+export FZF_DEFAULT_COMMAND='ag --ignore .git -l -g ""'
 
 . ~/dotfiles/z.sh
-
-# Automagically sets GOPATH to every dir containing .gopath
-cd () {
-    builtin cd "$@"
-    cdir=$PWD
-    while [ "$cdir" != "/" ]; do
-        if [ -e "$cdir/.gopath" ]; then
-            export GOPATH=$cdir
-            break
-        fi
-        cdir=$(dirname "$cdir")
-    done
-  }
