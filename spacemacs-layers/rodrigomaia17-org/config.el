@@ -112,7 +112,6 @@
 (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "SKIP(k)" "CANCELLED(c)")))
  
 
-
 (setq org-agenda-custom-commands
       '(("n" "Agenda and all TODOs"
          ((agenda "")
@@ -124,7 +123,7 @@
           (tags-todo "-TODO/!TODO"
                      ((org-agenda-overriding-header "Tasks")
                       (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)))
-          (stuck ""
+          (todo "WAITING"
                  ((org-agenda-overriding-header "Esperando")) )
           ))))
 
