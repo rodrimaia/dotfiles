@@ -481,6 +481,8 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (setq custom-file "~/.emacs.d/.cache/.custom-settings")
+  (load custom-file)
   )
 
 (defun dotspacemacs/user-load ()
@@ -488,9 +490,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
-
-  (setq custom-file "~/.emacs-custom.el")
-  (load custom-file)
   )
 
 
