@@ -227,15 +227,14 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         dracula
+                         spacemacs-dark
                          tangotango
                          solarized-light
-                         dracula
                          solarized-dark
-                         molokai
                          tango-2
                          underwater
                          monokai
-                         spacemacs-dark
                          spacemacs-light
                          )
 
@@ -254,8 +253,9 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   ;; dotspacemacs-default-font '("Meslo LG M for Powerline"
-   dotspacemacs-default-font '("Consolas NF"
+   dotspacemacs-default-font '("Meslo LG M for Powerline"
+   ;;dotspacemacs-default-font '("Consolas NF"
+   ;;dotspacemacs-default-font '("Inconsolata for Powerline"
                                :size 16
                                :weight normal
                                :width normal

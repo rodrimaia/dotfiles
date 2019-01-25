@@ -59,6 +59,9 @@ highlight htmlArg cterm=bold
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+
+cnoremap w!! w !sudo tee > /dev/null %
+
 call plug#begin()
 
 Plug 'tpope/vim-sensible'

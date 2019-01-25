@@ -84,3 +84,6 @@ alias nig="npm install -g"
 # arch
 alias y="yaourt"
 alias ys="yaourt -S"
+
+# listen your mic sound
+alias playback="arecord -f cd - | aplay -"
