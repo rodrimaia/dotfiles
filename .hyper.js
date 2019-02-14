@@ -14,11 +14,11 @@ module.exports = {
     fontSize: 15,
 
     // font family with optional fallbacks
-    fontFamily: '"Roboto Mono for Powerline","Consolas NF","Meslo LG L DZ for Powerline","Fira Code", Meslo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily: '"Meslo LG M for Powerline", "Roboto Mono for Powerline","Consolas NF","Meslo LG L DZ for Powerline","Fira Code", Meslo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
 
     // default font weight: 'normal' or 'bold'
-    fontWeight: 'book',
+    fontWeight: 'normal',
 
     // font weight for bold characters: 'normal' or 'bold'
     fontWeightBold: 'bold',

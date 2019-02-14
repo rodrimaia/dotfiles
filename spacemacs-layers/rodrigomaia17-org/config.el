@@ -123,6 +123,11 @@
           (tags-todo "-TODO/!TODO"
                      ((org-agenda-overriding-header "Tasks")
                       (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)))
+          (alltodo "TRABALHO"
+                   (
+                    (org-agenda-overriding-header "Trabalho")
+                      (org-agenda-files '("~/notas/trabalho.org"))
+                      ))
           (todo "WAITING"
                  ((org-agenda-overriding-header "Esperando")) )
           ))))
