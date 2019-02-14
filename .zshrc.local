@@ -1,6 +1,9 @@
 #ZSH_THEME="muse"
-#ZSH_THEME="spaceship"
+ZSH_THEME="spaceship"
 export SPACESHIP_KUBECONTEXT_SHOW=false
+export SPACESHIP_PACKAGE_SHOW=false
+export SPACESHIP_EXIT_CODE_SHOW=true
+export SPACESHIP_GIT_STATUS_COLOR=magenta
 source ~/dotfiles/.alias
 export GOPATH=~/.go
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
