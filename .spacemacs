@@ -503,6 +503,8 @@ you should place your code here."
 
   (setq create-lockfiles nil)
 
+  (add-hook 'after-init-hook #'global-emojify-mode)
+
   (setq undo-tree-auto-save-history t
         undo-tree-history-directory-alist
         `(("." . ,(concat spacemacs-cache-directory "undo"))))
