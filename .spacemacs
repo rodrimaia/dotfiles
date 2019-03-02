@@ -41,6 +41,9 @@ This function should only modify configuration layer settings."
      elm
      yaml
      html
+     (ruby :variables
+           ruby-version-manager 'rvm
+           ruby-test-runner 'rspec)
      ruby-on-rails
      elixir
      typescript
@@ -503,7 +506,7 @@ you should place your code here."
 
   (setq create-lockfiles nil)
 
-  (add-hook 'after-init-hook #'global-emojify-mode)
+  (global-emojify-mode)
 
   (setq undo-tree-auto-save-history t
         undo-tree-history-directory-alist
@@ -598,3 +601,6 @@ region\) apply comment-or-uncomment to the current line"
         '((t . ivy--regex-fuzzy)))
 
   )
+
+;; Do not write anything past this comment. This is where Emacs will
+;; auto-generate custom variable definitions.

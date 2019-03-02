@@ -63,7 +63,7 @@
 ;; org-habit
 (setq org-habit-following-days 4)
 (setq org-habit-show-all-today nil) ;; show completed tasks too
-;;(setq org-habit-show-habits-only-for-today nil)
+(setq org-habit-show-habits-only-for-today t) ;;show habits only today ( not in the future days)
 
 ;; gtd in org-mode https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
 
