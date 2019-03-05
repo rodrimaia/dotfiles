@@ -99,6 +99,17 @@
                               ("w" "Revisão semanal" entry (function org-journal-find-location) (file "~/notas/templates/weekly-review.org"))
                               ))
 
+
+;; Show parent prefix on task name
+(setq org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")
+                                 (timeline . "  % s")
+                                 (todo .
+                                       " %i %-12:c %(concat \"[ \"(org-format-outline-path (org-get-outline-path)) \" ]\") ")
+                                 (tags .
+                                       " %i %-12:c %(concat \"[ \"(org-format-outline-path (org-get-outline-path)) \" ]\") ")
+                                 (search . " %i %-12:c"))
+      )
+
 (setq org-refile-targets '((org-agenda-files :maxlevel . 3)
                            ("~/notas/someday.org" :level . 1)
                            ("~/notas/trash.org" :level . 1)
