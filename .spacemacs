@@ -256,10 +256,11 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Meslo LG M for Powerline"
+   ;;dotspacemacs-default-font '("Meslo LG M for Powerline"
+   dotspacemacs-default-font '("FiraFlott"
    ;;dotspacemacs-default-font '("Consolas NF"
    ;;dotspacemacs-default-font '("Inconsolata for Powerline"
-                               :size 16
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)

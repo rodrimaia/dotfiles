@@ -20,7 +20,8 @@ case "$OSTYPE" in
       alias open="xdg-open"
       alias update_spacemacs='cd ~/.emacs.d && git pull --rebase && cd -'
       alias update_vim='nvim +PlugUpdate +:q +:q';
-      alias update_tools="upgrade_oh_my_zsh ; update_spacemacs ; update_vim ; cowsay 'TUDO ATUALIZADO, PODE SEGUIR O BAILE'"
+      alias update_tools="upgrade_oh_my_zsh ; update_spacemacs ; update_vim"
+      alias update_all="update_tools && sudo ~/dotfiles/update_pacman_mirrors.sh && yay && cowsay 'Bom Trabalho! :)' "
       ;;
    darwin*)
       alias start="open"
