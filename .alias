@@ -57,7 +57,7 @@ alias transp='trans :pt-br'
 alias vinit='v ~/dotfiles/init.vim'
 alias psa='ps aux | grep'
 #alias e='~/dotfiles/run-emacs.sh'
-alias e='emacsclient -nw -a=""'
+alias e='emacsclient "$@" -a ""'
 alias f=fzf
 alias vf='v $(f)'
 alias vn='v ~/notas'
