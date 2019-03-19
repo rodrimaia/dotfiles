@@ -65,6 +65,13 @@ alias reddit="rtv"
 
 alias envg="env | grep "
 
+# Tmuxinator
+alias mux='tmuxinator'
+alias txs='tmuxinator start'
+alias txo='tmuxinator open'
+alias txn='tmuxinator new'
+alias txl='tmuxinator list'
+
 # Yarn
 alias y="yarn"
 alias yisd="yarn install save-dev"
