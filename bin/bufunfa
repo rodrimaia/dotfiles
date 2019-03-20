@@ -3,12 +3,13 @@
 import sys
 import requests
 
-SOURCE = "https://openexchangerates.org/api/latest.json?app_id=560d8f2ac5af489b882453328f8274d6"
+SOURCE = "https://api.exchangeratesapi.io/latest?base=USD"
+
 
 def output(raw_conversion, converted_salary, dollar_price, exchange_rate):
     fix = lambda value: round(value, 2)
 
-    return " conversao pura: {}\n conversao com taxas: {}\n perda: {}\n preço do dolar: {}\n preço do dolar na conversao: {}".format( fix(raw_conversion), fix(converted_salary), fix(raw_conversion - converted_salary), fix(dollar_price), fix(exchange_rate)
+    return " raw conversion: {}\n Your salary: {}\n conversion loss: {}\n dollar price: {}\n dollar prince considering conversion loss: {}".format( fix(raw_conversion), fix(converted_salary), fix(raw_conversion - converted_salary), fix(dollar_price), fix(exchange_rate)
     )
 
 def calculate(salary, dollar):
