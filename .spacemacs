@@ -42,6 +42,7 @@ This function should only modify configuration layer settings."
      yaml
      html
      (ruby :variables
+
            ruby-version-manager 'rvm
            ruby-test-runner 'rspec)
      ruby-on-rails
@@ -61,6 +62,7 @@ This function should only modify configuration layer settings."
      (common-lisp :variables
                   inferior-lisp-program "/usr/local/bin/sbcl")
      git
+     github
      version-control
      (version-control :variables
                        version-control-global-margin t)
@@ -70,6 +72,7 @@ This function should only modify configuration layer settings."
      shell
      (shell :variables
             shell-default-shell 'ansi-term
+
             shell-default-term-shell "/bin/zsh"
             )
      syntax-checking
@@ -105,6 +108,9 @@ This function should only modify configuration layer settings."
       redtick
       stock-ticker
       evil-mc
+      fireplace
+      nyan-mode
+      minimap
       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
