@@ -90,42 +90,6 @@ Plug 'easymotion/vim-easymotion'
 nmap s <Plug>(easymotion-s)
 
 
-Plug 'iCyMind/NeoSolarized'
-autocmd VimEnter * colorscheme NeoSolarized
-
-Plug 'terryma/vim-multiple-cursors'
-
-Plug 'airblade/vim-gitgutter'
-
-Plug 'takac/vim-hardtime'
-
-let g:hardtime_default_on = 0
-let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
-
-Plug 'jiangmiao/auto-pairs'
-
-Plug 'editorconfig/editorconfig-vim'
-
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-let g:airline_powerline_fonts = 0
-let g:airline_section_warning = ''
-let g:airline_theme='solarized'
-let g:airline_exclude_preview = 1
-let g:airline#extensions#tabline#enabled = 0
-
-Plug 'tpope/vim-surround'
-
-
-Plug 'airblade/vim-rooter'
-
-Plug 'jceb/vim-orgmode'
-Plug 'tpope/vim-speeddating'
-Plug 'vim-scripts/utl.vim'
-
-Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1
-
 "Fzf configuration
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -171,8 +135,6 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 Plug 'tpope/vim-fugitive'
 
 Plug 'sheerun/vim-polyglot'
-
-Plug 'Chiel92/vim-autoformat'
 
 " Add plugins to &runtimepath
 "
