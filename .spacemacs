@@ -111,6 +111,7 @@ This function should only modify configuration layer settings."
       fireplace
       nyan-mode
       minimap
+      platformio-mode
       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -266,7 +267,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-default-font '("FiraFlott"
    ;;dotspacemacs-default-font '("Consolas NF"
    ;;dotspacemacs-default-font '("Inconsolata for Powerline"
-                               :size 14
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -428,7 +429,15 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-highlight-delimiters 'all
 
    ;; If non-nil, start an Emacs server if one is not already running.
+   ;; (default nil)
    dotspacemacs-enable-server t
+
+   ;; Set the emacs server socket location.
+   ;; If nil, uses whatever the Emacs default is, otherwise a directory path
+   ;; like \"~/.emacs.d/server\". It has no effect if
+   ;; `dotspacemacs-enable-server' is nil.
+   ;; (default nil)
+   dotspacemacs-server-socket-dir nil
 
    ;; If non-nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
