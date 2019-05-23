@@ -140,8 +140,7 @@ module.exports = {
     "hyper-solarized-light",
     "hyper-startup",
     "hyper-synthwave84",
-    "hyperminimal",
-    "gitrocket"
+    "hyperminimal"
   ],
 
   // in development, you can create a directory under

@@ -264,3 +264,5 @@
               #'(lambda () my-current-time)))
     (org-todo arg)
     )) 
+
+(add-hook 'org-mode-hook #'toggle-word-wrap)
