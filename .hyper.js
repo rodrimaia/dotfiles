@@ -8,7 +8,7 @@ module.exports = {
     // or `'canary'` for less polished but more frequent updates
     updateChannel: 'stable',
 
-    commands: ['tmux'],
+    commands: [],
 
     // default font size in pixels for all tabs
     fontSize: 15,
