@@ -91,8 +91,8 @@ alias nisd="npm install --save-dev"
 alias nig="npm install -g"
 
 # arch
-alias y="yaourt"
-alias ys="yaourt -S"
+alias y="yay"
+alias ys="yay -S"
 
 # listen your mic sound
 alias playback="arecord -f cd - | aplay -"
