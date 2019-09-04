@@ -5,9 +5,9 @@ import requests
 
 SOURCE = "https://api.exchangeratesapi.io/latest?base=USD"
 
+fix = lambda value: round(value, 2)
 
 def output(raw_conversion, converted_salary, dollar_price, exchange_rate):
-    fix = lambda value: round(value, 2)
 
     return " raw conversion: {}\n Your salary: {}\n conversion loss: {}\n dollar price: {}\n dollar prince considering conversion loss: {}".format( fix(raw_conversion), fix(converted_salary), fix(raw_conversion - converted_salary), fix(dollar_price), fix(exchange_rate)
     )
@@ -26,10 +26,13 @@ if __name__ == "__main__":
     salary = 0
     dollar_price = requests.get(SOURCE).json()['rates']['BRL']
 
-    if len(params) > 0:
+    if len(params) == 0:
+        print(fix(dollar_price))
+
+    elif len(params) > 0:
         salary = params[0]
 
         if len(params) > 1:
             dollar_price = params[1]
 
-    print(calculate(float(salary), float(dollar_price)))
+        print(calculate(float(salary), float(dollar_price)))

@@ -35,14 +35,13 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(csv
      ;;gtags
      python
      elm
      yaml
      html
      (ruby :variables
-
            ruby-version-manager 'rvm
            ruby-test-runner 'rspec)
      ruby-on-rails
@@ -53,9 +52,11 @@ This function should only modify configuration layer settings."
      shell-scripts
      helm
      ;;ivy
-     ;;auto-completion
-     ;;(auto-completion :variables
-     ;;                   auto-completion-enable-snippets-in-popup t)
+     auto-completion
+     (auto-completion :variables
+                        auto-completion-enable-snippets-in-popup t
+                        auto-completion-enable-help-tooltip t
+                        auto-completion-enable-sort-by-usage t)
      better-defaults
      emacs-lisp
      common-lisp
@@ -73,7 +74,6 @@ This function should only modify configuration layer settings."
      shell
      (shell :variables
             shell-default-shell 'ansi-term
-
             shell-default-term-shell "/bin/zsh"
             )
      syntax-checking
@@ -115,6 +115,7 @@ This function should only modify configuration layer settings."
       nyan-mode
       minimap
       platformio-mode
+      company-tabnine
       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -245,6 +246,7 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         spacemacs-light
                          dracula
                          material
                          underwater
@@ -254,7 +256,6 @@ It should only modify the values of Spacemacs settings."
                          solarized-dark
                          tango-2
                          monokai
-                         spacemacs-light
                          )
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
@@ -272,12 +273,12 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   ;;dotspacemacs-default-font '("Meslo LG M for Powerline"
-   dotspacemacs-default-font '("FiraFlott"
+   dotspacemacs-default-font '("Meslo LG M for Powerline"
+   ;;dotspacemacs-default-font '("FiraFlott"
    ;;dotspacemacs-default-font '("Consolas NF"
    ;;dotspacemacs-default-font '("Inconsolata for Powerline"
-                               :size 16
-                               :weight normal
+                               :size 15
+                               :weight bold
                                :width normal
                                :powerline-scale 1.1)
    ;; The leader key
@@ -557,7 +558,11 @@ you should place your code here."
 
   (spacemacs/set-leader-keys "@" 'mark-sexp)
 
-  (setq stock-ticker-symbols '("itub3"))
+  (custom-set-faces
+   '(company-tooltip-common
+     ((t (:inherit company-tooltip :weight bold :underline nil))))
+   '(company-tooltip-common-selection
+     ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 
   (spacemacs/toggle-visual-line-navigation-on)
   (setq neo-theme 'icons)
@@ -640,6 +645,8 @@ region\) apply comment-or-uncomment to the current line"
 
   ;; Load ODT backend to allow for exporting to open document format.
   (require 'ox-odt)
+  (require 'company-tabnine)
+  (add-to-list 'company-backends #'company-tabnine)
 
   )
 
