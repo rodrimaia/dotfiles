@@ -71,7 +71,6 @@
                          "~/notas/gtd.org"
                          "~/notas/saude.org"
                          "~/notas/cal.org"
-                         "~/notas/cal-work.org"
                          "~/notas/tickler.org"))
 
 (setq diary-file "~/notas/diario.org")

@@ -97,3 +97,6 @@ alias ys="yay -S"
 
 # listen your mic sound
 alias playback="arecord -f cd - | aplay -"
+# Clipboard management
+alias setclip="xclip -selection c"
+alias getclip="xclip -selection c -o" 

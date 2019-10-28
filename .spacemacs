@@ -116,6 +116,7 @@ This function should only modify configuration layer settings."
       minimap
       platformio-mode
       company-tabnine
+      spray
       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -246,8 +247,8 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         spacemacs-light
                          dracula
+                         spacemacs-light
                          material
                          underwater
                          spacemacs-dark
@@ -542,6 +543,10 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   (setq create-lockfiles nil)
+
+  (setq package-check-signature nil)
+
+  (evil-ex-define-cmd "q[uit]" 'evil-window-delete ) ;; Do not close emacs on :q
 
   (global-emojify-mode)
 

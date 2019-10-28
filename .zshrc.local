@@ -48,5 +48,11 @@ fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 export FZF_DEFAULT_COMMAND='ag --ignore .git -l -g ""'
+function _alarm() {
+  ( \speaker-test --frequency 400 --test sine )&
+  pid=$! >/dev/null;
+  \sleep 0.1s
+  \kill -9 $pid
+}
 
 . ~/dotfiles/z.sh
