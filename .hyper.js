@@ -11,7 +11,7 @@ module.exports = {
     commands: [],
 
     // default font size in pixels for all tabs
-    fontSize: 15,
+    fontSize: 14,
 
     // font family with optional fallbacks
     fontFamily: '"Meslo LG M for Powerline", "Roboto Mono for Powerline","Consolas NF","Meslo LG L DZ for Powerline","Fira Code", Meslo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',

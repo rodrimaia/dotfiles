@@ -117,6 +117,9 @@ This function should only modify configuration layer settings."
       platformio-mode
       company-tabnine
       spray
+      wttrin
+      stock-ticker
+      twittering-mode
       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -551,6 +554,7 @@ you should place your code here."
   (global-emojify-mode)
 
   (setq undo-tree-auto-save-history t
+
         undo-tree-history-directory-alist
         `(("." . ,(concat spacemacs-cache-directory "undo"))))
   (unless (file-exists-p (concat spacemacs-cache-directory "undo"))
@@ -652,6 +656,9 @@ region\) apply comment-or-uncomment to the current line"
   (require 'ox-odt)
   (require 'company-tabnine)
   (add-to-list 'company-backends #'company-tabnine)
+
+  (setq wttrin-default-cities '("Belo Horizonte"))
+  (setq wttrin-default-accept-language '("Accept-Language" . "pt-BR"))
 
   )
 
