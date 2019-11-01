@@ -67,7 +67,7 @@
 
 ;; gtd in org-mode https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
 
-(setq org-agenda-files '("~/notas/inbox.org"
+(setq org-agenda-files '(
                          "~/notas/gtd.org"
                          "~/notas/saude.org"
                          "~/notas/cal.org"
@@ -87,8 +87,8 @@
 (spacemacs/set-leader-keys
   "ajj" 'org-journal-new-entry)
 
-(setq org-capture-templates '(("t" "Todo [inbox]" entry
-                               (file+headline "~/notas/inbox.org" "Tasks")
+(setq org-capture-templates '(("t" "Todo [Outros]" entry
+                               (file+headline "~/notas/gtd.org" "Outros")
                                "* TODO %i%?")
                               ("a" "Appointment" entry (file  "~/notas/cal.org" )
 	                             "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
@@ -125,11 +125,6 @@
 (setq org-agenda-custom-commands
       '(("n" "Agenda and all TODOs"
          ((agenda "")
-          (alltodo "INBOX"
-                   (
-                    (org-agenda-overriding-header "Para Processar")
-                    (org-agenda-files '("~/notas/inbox.org")))
-           )
           (tags-todo "-TODO/!TODO"
                      ((org-agenda-overriding-header "Tasks")
                       (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)))
@@ -209,11 +204,6 @@
     (setq buffer-read-only t))
 
   (add-hook 'org-agenda-finalize-hook #'org-agenda-delete-empty-blocks)
-
-(defun open-inbox-file ()
-  (interactive)
-  (find-file "~/notas/inbox.org"))
-(spacemacs/set-leader-keys "oi" 'open-inbox-file)
 
 (defun open-gtd-file ()
   (interactive)
