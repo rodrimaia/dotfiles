@@ -77,7 +77,7 @@ This function should only modify configuration layer settings."
             shell-default-term-shell "/bin/zsh"
             )
      syntax-checking
-     (syntax-checking :variables syntax-checking-enable-by-default nil)
+     ;;(syntax-checking :variables syntax-checking-enable-by-default nil)
      ;;evil-snipe
 
      elfeed
@@ -115,11 +115,12 @@ This function should only modify configuration layer settings."
       nyan-mode
       minimap
       platformio-mode
-      company-tabnine
+      ;;company-tabnine
       spray
       wttrin
       stock-ticker
       twittering-mode
+      graphql-mode
       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -552,7 +553,10 @@ you should place your code here."
   (evil-ex-define-cmd "q[uit]" 'evil-window-delete ) ;; Do not close emacs on :q
 
   (global-emojify-mode)
+  (global-company-mode)
 
+  ;; https://github.com/syl20bnr/spacemacs/issues/9903
+  (setq undo-tree-enable-undo-in-region nil)
   (setq undo-tree-auto-save-history t
 
         undo-tree-history-directory-alist
@@ -567,11 +571,11 @@ you should place your code here."
 
   (spacemacs/set-leader-keys "@" 'mark-sexp)
 
-  (custom-set-faces
-   '(company-tooltip-common
-     ((t (:inherit company-tooltip :weight bold :underline nil))))
-   '(company-tooltip-common-selection
-     ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+  ;; (custom-set-faces
+  ;;  '(company-tooltip-common
+  ;;    ((t (:inherit company-tooltip :weight bold :underline nil))))
+  ;;  '(company-tooltip-common-selection
+  ;;    ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 
   (spacemacs/toggle-visual-line-navigation-on)
   (setq neo-theme 'icons)
@@ -654,8 +658,8 @@ region\) apply comment-or-uncomment to the current line"
 
   ;; Load ODT backend to allow for exporting to open document format.
   (require 'ox-odt)
-  (require 'company-tabnine)
-  (add-to-list 'company-backends #'company-tabnine)
+  ;;(require 'company-tabnine)
+  ;;(add-to-list 'company-backends #'company-tabnine)
 
   (setq wttrin-default-cities '("Belo Horizonte"))
   (setq wttrin-default-accept-language '("Accept-Language" . "pt-BR"))
