@@ -92,6 +92,7 @@ This function should only modify configuration layer settings."
      rodrigomaia17-org
      rodrigomaia17-javascript
      rodrigomaia17-mu4e
+     rodrigomaia17-autocomplete
      )
 
    ;; List of additional packages that will be installed without being
@@ -115,12 +116,14 @@ This function should only modify configuration layer settings."
       nyan-mode
       minimap
       platformio-mode
-      ;;company-tabnine
+      company-tabnine
       spray
       wttrin
       stock-ticker
       twittering-mode
       graphql-mode
+      editorconfig
+      wakatime-mode
       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -550,6 +553,11 @@ you should place your code here."
 
   (setq package-check-signature nil)
 
+  (editorconfig-mode 1)
+  (global-flycheck-mode)
+  (global-wakatime-mode)
+
+
   (evil-ex-define-cmd "q[uit]" 'evil-window-delete ) ;; Do not close emacs on :q
 
   (global-emojify-mode)
@@ -659,7 +667,10 @@ region\) apply comment-or-uncomment to the current line"
   ;; Load ODT backend to allow for exporting to open document format.
   (require 'ox-odt)
   ;;(require 'company-tabnine)
-  ;;(add-to-list 'company-backends #'company-tabnine)
+  (add-to-list 'company-backends 'company-tabnine)
+  (setq company-idle-delay 0)
+  ;; Number the candidates (use M-1, M-2 etc to select completions).
+  (setq company-show-numbers t)
 
   (setq wttrin-default-cities '("Belo Horizonte"))
   (setq wttrin-default-accept-language '("Accept-Language" . "pt-BR"))

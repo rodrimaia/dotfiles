@@ -57,13 +57,14 @@ alias findn='find . -name'
 alias transp='trans :pt-br'
 alias vinit='v ~/dotfiles/init.vim'
 alias psa='ps aux | grep'
-#alias e='~/dotfiles/run-emacs.sh'
 alias e='emacsclient "$@" -a ""'
 alias f=fzf
 alias vf='v $(f)'
 alias vn='v ~/notas'
 alias reddit="rtv"
 
+
+alias ag="ag --hidden"
 alias envg="env | grep "
 
 # Tmuxinator
