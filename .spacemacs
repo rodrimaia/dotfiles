@@ -579,11 +579,11 @@ you should place your code here."
 
   (spacemacs/set-leader-keys "@" 'mark-sexp)
 
-  ;; (custom-set-faces
-  ;;  '(company-tooltip-common
-  ;;    ((t (:inherit company-tooltip :weight bold :underline nil))))
-  ;;  '(company-tooltip-common-selection
-  ;;    ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+   (custom-set-faces
+    '(company-tooltip-common
+      ((t (:inherit company-tooltip :weight bold :underline nil))))
+    '(company-tooltip-common-selection
+      ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 
   (spacemacs/toggle-visual-line-navigation-on)
   (setq neo-theme 'icons)
@@ -666,7 +666,6 @@ region\) apply comment-or-uncomment to the current line"
 
   ;; Load ODT backend to allow for exporting to open document format.
   (require 'ox-odt)
-  ;;(require 'company-tabnine)
   (add-to-list 'company-backends 'company-tabnine)
   (setq company-idle-delay 0)
   ;; Number the candidates (use M-1, M-2 etc to select completions).

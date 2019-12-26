@@ -154,63 +154,63 @@ persistent_logging: false
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-#colors:
-#  # Colors (Dracula)
-#  # Default colors
-#  primary:
-#    background: '0x282a36'
-#    foreground: '0xf8f8f2'
-#
-#  # Normal colors
-#  normal:
-#    black:   '0x000000'
-#    red:     '0xff5555'
-#    green:   '0x50fa7b'
-#    yellow:  '0xf1fa8c'
-#    blue:    '0xcaa9fa'
-#    magenta: '0xff79c6'
-#    cyan:    '0x8be9fd'
-#    white:   '0xbfbfbf'
-#
-#  # Bright colors
-#  bright:
-#    black:   '0x575b70'
-#    red:     '0xff6e67'
-#    green:   '0x5af78e'
-#    yellow:  '0xf4f99d'
-#    blue:    '0xcaa9fa'
-#    magenta: '0xff92d0'
-#    cyan:    '0x9aedfe'
-#    white:   '0xe6e6e6'
-
-# Colors (Solarized Light)
 colors:
-  # Default colors
-  primary:
-    background: '0xfdf6e3'
-    foreground: '0x586e75'
+ # Colors (Dracula)
+ # Default colors
+ primary:
+   background: '0x282a36'
+   foreground: '0xf8f8f2'
 
-  # Normal colors
-  normal:
-    black:   '0xeee8d5'
-    red:     '0xdc322f'
-    green:   '0x859900'
-    yellow:  '0xb58900'
-    blue:    '0x268bd2'
-    magenta: '0xd33682'
-    cyan:    '0x2aa198'
-    white:   '0x073642'
+ # Normal colors
+ normal:
+   black:   '0x000000'
+   red:     '0xff5555'
+   green:   '0x50fa7b'
+   yellow:  '0xf1fa8c'
+   blue:    '0xcaa9fa'
+   magenta: '0xff79c6'
+   cyan:    '0x8be9fd'
+   white:   '0xbfbfbf'
 
-  # Bright colors
-  bright:
-    black:   '0xfdf6e3'
-    red:     '0xcb4b16'
-    green:   '0x93a1a1'
-    yellow:  '0x839496'
-    blue:    '0x657b83'
-    magenta: '0x6c71c4'
-    cyan:    '0x586e75'
-    white:   '0x002b36'
+ # Bright colors
+ bright:
+   black:   '0x575b70'
+   red:     '0xff6e67'
+   green:   '0x5af78e'
+   yellow:  '0xf4f99d'
+   blue:    '0xcaa9fa'
+   magenta: '0xff92d0'
+   cyan:    '0x9aedfe'
+   white:   '0xe6e6e6'
+
+# # Colors (Solarized Light)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0xfdf6e3'
+#     foreground: '0x586e75'
+
+#   # Normal colors
+#   normal:
+#     black:   '0xeee8d5'
+#     red:     '0xdc322f'
+#     green:   '0x859900'
+#     yellow:  '0xb58900'
+#     blue:    '0x268bd2'
+#     magenta: '0xd33682'
+#     cyan:    '0x2aa198'
+#     white:   '0x073642'
+
+#   # Bright colors
+#   bright:
+#     black:   '0xfdf6e3'
+#     red:     '0xcb4b16'
+#     green:   '0x93a1a1'
+#     yellow:  '0x839496'
+#     blue:    '0x657b83'
+#     magenta: '0x6c71c4'
+#     cyan:    '0x586e75'
+#     white:   '0x002b36'
 
 # Visual Bell
 #
