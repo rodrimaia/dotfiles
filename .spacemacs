@@ -667,7 +667,7 @@ region\) apply comment-or-uncomment to the current line"
   ;; Load ODT backend to allow for exporting to open document format.
   (require 'ox-odt)
   (add-to-list 'company-backends 'company-tabnine)
-  (setq company-idle-delay 0)
+  (setq company-idle-delay 0.5)
   ;; Number the candidates (use M-1, M-2 etc to select completions).
   (setq company-show-numbers t)
 
