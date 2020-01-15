@@ -68,6 +68,7 @@
 ;; gtd in org-mode https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
 
 (setq org-agenda-files '(
+                         "~/notas/inbox.org"
                          "~/notas/gtd.org"
                          "~/notas/saude.org"
                          "~/notas/cal.org"
@@ -126,6 +127,11 @@
 (setq org-agenda-custom-commands
       '(("n" "Agenda and all TODOs"
          ((agenda "")
+          (alltodo "INBOX"
+                   (
+                    (org-agenda-overriding-header "Para Processar")
+                    (org-agenda-files '("~/notas/inbox.org")))
+                   )
           (tags-todo "-TODO/!TODO"
                      ((org-agenda-overriding-header "Tasks")
                       (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)))
