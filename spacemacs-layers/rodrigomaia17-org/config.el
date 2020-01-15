@@ -87,11 +87,12 @@
 (spacemacs/set-leader-keys
   "ajj" 'org-journal-new-entry)
 
+
 (setq org-capture-templates '(("t" "Todo [Outros]" entry
                                (file+headline "~/notas/gtd.org" "Outros")
                                "* TODO %i%?")
                               ("a" "Appointment" entry (file  "~/notas/cal.org" )
-	                             "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
+                               "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
                               ("T" "Tickler" entry
                                (file+headline "~/notas/tickler.org" "Tickler")
                                "* %i%? \n %U")
@@ -120,7 +121,7 @@
 ;; explanation: https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
 
 (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "SKIP(k)" "CANCELLED(c)")))
- 
+
 
 (setq org-agenda-custom-commands
       '(("n" "Agenda and all TODOs"
@@ -131,10 +132,10 @@
           (alltodo "TRABALHO"
                    (
                     (org-agenda-overriding-header "Trabalho")
-                      (org-agenda-files '("~/notas/trabalho.org"))
-                      ))
+                    (org-agenda-files '("~/notas/trabalho.org"))
+                    ))
           (todo "WAITING"
-                 ((org-agenda-overriding-header "Esperando")) )
+                ((org-agenda-overriding-header "Esperando")) )
           ))))
 
 (defun my-org-agenda-skip-all-siblings-but-first ()
@@ -145,21 +146,21 @@
     (save-excursion
       (while (and (not should-skip-entry) (org-goto-sibling t) (not (org-current-is-heading-outros)))
         (when (org-current-is-todo)
-                (setq should-skip-entry t))))
-       (when should-skip-entry
-         (or (outline-next-heading)
-             (goto-char (point-max))))))
+          (setq should-skip-entry t))))
+    (when should-skip-entry
+      (or (outline-next-heading)
+          (goto-char (point-max))))))
 
 (defun org-current-is-heading-outros () 
   (string= (first (org-get-outline-path)) "Outros"))
 
 (defun org-current-is-first-pending-in-project ()
   (let (is-not-first-todo)
-  (save-excursion
-    (while (org-goto-sibling t)
-      (if (org-current-is-todo)
-          (setq is-not-first-todo t))))
-   (not is-not-first-todo)))
+    (save-excursion
+      (while (org-goto-sibling t)
+        (if (org-current-is-todo)
+            (setq is-not-first-todo t))))
+    (not is-not-first-todo)))
 
 (defun org-current-is-first-heading ()
   (not (org-get-outline-path)))
@@ -171,39 +172,44 @@
   (string= "TODO" (org-get-todo-state)))
 
 (defun org-agenda-delete-empty-blocks ()
-    "Remove empty agenda blocks.
+  "Remove empty agenda blocks.
   A block is identified as empty if there are fewer than 2
   non-empty lines in the block (excluding the line with
   `org-agenda-block-separator' characters)."
-    (when org-agenda-compact-blocks
-      (user-error "Cannot delete empty compact blocks"))
-    (setq buffer-read-only nil)
-    (save-excursion
+  (when org-agenda-compact-blocks
+    (user-error "Cannot delete empty compact blocks"))
+  (setq buffer-read-only nil)
+  (save-excursion
+    (goto-char (point-min))
+    (let* ((blank-line-re "^\\s-*$")
+           (content-line-count (if (looking-at-p blank-line-re) 0 1))
+           (start-pos (point))
+           (block-re (format "%c\\{10,\\}" org-agenda-block-separator)))
+      (while (and (not (eobp)) (forward-line))
+        (cond
+         ((looking-at-p block-re)
+          (when (< content-line-count 2)
+            (delete-region start-pos (1+ (point-at-bol))))
+          (setq start-pos (point))
+          (forward-line)
+          (setq content-line-count (if (looking-at-p blank-line-re) 0 1)))
+         ((not (looking-at-p blank-line-re))
+          (setq content-line-count (1+ content-line-count)))))
+      (when (< content-line-count 2)
+        (delete-region start-pos (point-max)))
       (goto-char (point-min))
-      (let* ((blank-line-re "^\\s-*$")
-             (content-line-count (if (looking-at-p blank-line-re) 0 1))
-             (start-pos (point))
-             (block-re (format "%c\\{10,\\}" org-agenda-block-separator)))
-        (while (and (not (eobp)) (forward-line))
-          (cond
-           ((looking-at-p block-re)
-            (when (< content-line-count 2)
-              (delete-region start-pos (1+ (point-at-bol))))
-            (setq start-pos (point))
-            (forward-line)
-            (setq content-line-count (if (looking-at-p blank-line-re) 0 1)))
-           ((not (looking-at-p blank-line-re))
-            (setq content-line-count (1+ content-line-count)))))
-        (when (< content-line-count 2)
-          (delete-region start-pos (point-max)))
-        (goto-char (point-min))
-        ;; The above strategy can leave a separator line at the beginning
-        ;; of the buffer.
-        (when (looking-at-p block-re)
-          (delete-region (point) (1+ (point-at-eol))))))
-    (setq buffer-read-only t))
+      ;; The above strategy can leave a separator line at the beginning
+      ;; of the buffer.
+      (when (looking-at-p block-re)
+        (delete-region (point) (1+ (point-at-eol))))))
+  (setq buffer-read-only t))
 
-  (add-hook 'org-agenda-finalize-hook #'org-agenda-delete-empty-blocks)
+(add-hook 'org-agenda-finalize-hook #'org-agenda-delete-empty-blocks)
+
+(defun open-inbox-file ()
+  (interactive)
+  (find-file "~/notas/inbox.org"))
+(spacemacs/set-leader-keys "oi" 'open-inbox-file)
 
 (defun open-gtd-file ()
   (interactive)
@@ -235,8 +241,6 @@
   (interactive)
   (org-agenda nil "n"))
 
-
-;(load "~/dotfiles/brazilian-holidays.el")
 
 (spacemacs/set-leader-keys "an" 'rodrigomaia17-org-agenda-show-agendas)
 
