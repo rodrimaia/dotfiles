@@ -662,8 +662,6 @@ region\) apply comment-or-uncomment to the current line"
   (setq ivy-re-builders-alist
         '((t . ivy--regex-fuzzy)))
 
-  (git-gutter-mode)
-
   ;; Load ODT backend to allow for exporting to open document format.
   (require 'ox-odt)
   (add-to-list 'company-backends 'company-tabnine)
