@@ -47,7 +47,7 @@ exec_always --no-startup-id alttab
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec hyper
+bindsym $mod+Return exec allacrity
 
 # kill focused window
 bindsym $mod+Shift+q kill

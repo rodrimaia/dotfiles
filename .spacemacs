@@ -35,18 +35,22 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(csv
+   '(;;csv
      ;;gtags
-     python
-     elm
+     ;;python
+     ;;elm
      yaml
      html
-     (ruby :variables
-           ruby-version-manager 'rvm
-           ruby-test-runner 'rspec)
-     ruby-on-rails
-     elixir
-     typescript
+     lsp
+     ;;(ruby :variables
+          ;; ruby-version-manager 'rvm
+          ;; ruby-test-runner 'rspec)
+     ;;ruby-on-rails
+     ;;elixir
+     (javascript :variables
+                 javascript-backend 'lsp)
+     (typescript :variables
+           typescript-backend 'lsp)
      markdown
      (markdown :variables markdown-live-preview-engine 'vmd)
      shell-scripts
@@ -80,8 +84,8 @@ This function should only modify configuration layer settings."
      ;;(syntax-checking :variables syntax-checking-enable-by-default nil)
      ;;evil-snipe
 
-     elfeed
-     (elfeed :variables rmh-elfeed-org-files (list "~/dotfiles/elfeed.org" ))
+     ;;elfeed
+     ;;(elfeed :variables rmh-elfeed-org-files (list "~/dotfiles/elfeed.org" ))
      ;;xkcd
      ;;selectric
      games
@@ -115,15 +119,14 @@ This function should only modify configuration layer settings."
       fireplace
       nyan-mode
       minimap
-      platformio-mode
+      ;;platformio-mode
       company-tabnine
       spray
       wttrin
-      stock-ticker
-      twittering-mode
+      ;;twittering-mode
       graphql-mode
       editorconfig
-      wakatime-mode
+      flow-minor-mode
       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -254,7 +257,7 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         dracula
+                         doom-dracula
                          spacemacs-light
                          material
                          underwater
@@ -273,7 +276,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme 'doom ;;'(spacemacs :separator wave :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -283,12 +286,12 @@ It should only modify the values of Spacemacs settings."
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Meslo LG M for Powerline"
    ;;dotspacemacs-default-font '("FiraFlott"
-   ;;dotspacemacs-default-font '("Consolas NF"
+   ;;dotspacemacs-default-font '("Consolas For Powerline"
    ;;dotspacemacs-default-font '("Inconsolata for Powerline"
-                               :size 15
-                               :weight bold
+                               :size 20
+                               :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.2)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
 
@@ -554,13 +557,11 @@ you should place your code here."
   (setq package-check-signature nil)
 
   (editorconfig-mode 1)
-  (global-flycheck-mode)
-  (global-wakatime-mode)
-
+  ;;(global-flycheck-mode)
 
   (evil-ex-define-cmd "q[uit]" 'evil-window-delete ) ;; Do not close emacs on :q
 
-  (global-emojify-mode)
+  ;;(global-emojify-mode)
   (global-company-mode)
 
   ;; https://github.com/syl20bnr/spacemacs/issues/9903
