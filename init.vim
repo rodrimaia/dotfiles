@@ -66,9 +66,9 @@ call plug#begin()
 
 Plug 'tpope/vim-sensible'
 
-Plug 'dracula/vim'
-syntax on
-autocmd VimEnter * colorscheme dracula
+"Plug 'dracula/vim'
+"syntax on
+"autocmd VimEnter * colorscheme dracula
 
 Plug 'scrooloose/nerdtree'
 map <C-e> :NERDTreeToggle<CR>

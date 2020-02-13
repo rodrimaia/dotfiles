@@ -127,6 +127,9 @@ This function should only modify configuration layer settings."
       graphql-mode
       editorconfig
       flow-minor-mode
+      jest
+      calfw
+      calfw-org
       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -257,8 +260,8 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         doom-dracula
                          spacemacs-light
+                         doom-dracula
                          material
                          underwater
                          spacemacs-dark
