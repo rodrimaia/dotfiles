@@ -42,13 +42,14 @@ This function should only modify configuration layer settings."
      yaml
      html
      lsp
-     ;;(ruby :variables
-          ;; ruby-version-manager 'rvm
-          ;; ruby-test-runner 'rspec)
+     (ruby :variables
+           ruby-version-manager 'rvm
+           ruby-test-runner 'rspec)
      ;;ruby-on-rails
      ;;elixir
-     (javascript :variables
-                 javascript-backend 'lsp)
+     ;; (javascript :variables
+     ;;             javascript-backend 'lsp)
+     typescript
      (typescript :variables
            typescript-backend 'lsp)
      markdown
@@ -58,14 +59,13 @@ This function should only modify configuration layer settings."
      ;;ivy
      auto-completion
      (auto-completion :variables
-                        auto-completion-enable-snippets-in-popup t
                         auto-completion-enable-help-tooltip t
                         auto-completion-enable-sort-by-usage t)
      better-defaults
      emacs-lisp
-     common-lisp
-     (common-lisp :variables
-                  inferior-lisp-program "/usr/local/bin/sbcl")
+     ;;common-lisp
+     ;;(common-lisp :variables
+                ;;  inferior-lisp-program "/usr/local/bin/sbcl")
      git
      github
      version-control
@@ -80,7 +80,7 @@ This function should only modify configuration layer settings."
             shell-default-shell 'ansi-term
             shell-default-term-shell "/bin/zsh"
             )
-     syntax-checking
+     ;;syntax-checking
      ;;(syntax-checking :variables syntax-checking-enable-by-default nil)
      ;;evil-snipe
 
@@ -89,14 +89,14 @@ This function should only modify configuration layer settings."
      ;;xkcd
      ;;selectric
      games
-     ranger
+     ;;ranger
      emoji
      multiple-cursors
 
      rodrigomaia17-org
-     rodrigomaia17-javascript
-     rodrigomaia17-mu4e
-     rodrigomaia17-autocomplete
+     ;;rodrigomaia17-javascript
+     ;;rodrigomaia17-mu4e
+     ;;rodrigomaia17-autocomplete
      )
 
    ;; List of additional packages that will be installed without being
@@ -105,31 +105,31 @@ This function should only modify configuration layer settings."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
       dracula-theme
-      challenger-deep-theme
+      ;;challenger-deep-theme
       focus-autosave-mode
       helm-spotify-plus
       olivetti
-      circadian
-      rand-theme
+      ;;circadian
+      ;;rand-theme
       org-alert
       exec-path-from-shell
-      redtick
-      stock-ticker
+      ;;redtick
+      ;;stock-ticker
       evil-mc
       fireplace
       nyan-mode
       minimap
       ;;platformio-mode
-      company-tabnine
+      ;;company-tabnine
+      company-tern
       spray
       wttrin
       ;;twittering-mode
       graphql-mode
-      editorconfig
-      flow-minor-mode
-      jest
-      calfw
-      calfw-org
+      ;;editorconfig
+      ;;flow-minor-mode
+      ;;calfw
+      ;;calfw-org
       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -160,10 +160,10 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil)
    dotspacemacs-enable-emacs-pdumper nil
 
-   ;; File path pointing to emacs 27.1 executable compiled with support
-   ;; for the portable dumper (this is currently the branch pdumper).
-   ;; (default "emacs-27.0.50")
-   dotspacemacs-emacs-pdumper-executable-file "emacs-27.0.50"
+   ;; Name of executable file pointing to emacs 27+. This executable must be
+   ;; in your PATH.
+   ;; (default "emacs")
+   dotspacemacs-emacs-pdumper-executable-file "emacs"
 
    ;; Name of the Spacemacs dump file. This is the file will be created by the
    ;; portable dumper in the cache directory under dumps sub-directory.
@@ -197,8 +197,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-use-spacelpa nil
 
    ;; If non-nil then verify the signature for downloaded Spacelpa archives.
-   ;; (default nil)
-   dotspacemacs-verify-spacelpa-archives nil
+   ;; (default t)
+   dotspacemacs-verify-spacelpa-archives t
 
    ;; If non-nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
@@ -221,8 +221,10 @@ It should only modify the values of Spacemacs settings."
                                      vim-style-enable-visual-feedback t
                                      vim-style-visual-feedback t)
 
-   ;; If non-nil output loading progress in `*Messages*' buffer. (default nil)
-   dotspacemacs-verbose-loading nil
+   ;; If non-nil show the version string in the Spacemacs buffer. It will
+   ;; appear as (spacemacs version)@(emacs version)
+   ;; (default t)
+   dotspacemacs-startup-buffer-show-version t
 
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
@@ -260,10 +262,10 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         spacemacs-light
+                         underwater
                          doom-dracula
                          material
-                         underwater
+                         spacemacs-light
                          spacemacs-dark
                          tangotango
                          solarized-light
@@ -291,7 +293,7 @@ It should only modify the values of Spacemacs settings."
    ;;dotspacemacs-default-font '("FiraFlott"
    ;;dotspacemacs-default-font '("Consolas For Powerline"
    ;;dotspacemacs-default-font '("Inconsolata for Powerline"
-                               :size 20
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.2)
@@ -357,7 +359,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil, the paste transient-state is enabled. While enabled, after you
    ;; paste something, pressing `C-j' and `C-k' several times cycles through the
    ;; elements in the `kill-ring'. (default nil)
-   dotspacemacs-enable-paste-transient-state nil
+   dotspacemacs-enable-paste-transient-state t
 
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
@@ -379,7 +381,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
-   dotspacemacs-loading-progress-bar nil
+   dotspacemacs-loading-progress-bar t
 
    ;; If non-nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
@@ -392,7 +394,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
 
    ;; If non-nil the frame is undecorated when Emacs starts up. Combine this
    ;; variable with `dotspacemacs-maximized-at-startup' in OSX to obtain
@@ -402,7 +404,7 @@ It should only modify the values of Spacemacs settings."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 90
+   dotspacemacs-active-transparency 100
 
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
@@ -454,9 +456,9 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-smartparens-strict-mode nil
 
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
-   ;; over any automatically added closing parenthesis, bracket, quote, etc…
+   ;; over any automatically added closing parenthesis, bracket, quote, etc...
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
-   dotspacemacs-smart-closing-parenthesis nil
+   dotspacemacs-smart-closing-parenthesis t
 
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
@@ -465,7 +467,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, start an Emacs server if one is not already running.
    ;; (default nil)
-   dotspacemacs-enable-server t
+   dotspacemacs-enable-server nil
 
    ;; Set the emacs server socket location.
    ;; If nil, uses whatever the Emacs default is, otherwise a directory path
@@ -476,7 +478,8 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server t
+   dotspacemacs-persistent-server nil
+
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
    ;; (default '("rg" "ag" "pt" "ack" "grep"))
@@ -499,7 +502,7 @@ It should only modify the values of Spacemacs settings."
    ;; %z - mnemonics of buffer, terminal, and keyboard coding systems
    ;; %Z - like %z, but including the end-of-line format
    ;; (default "%I@%S")
-   dotspacemacs-frame-title-format "%a@%t"
+   dotspacemacs-frame-title-format "%I@%S"
 
    ;; Format specification for setting the icon title format
    ;; (default nil - same as frame-title-format)
@@ -608,8 +611,8 @@ you should place your code here."
 
   (setq split-width-threshold 80)
 
-  (add-hook 'term-mode-hook (lambda()
-                               (yas-minor-mode -1)))
+  ;;(add-hook 'term-mode-hook (lambda()
+   ;;                            (yas-minor-mode -1)))
 
   (spacemacs/toggle-indent-guide-globally-on)
 
@@ -621,9 +624,9 @@ you should place your code here."
     (global-set-key (kbd "<mouse-5>") 'scroll-up-line))
 
 
-  (setq auto-completion-private-snippets-directory "~/dotfiles/snippets")
-  (setq yas-snippet-dirs '("~/dotfiles/snippets"))
-  (yas-global-mode 1)
+  ;;(setq auto-completion-private-snippets-directory "~/dotfiles/snippets")
+  ;;(setq yas-snippet-dirs '("~/dotfiles/snippets"))
+  ;;(yas-global-mode 1)
 
   ;; Use Ctrl+R in terminal
   (defun bb/setup-term-mode ()
@@ -663,19 +666,23 @@ region\) apply comment-or-uncomment to the current line"
 
   (global-set-key (kbd "C-c C-r") 'comment-or-uncomment-region-or-line)
 
-  (setq ivy-re-builders-alist
-        '((t . ivy--regex-fuzzy)))
+  ;; (setq ivy-re-builders-alist
+  ;;       '((t . ivy--regex-fuzzy)))
 
   ;; Load ODT backend to allow for exporting to open document format.
   (require 'ox-odt)
-  (add-to-list 'company-backends 'company-tabnine)
-  (setq company-idle-delay 0.5)
+  ;;(add-to-list 'company-backends 'company-tabnine)
+  (add-to-list 'company-backends 'company-tern)
+  (setq company-idle-delay 0.1)
   ;; Number the candidates (use M-1, M-2 etc to select completions).
   (setq company-show-numbers t)
 
   (setq wttrin-default-cities '("Belo Horizonte"))
   (setq wttrin-default-accept-language '("Accept-Language" . "pt-BR"))
 
+  (add-to-list 'auto-mode-alist '("\\.js" . javascript-mode))
+
+  (setq typescript-indent-level 2)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

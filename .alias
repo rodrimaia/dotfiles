@@ -51,6 +51,7 @@ alias gaas="gaa & gst"
 alias gdc="git diff --cached"
 alias grh='git reset HEAD'
 alias gap="git add -p"
+alias grebasemaster="gco master && glr && gco - && git rebase master"
 alias cta='ctags --recurse .'
 alias wifi='networksetup -setairportpower en0 off && networksetup -setairportpower en0 on'
 alias ipy='ipython'
