@@ -39,6 +39,7 @@ This function should only modify configuration layer settings."
      ;;gtags
      ;;python
      ;;elm
+     dap
      yaml
      html
      lsp
@@ -50,13 +51,13 @@ This function should only modify configuration layer settings."
      ;; (javascript :variables
      ;;             javascript-backend 'lsp)
      typescript
-     (typescript :variables
-           typescript-backend 'lsp)
+      (typescript :variables
+            typescript-backend 'lsp)
      markdown
      (markdown :variables markdown-live-preview-engine 'vmd)
      shell-scripts
-     helm
-     ;;ivy
+     ;;helm
+     ivy
      auto-completion
      (auto-completion :variables
                         auto-completion-enable-help-tooltip t
@@ -74,7 +75,7 @@ This function should only modify configuration layer settings."
                        version-control-diff-side 'left)
      ;;osx
      ;;docker
-     themes-megapack
+     ;;themes-megapack
      shell
      (shell :variables
             shell-default-shell 'ansi-term
@@ -105,6 +106,11 @@ This function should only modify configuration layer settings."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
       dracula-theme
+      doom-themes
+      material-theme
+      tangotango-theme
+      monokai-theme
+      solarized-theme
       ;;challenger-deep-theme
       focus-autosave-mode
       helm-spotify-plus
@@ -135,7 +141,9 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(
+                                    yasnippet
+                                    )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -270,7 +278,6 @@ It should only modify the values of Spacemacs settings."
                          tangotango
                          solarized-light
                          solarized-dark
-                         tango-2
                          monokai
                          )
 
@@ -324,6 +331,7 @@ It should only modify the values of Spacemacs settings."
    ;; Setting it to a non-nil value, allows for separate commands under `C-i'
    ;; and TAB or `C-m' and `RET'.
    ;; In the terminal, these pairs are generally indistinguishable, so this only
+
    ;; works in the GUI. (default nil)
    dotspacemacs-distinguish-gui-tab nil
 
@@ -562,6 +570,13 @@ you should place your code here."
 
   (setq package-check-signature nil)
 
+
+  ;;https://github.com/emacs-lsp/lsp-mode#performance
+  (setq read-process-output-max (* 1024 1024)) ;; 1mb
+  (setq lsp-prefer-capf t)
+  (require 'dap-firefox)
+
+
   (editorconfig-mode 1)
   ;;(global-flycheck-mode)
 
@@ -627,6 +642,9 @@ you should place your code here."
   ;;(setq auto-completion-private-snippets-directory "~/dotfiles/snippets")
   ;;(setq yas-snippet-dirs '("~/dotfiles/snippets"))
   ;;(yas-global-mode 1)
+  ;; Disable yasnippet
+  (yas-global-mode 0)
+  ;;(spacemacs/toggle-yasnippet-off)
 
   ;; Use Ctrl+R in terminal
   (defun bb/setup-term-mode ()
@@ -648,10 +666,10 @@ you should place your code here."
   ;; (circadian-setup)
   
   ;; Scrolling
-  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
-  (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-  (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-  (setq scroll-step 1) ;; keyboard scroll one line at a time
+  ;;(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+  ;;(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+  ;;(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+  ;;(setq scroll-step 1) ;; keyboard scroll one line at a time
 
   (defun comment-or-uncomment-region-or-line ()
     "Like comment-or-uncomment-region, but if there's no mark \(that means no
@@ -666,14 +684,14 @@ region\) apply comment-or-uncomment to the current line"
 
   (global-set-key (kbd "C-c C-r") 'comment-or-uncomment-region-or-line)
 
-  ;; (setq ivy-re-builders-alist
-  ;;       '((t . ivy--regex-fuzzy)))
+    (setq ivy-re-builders-alist
+          '((t . spacemacs/ivy--regex-plus)))
 
   ;; Load ODT backend to allow for exporting to open document format.
   (require 'ox-odt)
   ;;(add-to-list 'company-backends 'company-tabnine)
   (add-to-list 'company-backends 'company-tern)
-  (setq company-idle-delay 0.1)
+  (setq company-idle-delay 0.500)
   ;; Number the candidates (use M-1, M-2 etc to select completions).
   (setq company-show-numbers t)
 
