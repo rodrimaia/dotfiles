@@ -14,6 +14,7 @@
  org-agenda-todo-ignore-timestamp 5  ;; Ignore todos for 5 days in the future
  org-agenda-tags-todo-honor-ignore-options t
  org-agenda-include-diary t
+ org-agenda-show-future-repeats nil
  org-agenda-skip-scheduled-if-done t
  org-agenda-skip-deadline-if-done t
  org-agenda-start-on-weekday nil
@@ -72,6 +73,7 @@
                          "~/notas/gtd.org"
                          "~/notas/saude.org"
                          "~/notas/cal.org"
+                         "~/notas/trabalho.org"
                          "~/notas/tickler.org"))
 
 (setq diary-file "~/notas/diario.org")
@@ -135,11 +137,6 @@
           (tags-todo "-TODO/!TODO"
                      ((org-agenda-overriding-header "Tasks")
                       (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)))
-          (alltodo "TRABALHO"
-                   (
-                    (org-agenda-overriding-header "Trabalho")
-                    (org-agenda-files '("~/notas/trabalho.org"))
-                    ))
           (todo "WAITING"
                 ((org-agenda-overriding-header "Esperando")) )
           ))))

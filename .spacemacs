@@ -51,13 +51,13 @@ This function should only modify configuration layer settings."
      ;; (javascript :variables
      ;;             javascript-backend 'lsp)
      typescript
-      (typescript :variables
-            typescript-backend 'lsp)
+     ;; (typescript :variables
+     ;;       typescript-backend 'lsp)
      markdown
      (markdown :variables markdown-live-preview-engine 'vmd)
      shell-scripts
-     ;;helm
-     ivy
+     helm
+     ;;ivy
      auto-completion
      (auto-completion :variables
                         auto-completion-enable-help-tooltip t
@@ -142,6 +142,7 @@ This function should only modify configuration layer settings."
 
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(
+   window-purpose
                                     yasnippet
                                     )
 
@@ -270,6 +271,7 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         doom-outrun-electric
                          underwater
                          doom-dracula
                          material
@@ -573,8 +575,8 @@ you should place your code here."
 
   ;;https://github.com/emacs-lsp/lsp-mode#performance
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
-  (setq lsp-prefer-capf t)
-  (require 'dap-firefox)
+  ;;(setq lsp-prefer-capf t)
+  ;;(require 'dap-firefox)
 
 
   (editorconfig-mode 1)
@@ -691,16 +693,28 @@ region\) apply comment-or-uncomment to the current line"
   (require 'ox-odt)
   ;;(add-to-list 'company-backends 'company-tabnine)
   (add-to-list 'company-backends 'company-tern)
-  (setq company-idle-delay 0.500)
+  (setq company-idle-delay 1.0)
   ;; Number the candidates (use M-1, M-2 etc to select completions).
   (setq company-show-numbers t)
+
+  (global-set-key (kbd "<C-return>") 'company-complete)
 
   (setq wttrin-default-cities '("Belo Horizonte"))
   (setq wttrin-default-accept-language '("Accept-Language" . "pt-BR"))
 
-  (add-to-list 'auto-mode-alist '("\\.js" . javascript-mode))
+  ;(add-to-list 'auto-mode-alist '("\\.js" . javascript-mode))
 
   (setq typescript-indent-level 2)
+
+  ;(setq lsp-remap-xref-keybindings t)
+  (with-eval-after-load 'lsp-mode
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
+
+  ;(add-hook 'prog-mode-hook #'spacemacs/toggle-centered-buffer)
+  (setq helm-ag-base-command "rg --no-heading")
+
+  ;(add-to-list 'grep-find-ignored-files "*.lock")
+  (setq helm-ag-use-grep-ignore-list t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
