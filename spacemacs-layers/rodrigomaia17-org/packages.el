@@ -22,10 +22,10 @@
   (use-package org-gcal
     )
   
-  (load "~/notas/secret.el") ; load gcal secrets on this format:
+  (load "~/Dropbox/notas/secret.el") ; load gcal secrets on this format:
   ;; (setq org-gcal-client-id "a-random-number.apps.googleusercontent.com"
   ;;       org-gcal-client-secret "client-secret"
-  ;;       org-gcal-file-alist '(("my-email" .  "~/notas/cal.org")
+  ;;       org-gcal-file-alist '(("my-email" .  "~/Dropbox/notas/cal.org")
 
   (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
   )
