@@ -23,7 +23,9 @@
  org-agenda-todo-ignore-scheduled "far"
  org-enforce-todo-dependencies t
  org-want-todo-bindings t
- org-journal-time-prefix "** ")
+ org-journal-time-prefix "** "
+ org-agenda-span 5 ;; show how many days in agenda
+ )
 
 (setq org-modules '(org-bbdb
                     org-gnus
@@ -73,6 +75,7 @@
                          "~/notas/gtd.org"
                          "~/notas/saude.org"
                          "~/notas/cal.org"
+                         "~/notas/cal-work.org"
                          "~/notas/trabalho.org"
                          "~/notas/tickler.org"))
 

@@ -7,7 +7,6 @@ alias vas="vagrant ssh"
 alias vau="vagrant up"
 alias valias="nvim ~/dotfiles/.alias && salias"
 alias vrc="nvim ~/dotfiles/init.vim"
-alias act="source env/bin/activate"
 alias salias="source ~/dotfiles/.alias"
 alias cpav="cp -av"
 alias rmrf="rm -rf"
@@ -40,6 +39,7 @@ alias py="python"
 alias py3="python3"
 alias fuck='sudo $(fc -ln -1)' 
 alias ducks='du -cks * | sort -rn | head'
+alias duh='du -h'
 alias dc='docker-compose'
 alias dcb='docker-compose build'
 alias dcbu='docker-compose build && docker-compose up'
@@ -59,8 +59,8 @@ alias findn='find . -name'
 alias transp='trans :pt-br'
 alias vinit='v ~/dotfiles/init.vim'
 alias psa='ps aux | grep'
-alias e='emacsclient "$@" -a ""'
-alias ec='emacsclient "$@" -a "" -c -n'
+alias e='emacsclient "$@" -a "" -c'
+#alias ec='emacsclient "$@" -a "" -c -n'
 alias f=fzf
 alias vf='v $(f)'
 alias vn='v ~/notas'
@@ -76,6 +76,10 @@ alias txs='tmuxinator start'
 alias txo='tmuxinator open'
 alias txn='tmuxinator new'
 alias txl='tmuxinator list'
+
+#tmux
+alias t=tmux new-session -A -s main
+
 
 # Yarn
 alias y="yarn"

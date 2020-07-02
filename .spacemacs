@@ -35,10 +35,12 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(;;csv
+   '(python
+     ;;csv
      ;;gtags
      ;;python
      ;;elm
+     c-c++
      dap
      yaml
      html
@@ -73,16 +75,18 @@ This function should only modify configuration layer settings."
      (version-control :variables
                        version-control-global-margin t
                        version-control-diff-side 'left)
-     ;;osx
-     ;;docker
+     osx
+     (osx :variables
+          osx-option-as        'super)
+     docker
      ;;themes-megapack
      shell
      (shell :variables
             shell-default-shell 'ansi-term
             shell-default-term-shell "/bin/zsh"
             )
-     ;;syntax-checking
-     ;;(syntax-checking :variables syntax-checking-enable-by-default nil)
+     syntax-checking
+     (syntax-checking :variables syntax-checking-enable-by-default nil)
      ;;evil-snipe
 
      ;;elfeed
@@ -127,7 +131,6 @@ This function should only modify configuration layer settings."
       minimap
       ;;platformio-mode
       ;;company-tabnine
-      company-tern
       spray
       wttrin
       ;;twittering-mode
@@ -290,7 +293,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme 'doom ;;'(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme 'spacemacs ;;'(spacemacs :separator wave :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -302,7 +305,7 @@ It should only modify the values of Spacemacs settings."
    ;;dotspacemacs-default-font '("FiraFlott"
    ;;dotspacemacs-default-font '("Consolas For Powerline"
    ;;dotspacemacs-default-font '("Inconsolata for Powerline"
-                               :size 16
+                               :size 19
                                :weight normal
                                :width normal
                                :powerline-scale 1.2)
@@ -404,12 +407,12 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
 
    ;; If non-nil the frame is undecorated when Emacs starts up. Combine this
    ;; variable with `dotspacemacs-maximized-at-startup' in OSX to obtain
    ;; borderless fullscreen. (default nil)
-   dotspacemacs-undecorated-at-startup t
+   dotspacemacs-undecorated-at-startup nil
 
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
@@ -692,7 +695,6 @@ region\) apply comment-or-uncomment to the current line"
   ;; Load ODT backend to allow for exporting to open document format.
   (require 'ox-odt)
   ;;(add-to-list 'company-backends 'company-tabnine)
-  (add-to-list 'company-backends 'company-tern)
   (setq company-idle-delay 1.0)
   ;; Number the candidates (use M-1, M-2 etc to select completions).
   (setq company-show-numbers t)
@@ -715,6 +717,7 @@ region\) apply comment-or-uncomment to the current line"
 
   ;(add-to-list 'grep-find-ignored-files "*.lock")
   (setq helm-ag-use-grep-ignore-list t)
+  (setq lsp-clients-clangd-executable "/usr/local/opt/llvm/bin/clangd")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
