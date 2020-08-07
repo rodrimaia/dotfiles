@@ -26,7 +26,6 @@ This function should only modify configuration layer settings."
    ;; a layer lazily. (default t)
    dotspacemacs-ask-for-lazy-installation t
 
-   ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '(
@@ -41,14 +40,13 @@ This function should only modify configuration layer settings."
      ;;python
      ;;elm
      c-c++
-     dap
+     ;;dap
      yaml
      html
-     lsp
-     (ruby :variables
-           ruby-version-manager 'rvm
-           ruby-test-runner 'rspec)
-     ;;ruby-on-rails
+     ;;lsp
+     ;(ruby :variables
+     ;      ruby-test-runner 'rspec)
+     ruby-on-rails
      ;;elixir
      ;; (javascript :variables
      ;;             javascript-backend 'lsp)
@@ -109,12 +107,12 @@ This function should only modify configuration layer settings."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-      dracula-theme
+      ;;dracula-theme
       doom-themes
-      material-theme
+      ;;material-theme
       tangotango-theme
-      monokai-theme
-      solarized-theme
+      ;;monokai-theme
+      ;;solarized-theme
       ;;challenger-deep-theme
       focus-autosave-mode
       helm-spotify-plus
@@ -139,6 +137,8 @@ This function should only modify configuration layer settings."
       ;;flow-minor-mode
       ;;calfw
       ;;calfw-org
+      flx
+      evil-easymotion
       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -181,9 +181,9 @@ It should only modify the values of Spacemacs settings."
    ;; portable dumper in the cache directory under dumps sub-directory.
    ;; To load it when starting Emacs add the parameter `--dump-file'
    ;; when invoking Emacs 27.1 executable on the command line, for instance:
-   ;;   ./emacs --dump-file=~/.emacs.d/.cache/dumps/spacemacs.pdmp
-   ;; (default spacemacs.pdmp)
-   dotspacemacs-emacs-dumper-dump-file "spacemacs.pdmp"
+   ;;   ./emacs --dump-file=$HOME/.emacs.d/.cache/dumps/spacemacs-27.1.pdmp
+   ;; (default spacemacs-27.1.pdmp)
+   dotspacemacs-emacs-dumper-dump-file (format "spacemacs-%s.pdmp" emacs-version)
 
    ;; If non-nil ELPA repositories are contacted via HTTPS whenever it's
    ;; possible. Set it to nil if you have no way to use HTTPS in your
@@ -202,6 +202,13 @@ It should only modify the values of Spacemacs settings."
    ;; performance issues due to garbage collection operations.
    ;; (default '(100000000 0.1))
    dotspacemacs-gc-cons '(100000000 0.1)
+
+   ;; Set `read-process-output-max' when startup finishes.
+   ;; This defines how much data is read from a foreign process.
+   ;; Setting this >= 1 MB should increase performance for lsp servers
+   ;; in emacs 27.
+   ;; (default (* 1024 1024))
+   dotspacemacs-read-process-output-max (* 1024 1024)
 
    ;; If non-nil then Spacelpa repository is the primary source to install
    ;; a locked version of packages. If nil then Spacemacs will install the
@@ -264,7 +271,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-new-empty-buffer-major-mode 'text-mode
 
    ;; Default major mode of the scratch buffer (default `text-mode')
-   dotspacemacs-scratch-mode 'text-mode
+   dotspacemacs-scratch-mode 'org-mode
 
    ;; Initial message in the scratch buffer, such as "Welcome to Spacemacs!"
    ;; (default nil)
@@ -274,6 +281,7 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         solarized-light
                          doom-outrun-electric
                          underwater
                          doom-dracula
@@ -281,7 +289,6 @@ It should only modify the values of Spacemacs settings."
                          spacemacs-light
                          spacemacs-dark
                          tangotango
-                         solarized-light
                          solarized-dark
                          monokai
                          )
@@ -293,7 +300,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme 'spacemacs ;;'(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -301,11 +308,12 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Meslo LG M for Powerline"
+   ;;dotspacemacs-default-font '("Meslo LG M for Powerline"
+   dotspacemacs-default-font '("Menlo"
    ;;dotspacemacs-default-font '("FiraFlott"
    ;;dotspacemacs-default-font '("Consolas For Powerline"
    ;;dotspacemacs-default-font '("Inconsolata for Powerline"
-                               :size 19
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 1.2)
@@ -328,8 +336,10 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-major-mode-leader-key ","
 
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
-   ;; (default "C-M-m")
-   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+   ;; (default "C-M-m" for terminal mode, "<M-return>" for GUI mode).
+   ;; Thus M-RET should work as leader key in both GUI and terminal modes.
+   ;; C-M-m also should work in terminal mode, but not in GUI mode.
+   dotspacemacs-major-mode-emacs-leader-key (if window-system "<M-return>" "C-M-m")
 
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs `C-i', `TAB' and `C-m', `RET'.
@@ -417,7 +427,7 @@ It should only modify the values of Spacemacs settings."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 100
+   dotspacemacs-active-transparency 90
 
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
@@ -551,8 +561,8 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  (setq custom-file "~/.emacs.d/.cache/.custom-settings")
-  (load custom-file)
+  ;;(setq custom-file "~/.emacs.d/.cache/.custom-settings")
+ ;; (load custom-file)
   )
 
 (defun dotspacemacs/user-load ()
@@ -689,8 +699,11 @@ region\) apply comment-or-uncomment to the current line"
 
   (global-set-key (kbd "C-c C-r") 'comment-or-uncomment-region-or-line)
 
-    (setq ivy-re-builders-alist
-          '((t . spacemacs/ivy--regex-plus)))
+  (setq ivy-re-builders-alist
+        '((swiper . ivy--regex-plus)
+          (t      . ivy--regex-fuzzy)))
+
+  (setq ivy-initial-inputs-alist nil)
 
   ;; Load ODT backend to allow for exporting to open document format.
   (require 'ox-odt)
@@ -718,6 +731,8 @@ region\) apply comment-or-uncomment to the current line"
   ;(add-to-list 'grep-find-ignored-files "*.lock")
   (setq helm-ag-use-grep-ignore-list t)
   (setq lsp-clients-clangd-executable "/usr/local/opt/llvm/bin/clangd")
+
+  (setq-default evil-kill-on-visual-paste nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

@@ -95,7 +95,7 @@ nmap s <Plug>(easymotion-s)
 
 
 "Fzf configuration
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 imap <c-x><c-l> <plug>(fzf-complete-line)

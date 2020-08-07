@@ -25,7 +25,7 @@ case "$OSTYPE" in
       ;;
    darwin*)
       alias start="open"
-      alias update_spacemacs='brew upgrade emacs-plus; cd ~/.emacs.d && git pull --rebase && cd -'
+      alias update_spacemacs='brew upgrade emacs-plus@27; cd ~/.emacs.d && git pull --rebase && cd -'
       alias update_vim='brew upgrade neovim; nvim +PlugUpdate +:q +:q';
       alias update_tools="brew update && brew cleanup -s ; upgrade_oh_my_zsh ; update_spacemacs ; update_vim ; cowsay 'TUDO ATUALIZADO, PODE SEGUIR O BAILE'"
       ;;
