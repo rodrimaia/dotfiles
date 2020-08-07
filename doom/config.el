@@ -1,3 +1,78 @@
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+
+;; Place your private configuration here! Remember, you do not need to run 'doom
+;; sync' after modifying this file!
+
+
+;; Some functionality uses this to identify you, e.g. GPG configuration, email
+;; clients, file templates and snippets.
+(setq user-full-name "John Doe"
+      user-mail-address "john@doe.com")
+
+;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
+;; are the three important ones:
+;;
+;; + `doom-font'
+;; + `doom-variable-pitch-font'
+;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
+;;   presentations or streaming.
+;;
+;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
+;; font string. You generally only need these two:
+;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
+;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+
+;; There are two ways to load a theme. Both assume the theme is installed and
+;; available. You can either set `doom-theme' or manually load a theme with the
+;; `load-theme' function. This is the default:
+(setq doom-theme 'doom-outrun-electric)
+
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory "~/notas/")
+
+;; This determines the style of line numbers in effect. If set to `nil', line
+;; numbers are disabled. For relative line numbers, set this to `relative'.
+(setq display-line-numbers-type t)
+
+(map! :leader
+      :desc "Open like spacemacs" "SPC" #'counsel-M-x)
+
+;; Here are some additional functions/macros that could help you configure Doom:
+;;
+;; - `load!' for loading external *.el files relative to this one
+;; - `use-package!' for configuring packages
+;; - `after!' for running code after a package has loaded
+;; - `add-load-path!' for adding directories to the `load-path', relative to
+;;   this file. Emacs searches the `load-path' when you load packages with
+;;   `require' or `use-package'.
+;; - `map!' for binding new keys
+;;
+;; To get information about any of these functions/macros, move the cursor over
+;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
+;; This will open documentation for it, including demos of how they are used.
+;;
+;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
+;; they are implemented.
+;;
+
+(map! :leader "TAB" 'evil-switch-to-windows-last-buffer)
+(map! :leader "w /" 'evil-window-vsplit)
+(map! :leader "w -" 'evil-window-split)
+(map! :leader "j" 'evilem-motion-find-char)
+(map! :after evil-org
+      :map evil-org-mode-map
+      :n "t" #'org-todo)
+
+(setq treemacs-tag-follow-mode t)
+
+(defun spacemacs/set-leader-keys (key command)
+  (map! :leader key command)
+  )
+
+(toggle-frame-maximized)
+
+(after! org
 (setq
  ;; set up org mode
  org-confirm-babel-evaluate nil
@@ -17,6 +92,7 @@
  org-agenda-show-future-repeats nil
  org-agenda-skip-scheduled-if-done t
  org-agenda-skip-deadline-if-done t
+ org-agenda-skip-scheduled-if-deadline-is-shown t
  org-agenda-start-on-weekday nil
  org-agenda-start-with-follow-mode nil
  org-agenda-todo-ignore-deadlines (quote far)
@@ -25,7 +101,10 @@
  org-want-todo-bindings t
  org-journal-time-prefix "** "
  org-agenda-span 5 ;; show how many days in agenda
- )
+ org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "SKIP(k)" "CANCELLED(c)"))
+ org-todo-keywords-for-agenda '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "SKIP(k)" "CANCELLED(c)"))
+ org-agenda-window-setup 'reorganize-frame
+ org-agenda-block-separator (string-to-char " "))
 
 (setq org-modules '(org-bbdb
                     org-gnus
@@ -33,7 +112,7 @@
                     org-drill
                     org-info
                     org-jsinfo
-                    org-habit
+                    ;;org-habit
                     org-irc
                     org-mouse
                     org-protocol
@@ -90,6 +169,10 @@
   (goto-char (point-min)))
 
 
+;;(spacemacs/declare-prefix "aj" "journal")
+(spacemacs/set-leader-keys
+  "ajj" 'org-journal-new-entry)
+
 
 (setq org-capture-templates '(("t" "Todo [Outros]" entry
                                (file+headline "~/notas/gtd.org" "Outros")
@@ -107,9 +190,9 @@
 (setq org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")
                                  (timeline . "  % s")
                                  (todo .
-                                       " %i %-12:c %(concat \"[ \"(org-format-outline-path (org-get-outline-path)) \" ]\") ")
+                                       " %i %-12c %(concat \" \"(org-format-outline-path (org-get-outline-path)) \" >\") ")
                                  (tags .
-                                       " %i %-12:c %(concat \"[ \"(org-format-outline-path (org-get-outline-path)) \" ]\") ")
+                                       " %i %-12c %(concat \" \"(org-format-outline-path (org-get-outline-path)) \" >\") ")
                                  (search . " %i %-12:c"))
       )
 
@@ -123,12 +206,15 @@
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 ;; explanation: https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
 
-(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "SKIP(k)" "CANCELLED(c)")))
-
-
 (setq org-agenda-custom-commands
       '(("n" "Agenda and all TODOs"
-         ((agenda "")
+         ((agenda ""
+                  (
+                   (org-agenda-start-day "+0d")
+                   (org-agenda-overriding-header "⚡ Schedule:\n")
+                   (org-agenda-current-time-string "⮜┈┈┈┈┈┈┈ now")
+                   )
+                  )
           (alltodo "INBOX"
                    (
                     (org-agenda-overriding-header "Para Processar")
@@ -154,8 +240,8 @@
       (or (outline-next-heading)
           (goto-char (point-max))))))
 
-(defun org-current-is-heading-outros () 
-  (string= (first (org-get-outline-path)) "Outros"))
+(defun org-current-is-heading-outros ()
+  (string= (car (org-get-outline-path)) "Outros"))
 
 (defun org-current-is-first-pending-in-project ()
   (let (is-not-first-todo)
@@ -209,47 +295,18 @@
 
 (add-hook 'org-agenda-finalize-hook #'org-agenda-delete-empty-blocks)
 
-;;(spacemacs/declare-prefix "aj" "journal")
-(spacemacs/set-leader-keys
-  "ajj" 'org-journal-new-entry)
-
-(defun open-inbox-file ()
-  (interactive)
-  (find-file "~/notas/inbox.org"))
-(spacemacs/set-leader-keys "oi" 'open-inbox-file)
-
 (defun open-gtd-file ()
   (interactive)
   (find-file "~/notas/gtd.org"))
 (spacemacs/set-leader-keys "og" 'open-gtd-file)
 
-(defun open-someday-file ()
-  (interactive)
-  (find-file "~/notas/someday.org"))
-
-(spacemacs/set-leader-keys "os" 'open-someday-file)
-
-(defun open-tickler-file ()
-  (interactive)
-  (find-file "~/notas/tickler.org"))
-(spacemacs/set-leader-keys "ot" 'open-tickler-file)
-
-(defun open-diary-file ()
-  (interactive)
-  (find-file "~/notas/diario.org"))
-(spacemacs/set-leader-keys "od" 'open-diary-file)
-
-(defun open-gcal-file ()
-  (interactive)
-  (find-file "~/notas/cal.org"))
-(spacemacs/set-leader-keys "oa" 'open-gcal-file)
-
 (defun rodrigomaia17-org-agenda-show-agendas ()
   (interactive)
   (org-agenda nil "n"))
+)
 
 
-(spacemacs/set-leader-keys "an" 'rodrigomaia17-org-agenda-show-agendas)
+(spacemacs/set-leader-keys "a n" 'rodrigomaia17-org-agenda-show-agendas)
 
 ;; Global key for org-mode
 ;; org-mode helps me more than help-command :P
@@ -263,6 +320,19 @@
              ((symbol-function #'org-current-effective-time)
               #'(lambda () my-current-time)))
     (org-todo arg)
-    )) 
+    ))
 
 (add-hook 'org-mode-hook #'toggle-word-wrap)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("912cac216b96560654f4f15a3a4d8ba47d9c604cbc3b04801e465fb67a0234f0" default)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
