@@ -19,8 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+(setq doom-font (font-spec :family "Fira Code" :size 14))
+      ;;doom-variable-pitch-font (font-spec :family "sans" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -37,6 +37,8 @@
 
 (map! :leader
       :desc "Open like spacemacs" "SPC" #'counsel-M-x)
+
+(setq doom-localleader-key ",")
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -223,10 +225,10 @@
                       (org-agenda-files '("~/notas/inbox.org")))
                      )
             (tags-todo "-TODO/!TODO"
-                       ((org-agenda-overriding-header "Tasks")
+                       ((org-agenda-overriding-header "⚡ Tasks:\n")
                         (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)))
             (todo "WAITING"
-                  ((org-agenda-overriding-header "Esperando")) )
+                  ((org-agenda-overriding-header "⚡ Esperando:\n")) )
             ))))
 
   (defun my-org-agenda-skip-all-siblings-but-first ()
@@ -236,7 +238,7 @@
         (setq should-skip-entry t))
       (save-excursion
         (while (and (not should-skip-entry) (org-goto-sibling t) (not (org-current-is-heading-outros)))
-          (when (org-current-is-todo)
+          (when (or (org-current-is-todo) (org-current-is-waiting))
             (setq should-skip-entry t))))
       (when should-skip-entry
         (or (outline-next-heading)
@@ -261,6 +263,9 @@
 
   (defun org-current-is-todo ()
     (string= "TODO" (org-get-todo-state)))
+
+  (defun org-current-is-waiting ()
+    (string= "WAITING" (org-get-todo-state)))
 
   (defun org-agenda-delete-empty-blocks ()
     "Remove empty agenda blocks.
