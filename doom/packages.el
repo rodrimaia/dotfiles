@@ -49,4 +49,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! org-journal)
+;(package! org-journal)
+(package! super-save)
+(package! git-link)
