@@ -66,7 +66,10 @@
       :map evil-org-mode-map
       :n "t" #'org-todo)
 
-(setq treemacs-tag-follow-mode t)
+(setq treemacs-follow-mode t)
+(setq treemacs-display-current-project-exclusively t)
+
+(setq projectile-enable-caching nil)
 
 (defun spacemacs/set-leader-keys (key command)
   (map! :leader key command))
@@ -75,6 +78,8 @@
 
 (setq-default evil-escape-key-sequence "fd")
 (setq-default evil-escape-delay 0.2)
+
+(super-save-mode +1)
 
 (after! org
   (setq

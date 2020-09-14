@@ -19,15 +19,15 @@ case "$OSTYPE" in
       alias open="xdg-open"
       alias update_spacemacs='cd ~/.emacs.d && git pull --rebase && cd -'
       alias update_vim='nvim +PlugUpdate +:q +:q';
-      alias update_tools="upgrade_oh_my_zsh ; update_spacemacs ; update_vim"
+      alias update_tools="omz update ; update_spacemacs ; update_vim"
       alias remove_orphans="sudo pacman -Rns $(pacman -Qtdq)"
       alias update_all="update_tools && yay && remove_orphans && cowsay 'Bom Trabalho! :)' "
       ;;
    darwin*)
       alias start="open"
-      alias update_spacemacs='brew upgrade emacs-plus@27; cd ~/.emacs.d && git pull --rebase && cd -'
+      alias update_spacemacs='brew upgrade emacs-plus@27; cd ~/.emacs.d && git pull --rebase && cd ~/doom-emacs/bin && ./doom upgrade'
       alias update_vim='brew upgrade neovim; nvim +PlugUpdate +:q +:q';
-      alias update_tools="brew update && brew cleanup -s ; upgrade_oh_my_zsh ; update_spacemacs ; update_vim ; cowsay 'TUDO ATUALIZADO, PODE SEGUIR O BAILE'"
+      alias update_tools="brew update && brew cleanup -s ; omz update; update_spacemacs ; update_vim ; cowsay 'TUDO ATUALIZADO, PODE SEGUIR O BAILE'"
       ;;
 esac
 alias ropen='reattach-to-user-namespace open'
@@ -78,7 +78,7 @@ alias txn='tmuxinator new'
 alias txl='tmuxinator list'
 
 #tmux
-alias t=tmux new-session -A -s main
+alias tn='tmux new-session -A -s main'
 
 
 # Yarn
