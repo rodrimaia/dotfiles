@@ -222,6 +222,7 @@
                      (org-agenda-start-day "+0d")
                      (org-agenda-overriding-header "⚡ Schedule:\n")
                      (org-agenda-current-time-string "⮜┈┈┈┈┈┈┈ now")
+                     (org-agenda-prefix-format "  %-12c%?-12t% s")
                      )
                     )
             (alltodo "INBOX"
