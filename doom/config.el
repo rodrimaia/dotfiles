@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code" :size 14))
+(setq doom-font (font-spec :family "Fira Code" :size 13))
       ;;doom-variable-pitch-font (font-spec :family "sans" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -57,6 +57,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 ;;
+;;
+(setq swiper-use-visual-line-p (lambda (_) nil))
+
 
 (map! :leader "TAB" 'evil-switch-to-windows-last-buffer)
 (map! :leader "w /" 'evil-window-vsplit)
@@ -80,6 +83,16 @@
 (setq-default evil-escape-delay 0.2)
 
 (super-save-mode +1)
+
+(defun doom/ediff-init-and-example ()
+  "ediff the current `init.el' with the example in doom-emacs-dir"
+  (interactive)
+  (ediff-files (concat doom-private-dir "init.el")
+               (concat doom-emacs-dir "init.example.el")))
+
+(define-key! help-map
+  "di"   #'doom/ediff-init-and-example
+  )
 
 (after! org
   (setq
