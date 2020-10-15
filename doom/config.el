@@ -94,6 +94,17 @@
   "di"   #'doom/ediff-init-and-example
   )
 
+(setq
+   typescript-indent-level 2
+   web-mode-code-indent-offset 2)
+
+(after! javascript
+  (setq
+   standard-indent 2
+   typescript-indent-level 2
+   web-mode-code-indent-offset 2
+   ))
+
 (after! org
   (setq
    ;; set up org mode
