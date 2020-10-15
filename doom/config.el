@@ -253,6 +253,11 @@
             (tags-todo "-TODO/!TODO"
                        ((org-agenda-overriding-header "⚡ Tasks:\n")
                         (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)))
+
+            (tags-todo "-TODO/!TODO"
+                       ((org-agenda-overriding-header "⚡ Projetos Pessoais:\n")
+                        (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)
+                        (org-agenda-files '("~/notas/projetos.org"))))
             (todo "WAITING"
                   ((org-agenda-overriding-header "⚡ Esperando:\n")) )
             ))))
