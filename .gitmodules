@@ -7,3 +7,6 @@
 [submodule "tmuxinator"]
 	path = tmuxinator
 	url = git@github.com:rodrigomaia17/tmuxinator-projects.git
+[submodule ".tmux"]
+	path = .tmux
+	url = https://github.com/gpakosz/.tmux.git
