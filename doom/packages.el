@@ -52,3 +52,5 @@
 ;(package! org-journal)
 (package! super-save)
 (package! git-link)
+(package! tangotango-theme)
+(package! underwater-theme)
