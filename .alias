@@ -26,8 +26,9 @@ case "$OSTYPE" in
    darwin*)
       alias start="open"
       alias update_spacemacs='brew upgrade emacs-plus@27; cd ~/.emacs.d && git pull --rebase && cd ~/doom-emacs/bin && ./doom upgrade'
+      alias update_doom='doom upgrade'
       alias update_vim='brew upgrade neovim; nvim +PlugUpdate +:q +:q';
-      alias update_tools="brew update && brew cleanup -s ; omz update; update_spacemacs ; update_vim ; cowsay 'TUDO ATUALIZADO, PODE SEGUIR O BAILE'"
+      alias update_tools="brew update && brew cleanup -s ; omz update; update_doom; update_vim ; cowsay 'TUDO ATUALIZADO, PODE SEGUIR O BAILE'"
       ;;
 esac
 alias ropen='reattach-to-user-namespace open'
