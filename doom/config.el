@@ -186,6 +186,8 @@
                            "~/notas/inbox.org"
                            "~/notas/gtd.org"
                            "~/notas/saude.org"
+                           "~/notas/cal.org"
+                           "~/notas/cal-work.org"
                            "~/notas/trabalho.org"
                            "~/notas/tickler.org"))
 
@@ -208,6 +210,8 @@
   (setq org-capture-templates '(("t" "Todo [Outros]" entry
                                  (file+headline "~/notas/gtd.org" "Outros")
                                  "* TODO %i%?")
+                                ("a" "Appointment" entry (file  "~/notas/cal.org" )
+                                 "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
                                 ("T" "Tickler" entry
                                  (file+headline "~/notas/tickler.org" "Tickler")
                                  "* %i%? \n %U")
