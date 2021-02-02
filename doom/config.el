@@ -19,13 +19,15 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code" :size 15))
+(setq doom-font (font-spec :family "Fira Code" :size 16))
       ;;doom-variable-pitch-font (font-spec :family "sans" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-outrun-electric)
+;;(setq doom-theme 'doom-tomorrow-day)
+;;(setq doom-theme 'doom-one-light)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -98,18 +100,35 @@
    typescript-indent-level 2
    web-mode-code-indent-offset 2)
 
+(after! js2-mode
+  (setq
+   standard-indent 2
+   typescript-indent-level 2
+   web-mode-code-indent-offset 2
+   js2-basic-offset 2
+   js-indent-level 2
+   ))
+
+(add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
+
 (after! javascript
   (setq
    standard-indent 2
    typescript-indent-level 2
    web-mode-code-indent-offset 2
+   js2-basic-offset 2
+   js-indent-level 2
    ))
+
+(after! org-gcal
+  (load! "~/notas/secret.el"))
 
 (after! org
   (setq
    ;; set up org mode
    org-confirm-babel-evaluate nil
    org-log-done 'time
+   org-log-into-drawer t
    org-startup-indented t
    org-startup-folded "content"
    org-directory "~/notas"
@@ -117,7 +136,7 @@
    org-journal-dir "~/notas/journal/"
    org-journal-date-format "%A, %B %d %Y"
    org-journal-file-format "%Y%m%d.org"
-   org-agenda-span 5
+   org-agenda-span 2
    org-agenda-todo-ignore-scheduled 'future  ;; Ignore todos for 5 days in the future
    org-agenda-todo-ignore-timestamp 5  ;; Ignore todos for 5 days in the future
    org-agenda-tags-todo-honor-ignore-options t
@@ -137,7 +156,8 @@
    org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "SKIP(k)" "CANCELLED(c)"))
    org-todo-keywords-for-agenda '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "SKIP(k)" "CANCELLED(c)"))
    org-agenda-window-setup 'reorganize-frame
-   org-agenda-block-separator (string-to-char " "))
+   org-agenda-block-separator (string-to-char " ")
+   org-archive-location "::* Arquivo")
 
   (setq org-modules '(org-bbdb
                       org-gnus
@@ -174,6 +194,10 @@
    holiday-islamic-holidays nil
    )
 
+  (defun my/org-agenda-open-loops ()
+  (interactive)
+  (let ((org-agenda-start-with-log-mode t))
+    (org-agenda-list nil (org-read-date nil nil "-2d") 4)))
 
   ;; org-habit
   (setq org-habit-following-days 4)
@@ -216,6 +240,7 @@
                                  (file+headline "~/notas/tickler.org" "Tickler")
                                  "* %i%? \n %U")
                                 ("w" "Revisão semanal" entry (function org-journal-find-location) (file "~/notas/templates/weekly-review.org"))
+                                ("d" "Revisão diaria" entry (function org-journal-find-location) (file "~/notas/templates/dailyreviewtemplate.org"))
                                 ))
 
 
@@ -256,7 +281,8 @@
                      )
             (tags-todo "-TODO/!TODO"
                        ((org-agenda-overriding-header "⚡ Tasks:\n")
-                        (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)))
+                        (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)
+                        ))
 
             (tags-todo "-TODO/!TODO"
                        ((org-agenda-overriding-header "⚡ Projetos Pessoais:\n")
