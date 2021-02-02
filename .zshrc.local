@@ -2,6 +2,7 @@
 ZSH_THEME="spaceship"
 export SPACESHIP_KUBECONTEXT_SHOW=false
 export SPACESHIP_PACKAGE_SHOW=false
+export SPACESHIP_DOCKER_SHOW=false
 export SPACESHIP_GIT_STATUS_COLOR=magenta
 source ~/dotfiles/.alias
 export GOPATH=~/.go
