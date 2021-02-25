@@ -136,7 +136,6 @@
    org-journal-dir "~/notas/journal/"
    org-journal-date-format "%A, %B %d %Y"
    org-journal-file-format "%Y%m%d.org"
-   org-agenda-span 2
    org-agenda-todo-ignore-scheduled 'future  ;; Ignore todos for 5 days in the future
    org-agenda-todo-ignore-timestamp 5  ;; Ignore todos for 5 days in the future
    org-agenda-tags-todo-honor-ignore-options t
@@ -152,7 +151,7 @@
    org-enforce-todo-dependencies t
    org-want-todo-bindings t
    org-journal-time-prefix "** "
-   org-agenda-span 5 ;; show how many days in agenda
+   org-agenda-span 1 ;; show how many days in agenda
    org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "SKIP(k)" "CANCELLED(c)"))
    org-todo-keywords-for-agenda '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "SKIP(k)" "CANCELLED(c)"))
    org-agenda-window-setup 'reorganize-frame
@@ -299,7 +298,7 @@
         (setq should-skip-entry t))
       (save-excursion
         (while (and (not should-skip-entry) (org-goto-sibling t) (not (org-current-is-heading-outros)))
-          (when (or (org-current-is-todo) (org-current-is-waiting))
+          (if (or (org-current-is-todo) (org-current-is-waiting))
             (setq should-skip-entry t))))
       (when should-skip-entry
         (or (outline-next-heading)
