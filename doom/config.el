@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Rodrigo Maia"
+      user-mail-address "rodrigo.maia.pereira@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -19,15 +19,17 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code" :size 16))
+(setq doom-font (font-spec :family "Fira Code" :size 14))
       ;;doom-variable-pitch-font (font-spec :family "sans" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-outrun-electric)
+;;(setq doom-theme 'doom-outrun-electric)
 ;;(setq doom-theme 'doom-tomorrow-day)
 ;;(setq doom-theme 'doom-one-light)
+;;(setq doom-theme 'doom-nord-light)
+(setq doom-theme 'rebecca)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -59,20 +61,26 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 ;;
-;;
 (setq swiper-use-visual-line-p (lambda (_) nil))
 
+(load! "lisp/evil-motion-trainer")
+
+
+(use-package! centered-cursor-mode)
+(global-centered-cursor-mode 1)
 
 (map! :leader "TAB" 'evil-switch-to-windows-last-buffer)
 (map! :leader "w /" 'evil-window-vsplit)
 (map! :leader "w -" 'evil-window-split)
 (map! :leader "j" 'evilem-motion-find-char)
+(map! :leader "J" 'evilem-motion-find-char-backward)
 (map! :after evil-org
       :map evil-org-mode-map
       :n "t" #'org-todo)
 
 (setq treemacs-follow-mode t)
 (setq treemacs-display-current-project-exclusively t)
+(add-hook 'after-init 'treemacs)
 
 (setq projectile-enable-caching nil)
 
@@ -119,6 +127,8 @@
    js2-basic-offset 2
    js-indent-level 2
    ))
+
+(load! "~/notas/secret.el")
 
 (after! org-gcal
   (load! "~/notas/secret.el"))
@@ -211,7 +221,6 @@
                            "~/notas/saude.org"
                            "~/notas/cal.org"
                            "~/notas/cal-work.org"
-                           "~/notas/trabalho.org"
                            "~/notas/tickler.org"))
 
   (setq diary-file "~/notas/diario.org")
@@ -238,6 +247,9 @@
                                 ("T" "Tickler" entry
                                  (file+headline "~/notas/tickler.org" "Tickler")
                                  "* %i%? \n %U")
+                                ("p" "Project" entry
+                                 (file "~/notas/tickler.org")
+                                 "* %i%? \n ** TODO %i%? \n %U")
                                 ("w" "Revisão semanal" entry (function org-journal-find-location) (file "~/notas/templates/weekly-review.org"))
                                 ("d" "Revisão diaria" entry (function org-journal-find-location) (file "~/notas/templates/dailyreviewtemplate.org"))
                                 ))
@@ -287,6 +299,10 @@
                        ((org-agenda-overriding-header "⚡ Projetos Pessoais:\n")
                         (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)
                         (org-agenda-files '("~/notas/projetos.org"))))
+            (tags-todo "-TODO/!TODO"
+                       ((org-agenda-overriding-header "⚡ Trabalho:\n")
+                        (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)
+                        (org-agenda-files '("~/notas/trabalho.org"))))
             (todo "WAITING"
                   ((org-agenda-overriding-header "⚡ Esperando:\n")) )
             ))))

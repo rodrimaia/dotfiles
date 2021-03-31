@@ -1,0 +1,24 @@
+{
+  "workbench.colorTheme": "Solarized Light",
+  "editor.fontSize": 15,
+  "projectManager.git.baseFolders": [
+    "~/projects",
+    "~/fauna"
+  ],
+  "git.autofetch": true,
+  "vim.sneak": true,
+  "vim.easymotion": true,
+  "vim.leader": ",",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "s"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "s"
+      ]
+    },
+  ]
+}

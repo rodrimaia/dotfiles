@@ -55,3 +55,8 @@
 (package! git-link)
 (package! tangotango-theme)
 (package! underwater-theme)
+(package! centered-cursor-mode)
+(package! arduino-mode)
+(package! rebecca-theme)
+(package! shades-of-purple-theme)
+(package! todoist)

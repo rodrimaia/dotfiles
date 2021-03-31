@@ -140,6 +140,8 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'sheerun/vim-polyglot'
 
+Plug 'stevearc/vim-arduino/'
+
 " Add plugins to &runtimepath
 "
 call plug#end()
