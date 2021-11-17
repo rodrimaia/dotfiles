@@ -19,6 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
+
 (setq doom-font (font-spec :family "Fira Code" :size 14))
       ;;doom-variable-pitch-font (font-spec :family "sans" :size 15))
 
@@ -65,9 +66,15 @@
 
 (load! "lisp/evil-motion-trainer")
 
+(setq-default global-visual-line-mode t)
+(setq-default truncate-lines nil)
 
 (use-package! centered-cursor-mode)
 (global-centered-cursor-mode 1)
+
+(use-package! explain-pause-mode
+  :config
+  (explain-pause-mode))
 
 (map! :leader "TAB" 'evil-switch-to-windows-last-buffer)
 (map! :leader "w /" 'evil-window-vsplit)
@@ -93,6 +100,13 @@
 (setq-default evil-escape-delay 0.2)
 
 (super-save-mode +1)
+
+(setq-default company-idle-delay 0)
+(setq-default company-minimum-prefix-length 1)
+(map! :i "C-." 'company-complete-common)
+;(add-hook 'evil-insert-state-entry-hook 'company-complete-common)
+
+
 
 (defun doom/ediff-init-and-example ()
   "ediff the current `init.el' with the example in doom-emacs-dir"
@@ -128,10 +142,10 @@
    js-indent-level 2
    ))
 
-(load! "~/notas/secret.el")
+;;(load! "~/notas/secret.el")
 
-(after! org-gcal
-  (load! "~/notas/secret.el"))
+;; (after! org-gcal
+;;   (load! "~/notas/secret.el"))
 
 (after! org
   (setq
