@@ -60,3 +60,4 @@
 (package! rebecca-theme)
 (package! shades-of-purple-theme)
 (package! todoist)
+(package! explain-pause-mode)

@@ -64,11 +64,13 @@ cnoremap w!! w !sudo tee > /dev/null %
 
 call plug#begin()
 
+Plug 'github/copilot.vim'
+
 Plug 'tpope/vim-sensible'
 
-"Plug 'dracula/vim'
-"syntax on
-"autocmd VimEnter * colorscheme dracula
+Plug 'dracula/vim'
+syntax on
+autocmd VimEnter * colorscheme dracula
 
 Plug 'scrooloose/nerdtree'
 map <C-e> :NERDTreeToggle<CR>
@@ -100,6 +102,7 @@ Plug 'junegunn/fzf.vim'
 
 imap <c-x><c-l> <plug>(fzf-complete-line)
 nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <D-p> :Files<CR>
 
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -139,6 +142,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 Plug 'tpope/vim-fugitive'
 
 Plug 'sheerun/vim-polyglot'
+
 
 Plug 'stevearc/vim-arduino/'
 

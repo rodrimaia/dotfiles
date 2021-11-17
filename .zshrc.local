@@ -11,12 +11,13 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=("dir" rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
 export ANSIBLE_COW_SELECTION=random
 export ANSIBLE_NOCOWS=1
+export VAULT_ADDR=https://vault.faunadb.net
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 source ~/dotfiles/.env
-eval "$(pyenv init -)"
+#eval "$(pyenv init -)"
 
 
 #function preexec() {
@@ -54,5 +55,6 @@ function _alarm() {
   \sleep 0.1s
   \kill -9 $pid
 }
+
 
 . ~/dotfiles/z.sh
