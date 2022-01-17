@@ -20,7 +20,7 @@ case "$OSTYPE" in
       alias update_spacemacs='cd ~/.emacs.d && git pull --rebase && cd -'
       alias update_vim='nvim +PlugUpdate +:q +:q';
       alias update_tools="omz update ; update_spacemacs ; update_vim"
-      alias remove_orphans="sudo pacman -Rns $(pacman -Qtdq)"
+      #alias remove_orphans="sudo pacman -Rns $(pacman -Qtdq)"
       alias update_all="update_tools && yay && remove_orphans && cowsay 'Bom Trabalho! :)' "
       ;;
    darwin*)
