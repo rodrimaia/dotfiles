@@ -105,6 +105,14 @@ alias nig="npm install -g"
 # arch
 alias y="yay"
 alias ys="yay -S"
+alias arch-drop-caches='sudo paccache -rk3; yay -Sc --aur --noconfirm'
+alias arch-update-all='export TMPFILE="$(mktemp)"; \
+    sudo true; \
+    rate-mirrors --save=$TMPFILE arch --max-delay=21600 \
+      && sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup \
+      && sudo mv $TMPFILE /etc/pacman.d/mirrorlist \
+      && arch-drop-caches \
+      && yay -Syyu --noconfirm'
 
 # listen your mic sound
 alias playback="arecord -f cd - | aplay -"
