@@ -65,12 +65,14 @@ cnoremap w!! w !sudo tee > /dev/null %
 call plug#begin()
 
 Plug 'github/copilot.vim'
+Plug 'projekt0n/github-nvim-theme'
+autocmd VimEnter * colorscheme github_light
 
 Plug 'tpope/vim-sensible'
 
 Plug 'dracula/vim'
 syntax on
-autocmd VimEnter * colorscheme dracula
+" autocmd VimEnter * colorscheme dracula
 
 Plug 'scrooloose/nerdtree'
 map <C-e> :NERDTreeToggle<CR>
@@ -143,8 +145,9 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'sheerun/vim-polyglot'
 
-
 Plug 'stevearc/vim-arduino/'
+
+"Plug 'ludovicchabant/vim-gutentags' 
 
 " Add plugins to &runtimepath
 "
