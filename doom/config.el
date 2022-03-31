@@ -20,17 +20,17 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 
-(setq doom-font (font-spec :family "Fira Code" :size 14))
-      ;;doom-variable-pitch-font (font-spec :family "sans" :size 15))
+(setq doom-font (font-spec :family "Fira Code" :size 16 :weight 'bold))
+;;doom-variable-pitch-font (font-spec :family "sans" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;;(setq doom-theme 'doom-outrun-electric)
+(setq doom-theme 'doom-outrun-electric)
 ;;(setq doom-theme 'doom-tomorrow-day)
 ;;(setq doom-theme 'doom-one-light)
 ;;(setq doom-theme 'doom-nord-light)
-(setq doom-theme 'rebecca)
+;; (setq doom-theme 'rebecca)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -41,7 +41,7 @@
 (setq display-line-numbers-type t)
 
 (map! :leader
-      :desc "Open like spacemacs" "SPC" #'counsel-M-x)
+      :desc "Open like spacemacs" "SPC" #'execute-extended-command)
 
 (setq doom-localleader-key ",")
 
@@ -64,13 +64,15 @@
 ;;
 (setq swiper-use-visual-line-p (lambda (_) nil))
 
-(load! "lisp/evil-motion-trainer")
+;;(load! "lisp/evil-motion-trainer")
 
 (setq-default global-visual-line-mode t)
 (setq-default truncate-lines nil)
 
-(use-package! centered-cursor-mode)
-(global-centered-cursor-mode 1)
+;;(use-package! centered-cursor-mode)
+;;(global-centered-cursor-mode 1)
+
+(run-with-idle-timer 30 t 'org-save-all-org-buffers)
 
 (use-package! explain-pause-mode
   :config
@@ -91,9 +93,6 @@
 
 (setq projectile-enable-caching nil)
 
-(defun spacemacs/set-leader-keys (key command)
-  (map! :leader key command))
-
 (toggle-frame-maximized)
 
 (setq-default evil-escape-key-sequence "fd")
@@ -104,7 +103,7 @@
 (setq-default company-idle-delay 0)
 (setq-default company-minimum-prefix-length 1)
 (map! :i "C-." 'company-complete-common)
-;(add-hook 'evil-insert-state-entry-hook 'company-complete-common)
+                                        ;(add-hook 'evil-insert-state-entry-hook 'company-complete-common)
 
 
 
@@ -119,8 +118,8 @@
   )
 
 (setq
-   typescript-indent-level 2
-   web-mode-code-indent-offset 2)
+ typescript-indent-level 2
+ web-mode-code-indent-offset 2)
 
 (after! js2-mode
   (setq
@@ -180,11 +179,12 @@
    org-todo-keywords-for-agenda '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "SKIP(k)" "CANCELLED(c)"))
    org-agenda-window-setup 'reorganize-frame
    org-agenda-block-separator (string-to-char " ")
-   org-archive-location "::* Arquivo")
+   org-archive-location "~/notas/archive.org::* Arquivo")
 
   (setq org-modules '(org-bbdb
                       org-gnus
                       org-checklist
+                      org-subtask-reset
                       org-drill
                       org-info
                       org-jsinfo
@@ -218,9 +218,9 @@
    )
 
   (defun my/org-agenda-open-loops ()
-  (interactive)
-  (let ((org-agenda-start-with-log-mode t))
-    (org-agenda-list nil (org-read-date nil nil "-2d") 4)))
+    (interactive)
+    (let ((org-agenda-start-with-log-mode t))
+      (org-agenda-list nil (org-read-date nil nil "-2d") 4)))
 
   ;; org-habit
   (setq org-habit-following-days 4)
@@ -229,15 +229,23 @@
 
   ;; gtd in org-mode https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
 
-  (setq org-agenda-files '(
-                           "~/notas/inbox.org"
-                           "~/notas/gtd.org"
-                           "~/notas/saude.org"
-                           "~/notas/cal.org"
-                           "~/notas/cal-work.org"
-                           "~/notas/tickler.org"))
+  (defun org-archive-done-tasks ()
+    (interactive)
+    (org-map-entries
+     (lambda ()
+       (org-archive-subtree)
+       (setq org-map-continue-from (org-element-property :begin (org-element-at-point))))
+     "/DONE" 'file))
 
-  (setq diary-file "~/notas/diario.org")
+  (setq org-agenda-files '(
+                           "~/notas/gtd/inbox.org"
+                           "~/notas/gtd/gtd.org"
+                           "~/notas/gtd/saude.org"
+                           "~/notas/gtd/cal.org"
+                           "~/notas/gtd/cal-work.org"
+                           "~/notas/gtd/tickler.org"))
+
+  (setq diary-file "~/notas/gtd/diario.org")
 
   (defun org-journal-find-location ()
     ;; Open today's journal, but specify a non-nil prefix argument in order to
@@ -248,21 +256,16 @@
     (goto-char (point-min)))
 
 
-  ;;(spacemacs/declare-prefix "aj" "journal")
-  (spacemacs/set-leader-keys
-   "ajj" 'org-journal-new-entry)
-
-
   (setq org-capture-templates '(("t" "Todo [Outros]" entry
-                                 (file+headline "~/notas/gtd.org" "Outros")
+                                 (file+headline "~/notas/gtd/gtd.org" "Outros")
                                  "* TODO %i%?")
-                                ("a" "Appointment" entry (file  "~/notas/cal.org" )
+                                ("a" "Appointment" entry (file  "~/notas/gtd/cal.org" )
                                  "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
                                 ("T" "Tickler" entry
-                                 (file+headline "~/notas/tickler.org" "Tickler")
+                                 (file+headline "~/notas/gtd/tickler.org" "Tickler")
                                  "* %i%? \n %U")
                                 ("p" "Project" entry
-                                 (file "~/notas/tickler.org")
+                                 (file "~/notas/gtd/tickler.org")
                                  "* %i%? \n ** TODO %i%? \n %U")
                                 ("w" "Revisão semanal" entry (function org-journal-find-location) (file "~/notas/templates/weekly-review.org"))
                                 ("d" "Revisão diaria" entry (function org-journal-find-location) (file "~/notas/templates/dailyreviewtemplate.org"))
@@ -280,8 +283,8 @@
         )
 
   (setq org-refile-targets '((org-agenda-files :maxlevel . 3)
-                             ("~/notas/someday.org" :level . 1)
-                             ("~/notas/trash.org" :level . 1)
+                             ("~/notas/gtd/someday.org" :level . 1)
+                             ("~/notas/gtd/trash.org" :level . 1)
                              ))
 
   (setq org-refile-use-outline-path 'file)
@@ -302,7 +305,7 @@
             (alltodo "INBOX"
                      (
                       (org-agenda-overriding-header "Para Processar")
-                      (org-agenda-files '("~/notas/inbox.org")))
+                      (org-agenda-files '("~/notas/gtd/inbox.org")))
                      )
             (tags-todo "-TODO/!TODO"
                        ((org-agenda-overriding-header "⚡ Tasks:\n")
@@ -312,11 +315,11 @@
             (tags-todo "-TODO/!TODO"
                        ((org-agenda-overriding-header "⚡ Projetos Pessoais:\n")
                         (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)
-                        (org-agenda-files '("~/notas/projetos.org"))))
+                        (org-agenda-files '("~/notas/gtd/projetos.org"))))
             (tags-todo "-TODO/!TODO"
                        ((org-agenda-overriding-header "⚡ Trabalho:\n")
                         (org-agenda-skip-function 'my-org-agenda-skip-all-siblings-but-first)
-                        (org-agenda-files '("~/notas/trabalho.org"))))
+                        (org-agenda-files '("~/notas/gtd/trabalho.org"))))
             (todo "WAITING"
                   ((org-agenda-overriding-header "⚡ Esperando:\n")) )
             ))))
@@ -329,7 +332,7 @@
       (save-excursion
         (while (and (not should-skip-entry) (org-goto-sibling t) (not (org-current-is-heading-outros)))
           (if (or (org-current-is-todo) (org-current-is-waiting))
-            (setq should-skip-entry t))))
+              (setq should-skip-entry t))))
       (when should-skip-entry
         (or (outline-next-heading)
             (goto-char (point-max))))))
@@ -394,40 +397,102 @@
 
   (defun open-gtd-file ()
     (interactive)
-    (find-file "~/notas/gtd.org"))
-  (spacemacs/set-leader-keys "og" 'open-gtd-file)
+    (find-file "~/notas/gtd/gtd.org"))
 
   (defun rodrigomaia17-org-agenda-show-agendas ()
     (interactive)
     (org-agenda nil "n"))
-  )
+
+  (map! :leader
+        "a" nil
+        (:prefix ("a" . "agenda")
+                 :desc "My agenda" "n" #'rodrigomaia17-org-agenda-show-agendas
+                 :desc "My GTD file" "g" #'open-gtd-file
+                 :desc "Journal" "j" #'org-journal-new-entry))
+
+  ;; Global key for org-mode
+  ;; org-mode helps me more than help-command :P
+  (global-set-key (kbd "<f1>") 'rodrigomaia17-org-agenda-show-agendas)
+  (global-set-key (kbd "<f5>") 'org-capture)
+
+  (defun org-todo-with-date (&optional arg)
+    (interactive "P")
+    (cl-letf* ((org-read-date-prefer-future nil)
+               (my-current-time (org-read-date t t nil "when:" nil nil nil))
+               ((symbol-function #'org-current-effective-time)
+                #'(lambda () my-current-time)))
+      (org-todo arg)
+      ))
+
+  (add-hook 'org-mode-hook #'toggle-word-wrap)
+
+  (setq org-default-properties (cons "RESET_SUBTASKS" org-default-properties))
+
+  ) ;; end of after! org
 
 
-(spacemacs/set-leader-keys "a n" 'rodrigomaia17-org-agenda-show-agendas)
+(use-package! beancount
+  :defer t
+  :mode
+  ("\\.bean\\(?:count\\)?\\'" . beancount-mode))
 
-;; Global key for org-mode
-;; org-mode helps me more than help-command :P
-(global-set-key (kbd "<f1>") 'rodrigomaia17-org-agenda-show-agendas)
-(global-set-key (kbd "<f5>") 'org-capture)
-
-(defun org-todo-with-date (&optional arg)
-  (interactive "P")
-  (cl-letf* ((org-read-date-prefer-future nil)
-             (my-current-time (org-read-date t t nil "when:" nil nil nil))
-             ((symbol-function #'org-current-effective-time)
-              #'(lambda () my-current-time)))
-    (org-todo arg)
-    ))
-
-(add-hook 'org-mode-hook #'toggle-word-wrap)
-
-;advise swiper to recenter on exit
+                                        ;advise swiper to recenter on exit
 (defun bjm-swiper-recenter (&rest args)
   "recenter display after swiper"
   (recenter)
   )
 (advice-add 'swiper :after #'bjm-swiper-recenter)
+;;; Commentary:
 
+;; This file provides functions to reset subtasks (i.e. those defined
+;; with a TODO keyword rather than '[ ]'-style checkboxes) when the
+;; parent task is completed - particularly useful for projects (tasks
+;; with subtasks) that repeat.
+;;
+;; This code is heavily based on org-checklist.el, which can be found
+;; in the contrib section of the org-mode distribution.
+;;
+;;; Usage:
+;;
+;; (require 'org-subtask-reset)
+;;
+;; Set the RESET_SUBTASKS property to t in any projects that should
+;; have their subtasks reset upon project completion.
+;;
+;;; Code:
+;;;(setq org-default-properties (cons "RESET_SUBTASKS" org-default-properties))
+
+(defun org-reset-subtask-state-subtree ()
+  "Reset all subtasks in an entry subtree."
+  (interactive "*")
+  (if (org-before-first-heading-p)
+      (error "Not inside a tree")
+    (save-excursion
+      (save-restriction
+        (org-narrow-to-subtree)
+        (org-show-subtree)
+        (goto-char (point-min))
+        (beginning-of-line 2)
+        (narrow-to-region (point) (point-max))
+        (org-map-entries
+         '(when (member (org-get-todo-state) org-done-keywords)
+            (org-todo (car org-todo-keywords))))
+        ))))
+
+(defun org-reset-subtask-state-maybe ()
+  "Reset all subtasks in an entry if the `RESET_SUBTASKS' property is set"
+  (interactive "*")
+  (if (org-entry-get (point) "RESET_SUBTASKS")
+      (org-reset-subtask-state-subtree)))
+
+(defun org-subtask-reset ()
+  (when (member org-state org-done-keywords) ;; org-state dynamically bound in org.el/org-todo
+    (org-reset-subtask-state-maybe)
+    (org-update-statistics-cookies t)))
+
+(add-hook 'org-after-todo-state-change-hook 'org-subtask-reset)
+
+(provide 'org-subtask-reset)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

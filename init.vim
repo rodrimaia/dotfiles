@@ -66,7 +66,7 @@ call plug#begin()
 
 Plug 'github/copilot.vim'
 Plug 'projekt0n/github-nvim-theme'
-autocmd VimEnter * colorscheme github_light
+autocmd VimEnter * colorscheme github_dark
 
 Plug 'tpope/vim-sensible'
 

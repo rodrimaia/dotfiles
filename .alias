@@ -10,27 +10,6 @@ alias vrc="nvim ~/dotfiles/init.vim"
 alias salias="source ~/dotfiles/.alias"
 alias cpav="cp -av"
 alias rmrf="rm -rf"
-case "$OSTYPE" in
-   cygwin*)
-      alias open="cmd /c start"
-      ;;
-   linux*)
-      alias start="xdg-open"
-      alias open="xdg-open"
-      alias update_spacemacs='cd ~/.emacs.d && git pull --rebase && cd -'
-      alias update_vim='nvim +PlugUpdate +:q +:q';
-      alias update_tools="omz update ; update_spacemacs ; update_vim"
-      #alias remove_orphans="sudo pacman -Rns $(pacman -Qtdq)"
-      alias update_all="update_tools && yay && remove_orphans && cowsay 'Bom Trabalho! :)' "
-      ;;
-   darwin*)
-      alias start="open"
-      alias update_spacemacs='brew upgrade emacs-plus@27; cd ~/.emacs.d && git pull --rebase && cd ~/doom-emacs/bin && ./doom upgrade'
-      alias update_doom='doom upgrade'
-      alias update_vim='brew upgrade neovim; nvim +PlugUpdate +:q +:q';
-      alias update_tools="brew update && brew cleanup -s ; omz update; update_doom; update_vim ; cowsay 'TUDO ATUALIZADO, PODE SEGUIR O BAILE'"
-      ;;
-esac
 alias ropen='reattach-to-user-namespace open'
 alias topm="top -o MEM"
 alias be="bundle exec"
@@ -106,7 +85,7 @@ alias nig="npm install -g"
 alias y="yay"
 alias ys="yay -S"
 alias arch-drop-caches='sudo paccache -rk3; yay -Sc --aur --noconfirm'
-alias arch-update-all='export TMPFILE="$(mktemp)"; \
+alias arch_update_all='export TMPFILE="$(mktemp)"; \
     sudo true; \
     rate-mirrors --save=$TMPFILE arch --max-delay=21600 \
       && sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup \
@@ -119,3 +98,4 @@ alias playback="arecord -f cd - | aplay -"
 # Clipboard management
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o" 
+alias vi3="nvim ~/.config/i3/config"
