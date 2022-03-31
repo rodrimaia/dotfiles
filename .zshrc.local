@@ -56,6 +56,7 @@ function _alarm() {
   \kill -9 $pid
 }
 
+[[ -d $HOME/.emacs.d/bin ]] && export PATH=$HOME/.emacs.d/bin:$PATH
 
 . ~/dotfiles/z.sh
-. /opt/asdf-vm/asdf.sh
+#. /opt/asdf-vm/asdf.sh

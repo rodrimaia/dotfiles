@@ -61,3 +61,5 @@
 (package! shades-of-purple-theme)
 (package! todoist)
 (package! explain-pause-mode)
+(package! beancount
+  :recipe (:host github :repo "cnsunyour/beancount.el"))
