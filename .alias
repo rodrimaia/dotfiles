@@ -15,6 +15,7 @@ alias topm="top -o MEM"
 alias be="bundle exec"
 alias ber="bundle exec ruby"
 alias beg="bundle exec guard"
+alias ra="rubocop -a"
 alias py="python"
 alias py3="python3"
 alias fuck='sudo $(fc -ln -1)' 

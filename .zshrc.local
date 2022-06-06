@@ -60,3 +60,5 @@ function _alarm() {
 
 . ~/dotfiles/z.sh
 #. /opt/asdf-vm/asdf.sh
+
+bindkey '`' autosuggest-accept
