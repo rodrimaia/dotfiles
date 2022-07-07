@@ -8,3 +8,4 @@ ln -s ~/dotfiles/.hyper.js ~/
 ln -s ~/dotfiles/tmuxinator ~/.config/
 ln -s ~/dotfiles/i3-config ~/.config/i3/config
 ln -s ~/dotfiles/compton.conf ~/.config/
+ln -s ~/dotfiles/omf ~/.config/omf
