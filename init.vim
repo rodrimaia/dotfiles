@@ -145,7 +145,7 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'sheerun/vim-polyglot'
 
-Plug 'stevearc/vim-arduino/'
+"Plug 'stevearc/vim-arduino/'
 
 "Plug 'ludovicchabant/vim-gutentags' 
 
