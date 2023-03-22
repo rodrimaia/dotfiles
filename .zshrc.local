@@ -41,24 +41,4 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; then
-  alias h='nvr -o'
-  alias v='nvr -O'
-  alias t='nvr --remote-tab'
-fi
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-
-export FZF_DEFAULT_COMMAND='ag --ignore .git -l -g ""'
-function _alarm() {
-  ( \speaker-test --frequency 400 --test sine )&
-  pid=$! >/dev/null;
-  \sleep 0.1s
-  \kill -9 $pid
-}
-
-[[ -d $HOME/.emacs.d/bin ]] && export PATH=$HOME/.emacs.d/bin:$PATH
-
-. ~/dotfiles/z.sh
-#. /opt/asdf-vm/asdf.sh
-
 bindkey '`' autosuggest-accept
