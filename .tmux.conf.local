@@ -393,6 +393,8 @@ tmux_conf_uninstall_plugins_on_reload=true
 
 bind-key C-a last-window
 
+set -g default-command "${SHELL}" # prevent login shells
+
 # -- custom variables ----------------------------------------------------------
 
 # to define a custom #{foo} variable, define a POSIX shell function between the
