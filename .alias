@@ -44,6 +44,7 @@ alias gcmsg="git commit --message"
 alias grebasemaster="gco master && glr && gco - && git rebase master"
 alias grebasemain="gco main && glr && gco - && git rebase main"
 alias gmergemaster="gco master && glr && gco - && git merge master"
+alias gmergemain="gco main && glr && gco - && git merge main"
 alias grv="git remote -v"
 alias gcb="git checkout -b"
 alias gcl="git clone"
@@ -61,7 +62,7 @@ alias vf='v $(f)'
 alias vn='v ~/notas'
 alias reddit="rtv"
 
-alias l='ls -laH'
+alias l='ls -lah'
 
 
 alias ag="ag --hidden"
