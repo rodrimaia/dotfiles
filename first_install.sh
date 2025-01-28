@@ -9,3 +9,5 @@ ln -s ~/dotfiles/tmuxinator ~/.config/
 ln -s ~/dotfiles/i3-config ~/.config/i3/config
 ln -s ~/dotfiles/compton.conf ~/.config/
 ln -s ~/dotfiles/omf ~/.config/omf
+ln -s ~/dotfiles/config.fish ~/.config/fish/config.fish
+mkdir ~/.config/ghostty && ln -s ~/dotfiles/config.ghostty ~/.config/ghostty/config
