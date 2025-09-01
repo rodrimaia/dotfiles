@@ -28,9 +28,11 @@ set PATH $PATH /Users/rodrigo/.local/bin
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
-# source /opt/homebrew/opt/asdf/libexec/asdf.fish
-source ~/.asdf/asdf.fish
-
-# fish_add_path -m $HOME/.asdf/shims
+# Initialize mise
+# if test -f ~/.local/bin/mise
+#     ~/.local/bin/mise activate fish | source
+# end
 
 starship init fish | source
+
+alias claude="/Users/rodrigo/.claude/local/claude"

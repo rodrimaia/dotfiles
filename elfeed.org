@@ -1,7 +1,0 @@
-* Blogs                                                              :elfeed:
-** http://pragmaticemacs.com/feed/                                   :emacs:
-** https://bolapresa.com.br/feed                                       :nba: 
-** https://www.reddit.com/r/spacemacs/top/.rss?sort=top&t=year       :emacs: 
-** https://emacs.cafe/                                               :emacs: 
-** https://leosalesblog.wordpress.com/                               :other:
-** https://pudding.cool                                              :other:

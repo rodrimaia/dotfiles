@@ -1,6 +1,3 @@
-[submodule "provision/iterm"]
-	path = provision/dracula-theme-iterm2
-	url = git@github.com:dracula/iterm.git
 [submodule ".tmux"]
 	path = .tmux
 	url = git@github.com:gpakosz/.tmux.git
