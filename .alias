@@ -1,3 +1,7 @@
+# =============================================================================
+# UNIVERSAL ALIASES - Work on all platforms
+# =============================================================================
+
 alias myhistory="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl |  head -n20"
 alias ping8="ping 8.8.8.8"
 alias v="PYENV_VERSION=3.5.1 nvim"
@@ -97,7 +101,11 @@ alias nis="npm install --save"
 alias nisd="npm install --save-dev"
 alias nig="npm install -g"
 
-# arch
+# =============================================================================
+# LINUX-SPECIFIC ALIASES - For Arch Linux and other Linux distros
+# =============================================================================
+
+# Arch Linux package management
 alias y="yay"
 alias ys="yay -S"
 alias arch-drop-caches='sudo paccache -rk3; yay -Sc --aur --noconfirm'
@@ -109,9 +117,21 @@ alias arch_update_all='export TMPFILE="$(mktemp)"; \
       && arch-drop-caches \
       && yay -Syyu --noconfirm'
 
-# listen your mic sound
+# Audio and system utilities
 alias playback="arecord -f cd - | aplay -"
-# Clipboard management
+
+# Clipboard management (Linux)
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o" 
-alias vi3="nvim ~/.config/i3/config"
+
+# Linux system configurations
+# (Window manager configs can be added here if needed)
+
+# =============================================================================
+# MACOS-SPECIFIC ALIASES - For macOS systems
+# =============================================================================
+
+# Homebrew shortcuts (macOS)
+# Note: Fish shell will ignore bash-style conditionals, but these aliases will work on macOS
+alias brewup="brew update && brew upgrade"
+alias brewclean="brew cleanup"

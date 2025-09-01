@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-#name : console
-#key : c
-#contributor : rodrigo
-# --
-console.log($1)

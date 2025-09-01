@@ -1,12 +1,66 @@
 # dotfiles
 
-- terminal emulator: [Ghostty](https://github.com/ghostty/ghostty)
-- shell: [Fish](https://fishshell.com/)
-- prompt: [Starship](https://starship.rs/)
-- tmux
-- tmux-powerline
-- [z](github.com/rupa/z)
+Cross-platform personal dotfiles for **macOS** and **Arch Linux** development environments.
+
+## Quick Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/rodrimaia/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+
+# Single command setup (detects OS automatically)
+./setup.sh
+```
+
+## What's Included
+
+### Terminal Stack
+- **Terminal**: [Ghostty](https://github.com/ghostty/ghostty) with Snazzy theme
+- **Shell**: [Fish](https://fishshell.com/) with extensive aliases
+- **Prompt**: [Starship](https://starship.rs/)
+- **Multiplexer**: tmux with tmuxinator session management
+- **Navigation**: [z](https://github.com/jethrokuan/z) for Fish-native directory jumping (via Fisher)
+
+### Development Tools
+- **Editors**: Neovim (primary) + Cursor (AI-powered)
+- **Version Managers**: mise, pnpm, bun
+- **Search**: fzf, the_silver_searcher (ag)
+- **Git**: tig terminal interface + extensive aliases
+
+### Cross-Platform Support
+
+**macOS:**
+- Homebrew package management
+- Automatic Brewfile installation
+
+**Arch Linux:**
+- pacman + yay (AUR) package management  
+- Linux-specific utilities and aliases
+
+
+## Key Features
+
+- **Single command setup** - `./setup.sh` does everything
+- **OS detection** - automatically configures for macOS or Arch Linux
+- **Platform-specific aliases** - organized by universal, macOS, and Linux
+- **Modern terminal experience** - Ghostty + Fish + Starship
+- **Development workflow** - extensive git, npm/yarn, and tmux shortcuts
+
+## File Structure
+
+```
+dotfiles/
+├── setup.sh              # Main cross-platform setup script
+├── config.fish           # Fish shell configuration  
+├── config.ghostty        # Terminal emulator settings
+├── starship.toml         # Starship prompt configuration
+├── .alias                # Platform-organized aliases
+├── init.vim              # Neovim configuration
+├── provision/mac/        # macOS-specific provisioning
+└── wallpapers & scripts  # Wallpaper assets and utilities
+```
 
 ---
 
-a love story
+*A love story between terminals and productivity* ❤️
