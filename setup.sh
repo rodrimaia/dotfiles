@@ -127,9 +127,15 @@ create_symlinks() {
     ln -sf ~/dotfiles/config.fish ~/.config/fish/config.fish
     ln -sf ~/dotfiles/.alias ~/.alias
     
-    # Neovim config
-    mkdir -p ~/.config/nvim
-    ln -sf ~/dotfiles/init.vim ~/.config/nvim/init.vim
+    # LazyVim setup
+    if [[ ! -d ~/.config/nvim ]]; then
+        print_info "Installing LazyVim starter configuration..."
+        git clone https://github.com/LazyVim/starter ~/.config/nvim
+        rm -rf ~/.config/nvim/.git
+        print_success "LazyVim installed successfully"
+    else
+        print_warning "Neovim config directory already exists, skipping LazyVim installation"
+    fi
     
     # Ghostty config
     mkdir -p ~/.config/ghostty
@@ -157,16 +163,27 @@ create_symlinks() {
 setup_fish_plugins() {
     print_info "Installing Fisher plugin manager and plugins..."
     
-    # Install Fisher
-    fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source"
-    
-    # Install Fisher permanently
-    fish -c "fisher install jorgebucaran/fisher"
+    # Install Fisher - download and install in one command
+    fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
     
     # Install z directory jumping tool
     fish -c "fisher install jethrokuan/z"
     
     print_success "Fisher and plugins installed"
+}
+
+# Initialize and setup tmux configuration
+setup_tmux() {
+    print_info "Setting up tmux configuration..."
+    
+    # Initialize and update git submodules
+    git submodule init
+    git submodule update
+    
+    # Create symlink to the main tmux config from the submodule
+    ln -sf ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
+    
+    print_success "Tmux configuration setup completed"
 }
 
 # Set default shell to fish
@@ -196,6 +213,7 @@ main() {
     install_packages
     install_version_managers
     create_symlinks
+    setup_tmux
     setup_fish_plugins
     setup_shell
     
