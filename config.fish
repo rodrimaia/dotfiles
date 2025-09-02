@@ -11,5 +11,3 @@ end
 set -gx EDITOR nvim
 
 starship init fish | source
-
-alias claude="/Users/rodrigo/.claude/local/claude"
