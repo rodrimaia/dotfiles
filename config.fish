@@ -9,5 +9,6 @@ if test -f ~/.fishprofile
 end
 
 set -gx EDITOR nvim
+set fish_color_command green
 
 starship init fish | source
