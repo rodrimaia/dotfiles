@@ -49,6 +49,40 @@ install_packages() {
                 print_info "Installing Homebrew packages..."
                 brew bundle --file=provision/mac/Brewfile
             fi
+            
+            # Clean and organize dock
+            if command -v dockutil &> /dev/null; then
+                print_info "Cleaning and organizing dock..."
+                dockutil --remove all --no-restart
+                
+                # Development Tools
+                dockutil --add /Applications/Cursor.app --no-restart
+                dockutil --add "/Applications/Visual Studio Code.app" --no-restart
+                dockutil --add /Applications/Ghostty.app --no-restart
+                dockutil --add /Applications/Hyper.app --no-restart
+                
+                # Spacer
+                dockutil --add '' --type spacer --section apps --no-restart
+                
+                # Productivity
+                dockutil --add /Applications/Notion.app --no-restart
+                dockutil --add /Applications/Obsidian.app --no-restart
+                dockutil --add /Applications/Todoist.app --no-restart
+                dockutil --add /Applications/Slack.app --no-restart
+                dockutil --add "/System/Applications/Passwords.app" --no-restart
+                dockutil --add "/System/Applications/System Settings.app" --no-restart
+                
+                # Spacer
+                dockutil --add '' --type spacer --section apps --no-restart
+                
+                # Entertainment/Communication
+                dockutil --add /Applications/Spotify.app --no-restart
+                dockutil --add "/Applications/Google Chrome.app" --no-restart
+                dockutil --add /Applications/WhatsApp.app --no-restart
+                dockutil --add /Applications/Telegram.app
+                
+                print_success "Dock organized with categorized apps"
+            fi
             ;;
             
         "arch")
@@ -72,7 +106,8 @@ install_packages() {
                 python \
                 python-pip \
                 starship \
-                base-devel
+                base-devel \
+                mise
             
             # Install yay (AUR helper) if not present
             if ! command -v yay &> /dev/null; then
@@ -97,11 +132,6 @@ install_packages() {
 install_version_managers() {
     print_info "Installing version managers..."
     
-    # Install mise if not present
-    if ! command -v mise &> /dev/null; then
-        print_info "Installing mise..."
-        curl https://mise.run | sh
-    fi
     
     # # Install pnpm if not present
     # if ! command -v pnpm &> /dev/null; then
