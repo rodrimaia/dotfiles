@@ -33,6 +33,7 @@ cd ~/dotfiles
 **macOS:**
 - Homebrew package management
 - Automatic Brewfile installation
+- Dock setup with organized app categories
 
 **Arch Linux:**
 - pacman + yay (AUR) package management  
@@ -46,6 +47,7 @@ cd ~/dotfiles
 - **Platform-specific aliases** - organized by universal, macOS, and Linux
 - **Modern terminal experience** - Ghostty + Fish + Starship
 - **Development workflow** - extensive git, npm/yarn, and tmux shortcuts
+- **macOS dock organization** - automated dock setup with categorized apps
 
 ## File Structure
 

@@ -52,12 +52,18 @@ This script will:
 - Initialize tmux configuration submodule (gpakosz/.tmux)
 - Install Fisher plugin manager and z directory jumping tool
 - Configure Fish as default shell
+- Clean and organize macOS dock with categorized apps (macOS only)
 
 ## Platform-Specific Features
 
 ### macOS
-- Homebrew package management
+- Homebrew package management via `provision/mac/Brewfile`
 - macOS-specific aliases (`brewup`, `brewclean`)
+- Automated dock organization with `dockutil`:
+  - **Development Tools**: Cursor, VSCode, Ghostty, Hyper
+  - **Productivity**: Notion, Obsidian, Todoist, Slack, Passwords, System Settings
+  - **Entertainment/Communication**: Spotify, Chrome, WhatsApp, Telegram
+  - Categories separated by spacers for better organization
 
 ### Arch Linux  
 - pacman + yay package management
