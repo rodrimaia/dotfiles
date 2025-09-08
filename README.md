@@ -23,7 +23,7 @@ cd ~/dotfiles
 - **Navigation**: [z](https://github.com/jethrokuan/z) for Fish-native directory jumping (via Fisher)
 
 ### Development Tools
-- **Editors**: Neovim (primary) + Cursor (AI-powered)
+- **Editors**: Neovim with LazyVim (primary) + Cursor (AI-powered)
 - **Version Managers**: mise, pnpm, bun
 - **Search**: fzf, the_silver_searcher (ag)
 - **Git**: tig terminal interface + extensive aliases
@@ -58,7 +58,10 @@ dotfiles/
 ├── config.ghostty        # Terminal emulator settings
 ├── starship.toml         # Starship prompt configuration
 ├── .alias                # Platform-organized aliases
-├── init.vim              # Neovim configuration
+├── nvim/                 # LazyVim configuration
+│   ├── init.lua          # Main entry point
+│   ├── lua/config/       # Core LazyVim configuration
+│   └── lua/plugins/      # Custom plugin configurations
 ├── provision/mac/        # macOS-specific provisioning
 └── wallpapers & scripts  # Wallpaper assets and utilities
 ```
