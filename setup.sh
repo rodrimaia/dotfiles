@@ -158,14 +158,8 @@ create_symlinks() {
     ln -sf ~/dotfiles/.alias ~/.alias
     
     # LazyVim setup
-    if [[ ! -d ~/.config/nvim ]]; then
-        print_info "Installing LazyVim starter configuration..."
-        git clone https://github.com/LazyVim/starter ~/.config/nvim
-        rm -rf ~/.config/nvim/.git
-        print_success "LazyVim installed successfully"
-    else
-        print_warning "Neovim config directory already exists, skipping LazyVim installation"
-    fi
+    mkdir -p ~/.config/nvim
+    ln -sf ~/dotfiles/nvim/* ~/.config/nvim/
     
     # Ghostty config
     mkdir -p ~/.config/ghostty
