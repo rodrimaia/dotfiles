@@ -193,6 +193,9 @@ setup_fish_plugins() {
     # Install z directory jumping tool
     fish -c "fisher install jethrokuan/z"
     
+    # Install done plugin for notifications
+    fish -c "fisher install franciscolourenco/done"
+    
     print_success "Fisher and plugins installed"
 }
 
