@@ -183,6 +183,50 @@ create_symlinks() {
     print_success "Symbolic links created"
 }
 
+# Setup Claude Code configurations
+setup_claude() {
+    print_info "Setting up Claude Code configurations..."
+
+    # Create Claude directories
+    mkdir -p ~/.claude/agents
+    mkdir -p ~/.claude/commands/sc
+
+    # Core framework files
+    ln -sf ~/dotfiles/claude/CLAUDE.md ~/.claude/
+    ln -sf ~/dotfiles/claude/PRINCIPLES.md ~/.claude/
+    ln -sf ~/dotfiles/claude/RULES.md ~/.claude/
+    ln -sf ~/dotfiles/claude/FLAGS.md ~/.claude/
+    ln -sf ~/dotfiles/claude/BUSINESS_PANEL_EXAMPLES.md ~/.claude/
+    ln -sf ~/dotfiles/claude/BUSINESS_SYMBOLS.md ~/.claude/
+    ln -sf ~/dotfiles/claude/settings.json ~/.claude/
+    ln -sf ~/dotfiles/claude/statusline-command.sh ~/.claude/
+
+    # Make statusline script executable
+    chmod +x ~/dotfiles/claude/statusline-command.sh
+
+    # Mode files
+    for mode_file in ~/dotfiles/claude/MODE_*.md; do
+        ln -sf "$mode_file" ~/.claude/
+    done
+
+    # MCP documentation
+    for mcp_file in ~/dotfiles/claude/MCP_*.md; do
+        ln -sf "$mcp_file" ~/.claude/
+    done
+
+    # Agents
+    for agent in ~/dotfiles/claude/agents/*.md; do
+        ln -sf "$agent" ~/.claude/agents/
+    done
+
+    # Slash commands
+    for command in ~/dotfiles/claude/commands/sc/*.md; do
+        ln -sf "$command" ~/.claude/commands/sc/
+    done
+
+    print_success "Claude Code configurations linked"
+}
+
 # Install Fisher plugin manager and plugins
 setup_fish_plugins() {
     print_info "Installing Fisher plugin manager and plugins..."
@@ -240,6 +284,7 @@ main() {
     install_packages
     install_version_managers
     create_symlinks
+    setup_claude
     setup_tmux
     setup_fish_plugins
     setup_shell
