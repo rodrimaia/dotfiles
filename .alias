@@ -86,6 +86,11 @@ alias txl='tmuxinator list'
 #tmux
 alias tn='tmux new-session -A -s main'
 
+# Dotfiles
+alias dotfiles='cd ~/dotfiles'
+alias update-claude='~/dotfiles/setup.sh update-claude'
+alias vclaude='nvim ~/dotfiles/claude'
+
 
 # Yarn
 alias y="yarn"

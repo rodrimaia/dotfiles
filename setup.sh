@@ -192,40 +192,26 @@ setup_claude() {
     mkdir -p ~/.claude/agents
     mkdir -p ~/.claude/commands/sc
 
-    # Core framework files
-    ln -sf ~/dotfiles/claude/CLAUDE.md ~/.claude/
-    ln -sf ~/dotfiles/claude/PRINCIPLES.md ~/.claude/
-    ln -sf ~/dotfiles/claude/RULES.md ~/.claude/
-    ln -sf ~/dotfiles/claude/FLAGS.md ~/.claude/
-    ln -sf ~/dotfiles/claude/BUSINESS_PANEL_EXAMPLES.md ~/.claude/
-    ln -sf ~/dotfiles/claude/BUSINESS_SYMBOLS.md ~/.claude/
-    ln -sf ~/dotfiles/claude/settings.json ~/.claude/
-    ln -sf ~/dotfiles/claude/statusline-command.sh ~/.claude/
+    # Copy all Claude configuration files from dotfiles
+    # (Using cp instead of ln for Claude Code security requirements)
+    cd ~/dotfiles
+    cp -f claude/*.md ~/.claude/
+    cp -f claude/*.json ~/.claude/
+    cp -f claude/*.sh ~/.claude/
+    cp -f claude/agents/*.md ~/.claude/agents/
+    cp -f claude/commands/sc/*.md ~/.claude/commands/sc/
 
     # Make statusline script executable
-    chmod +x ~/dotfiles/claude/statusline-command.sh
+    chmod +x ~/.claude/statusline-command.sh
 
-    # Mode files
-    for mode_file in ~/dotfiles/claude/MODE_*.md; do
-        ln -sf "$mode_file" ~/.claude/
-    done
+    print_success "Claude Code configurations copied"
+}
 
-    # MCP documentation
-    for mcp_file in ~/dotfiles/claude/MCP_*.md; do
-        ln -sf "$mcp_file" ~/.claude/
-    done
-
-    # Agents
-    for agent in ~/dotfiles/claude/agents/*.md; do
-        ln -sf "$agent" ~/.claude/agents/
-    done
-
-    # Slash commands
-    for command in ~/dotfiles/claude/commands/sc/*.md; do
-        ln -sf "$command" ~/.claude/commands/sc/
-    done
-
-    print_success "Claude Code configurations linked"
+# Update Claude configurations only (useful for development)
+update_claude() {
+    print_info "Updating Claude Code configurations..."
+    setup_claude
+    print_success "Claude Code configurations updated"
 }
 
 # Install Fisher plugin manager and plugins
@@ -273,11 +259,18 @@ setup_shell() {
 
 # Main execution
 main() {
+    # Check for update-claude flag
+    if [[ "$1" == "update-claude" ]] || [[ "$1" == "--update-claude" ]]; then
+        cd "$(dirname "$0")"
+        update_claude
+        return 0
+    fi
+
     print_info "Starting dotfiles setup..."
-    
+
     # Change to dotfiles directory
     cd "$(dirname "$0")"
-    
+
     detect_os
     install_packages
     install_version_managers
@@ -286,7 +279,7 @@ main() {
     setup_tmux
     setup_fish_plugins
     setup_shell
-    
+
     print_success "Dotfiles setup completed successfully!"
     print_info "Please restart your terminal or run: source ~/.config/fish/config.fish"
 }

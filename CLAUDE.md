@@ -90,6 +90,8 @@ Fish shell configured with cross-platform paths:
 
 ## Claude Code Integration
 
-- Claude CLI aliased to `/Users/rodrigo/.claude/local/claude` 
+- Claude CLI aliased to `/Users/rodrigo/.claude/local/claude`
 - Editor preference: `nvim` via `$EDITOR`
 - Single setup command: `./setup.sh` for new machine provisioning
+- **Important**: Claude configurations are **copied** (not symlinked) to `~/.claude/` for security
+- To update Claude configs after editing: `update-claude` or `./setup.sh update-claude`
