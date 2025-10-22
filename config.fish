@@ -17,6 +17,9 @@ set -U __done_notify_sound 1  # Enable notification sound
 
 starship init fish | source
 
+# Initialize zoxide
+zoxide init fish | source
+
 # Created by `pipx` on 2025-10-06 12:22:30
 set PATH $PATH /Users/rodrigo/.local/bin
 

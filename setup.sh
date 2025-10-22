@@ -107,7 +107,8 @@ install_packages() {
                 python-pip \
                 starship \
                 base-devel \
-                mise
+                mise \
+                zoxide
             
             # Install yay (AUR helper) if not present
             if ! command -v yay &> /dev/null; then
@@ -233,10 +234,7 @@ setup_fish_plugins() {
     
     # Install Fisher - download and install in one command
     fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
-    
-    # Install z directory jumping tool
-    fish -c "fisher install jethrokuan/z"
-    
+
     # Install done plugin for notifications
     fish -c "fisher install franciscolourenco/done"
     
