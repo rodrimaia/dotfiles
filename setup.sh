@@ -108,7 +108,8 @@ install_packages() {
                 starship \
                 base-devel \
                 mise \
-                zoxide
+                zoxide \
+                atuin
             
             # Install yay (AUR helper) if not present
             if ! command -v yay &> /dev/null; then
