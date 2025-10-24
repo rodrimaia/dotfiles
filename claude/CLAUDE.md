@@ -15,18 +15,10 @@ tools to resolve library id and get library docs without me having to explicitly
 @PRINCIPLES.md
 @RULES.md
 
-# Behavioral Modes
-@MODE_Brainstorming.md
-@MODE_Business_Panel.md
-@MODE_Introspection.md
-@MODE_Orchestration.md
-@MODE_Task_Management.md
-@MODE_Token_Efficiency.md
-
-# ===================================================
-# SuperClaude Framework Components
-# ===================================================
-
 # MCP Documentation
-@MCP_Playwright.md
-@MCP_Sequential.md
+@MCP_Context7.md
+@MCP_Magic.md
+@MCP_Serena.md
+
+# Research Configuration
+@RESEARCH_CONFIG.md
