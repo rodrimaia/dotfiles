@@ -190,7 +190,6 @@ setup_claude() {
     print_info "Setting up Claude Code configurations..."
 
     # Create Claude directories
-    mkdir -p ~/.claude/agents
     mkdir -p ~/.claude/commands/sc
 
     # Copy all Claude configuration files from dotfiles
@@ -199,7 +198,6 @@ setup_claude() {
     cp -f claude/*.md ~/.claude/
     cp -f claude/*.json ~/.claude/
     cp -f claude/*.sh ~/.claude/
-    cp -f claude/agents/*.md ~/.claude/agents/
     cp -f claude/commands/sc/*.md ~/.claude/commands/sc/
 
     # Make statusline script executable
