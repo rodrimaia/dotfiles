@@ -1,8 +1,0 @@
-{
-  "includeCoAuthoredBy": false,
-  "statusLine": {
-    "type": "command",
-    "command": "bash /Users/rodrigo/.claude/statusline-command.sh"
-  },
-  "alwaysThinkingEnabled": true
-}

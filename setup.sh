@@ -189,28 +189,14 @@ create_symlinks() {
 setup_claude() {
     print_info "Setting up Claude Code configurations..."
 
-    # Create Claude directories
-    mkdir -p ~/.claude/commands/sc
-
-    # Copy all Claude configuration files from dotfiles
-    # (Using cp instead of ln for Claude Code security requirements)
-    cd ~/dotfiles
-    cp -f claude/*.md ~/.claude/
-    cp -f claude/*.json ~/.claude/
-    cp -f claude/*.sh ~/.claude/
-    cp -f claude/commands/sc/*.md ~/.claude/commands/sc/
-
-    # Make statusline script executable
-    chmod +x ~/.claude/statusline-command.sh
-
-    print_success "Claude Code configurations copied"
-}
-
-# Update Claude configurations only (useful for development)
-update_claude() {
-    print_info "Updating Claude Code configurations..."
-    setup_claude
-    print_success "Claude Code configurations updated"
+    # Create symlink for local settings file if it exists
+    if [ -f ~/dotfiles/.claude/settings.local.json ]; then
+        mkdir -p ~/.claude
+        ln -sf ~/dotfiles/.claude/settings.local.json ~/.claude/settings.local.json
+        print_success "Claude Code settings symlinked"
+    else
+        print_info "No local Claude settings to symlink"
+    fi
 }
 
 # Install Fisher plugin manager and plugins
@@ -258,12 +244,6 @@ setup_shell() {
 
 # Main execution
 main() {
-    # Check for update-claude flag
-    if [[ "$1" == "update-claude" ]] || [[ "$1" == "--update-claude" ]]; then
-        cd "$(dirname "$0")"
-        update_claude
-        return 0
-    fi
 
     print_info "Starting dotfiles setup..."
 

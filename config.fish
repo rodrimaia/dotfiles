@@ -11,10 +11,6 @@ end
 set -gx EDITOR nvim
 set fish_color_command green
 
-# Configure done plugin for command notifications
-set -U __done_min_cmd_duration 5000  # 5 seconds minimum
-set -U __done_notify_sound 1  # Enable notification sound
-
 starship init fish | source
 
 # Initialize zoxide
@@ -26,4 +22,7 @@ atuin init fish | source
 # Created by `pipx` on 2025-10-06 12:22:30
 set PATH $PATH /Users/rodrigo/.local/bin
 
-alias claude="/Users/rodrigo/.claude/local/claude"
+# Fix direnv slowness in tmux - use async mode
+# Disabled done.fish plugin (moved to done.fish.disabled) as it causes 5s delays in tmux
+set -g direnv_fish_mode eval_after_arrow
+direnv hook fish | source
