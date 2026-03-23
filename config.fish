@@ -26,3 +26,7 @@ set PATH $PATH /Users/rodrigo/.local/bin
 # Disabled done.fish plugin (moved to done.fish.disabled) as it causes 5s delays in tmux
 set -g direnv_fish_mode eval_after_arrow
 direnv hook fish | source
+
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true

@@ -189,14 +189,14 @@ create_symlinks() {
 setup_claude() {
     print_info "Setting up Claude Code configurations..."
 
-    # Create symlink for local settings file if it exists
-    if [ -f ~/dotfiles/.claude/settings.local.json ]; then
-        mkdir -p ~/.claude
-        ln -sf ~/dotfiles/.claude/settings.local.json ~/.claude/settings.local.json
-        print_success "Claude Code settings symlinked"
+    # Restore Claude Code config from private repo
+    if [[ ! -d "$HOME/.claude/.git" ]]; then
+        print_info "Cloning Claude Code config from private repo..."
+        git clone git@github.com:rodrimaia/claude-config.git "$HOME/.claude"
     else
-        print_info "No local Claude settings to symlink"
+        print_info "Claude Code config repo already exists"
     fi
+
 }
 
 # Install Fisher plugin manager and plugins

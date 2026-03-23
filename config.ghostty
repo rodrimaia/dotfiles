@@ -2,7 +2,7 @@
 
 clipboard-read = allow
 clipboard-write = allow
-theme = Snazzy
+theme = light:Adwaita,dark:Snazzy
 #font-family = FiraCode Nerd Font Mono
 font-family = Hack Nerd Font Mono
 keybind = shift+enter=text:\x1b\r

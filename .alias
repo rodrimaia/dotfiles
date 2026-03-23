@@ -68,6 +68,7 @@ alias f=fzf
 alias vf='v $(f)'
 alias nf='n $(f)'
 alias vn='v ~/notas'
+alias ocv="cd ~/notas && opencode"
 alias reddit="rtv"
 
 alias l='ls -lah'
@@ -75,6 +76,10 @@ alias l='ls -lah'
 
 alias ag="ag --hidden"
 alias envg="env | grep "
+
+# Claude
+alias claudeeu="claude --model eu.anthropic.claude-opus-4-6-v1"
+alias claude-backup='cd ~/.claude && git add -A && git commit -m "backup $(date +%Y-%m-%d_%H:%M)" && git push && cd -'
 
 # Tmuxinator
 alias mux='tmuxinator'
