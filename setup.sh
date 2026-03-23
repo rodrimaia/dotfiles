@@ -215,14 +215,15 @@ setup_fish_plugins() {
 # Initialize and setup tmux configuration
 setup_tmux() {
     print_info "Setting up tmux configuration..."
-    
-    # Initialize and update git submodules
-    git submodule init
-    git submodule update
-    
-    # Create symlink to the main tmux config from the submodule
-    ln -sf ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
-    
+
+    if [ ! -d "$HOME/.tmux" ]; then
+        git clone https://github.com/gpakosz/.tmux.git "$HOME/.tmux"
+    else
+        git -C "$HOME/.tmux" pull
+    fi
+
+    ln -sf "$HOME/.tmux/.tmux.conf" "$HOME/.tmux.conf"
+
     print_success "Tmux configuration setup completed"
 }
 
