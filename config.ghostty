@@ -4,6 +4,7 @@ clipboard-read = allow
 clipboard-write = allow
 theme = light:Adwaita,dark:Snazzy
 #font-family = FiraCode Nerd Font Mono
-font-family = Hack Nerd Font Mono
+#font-family = Hack Nerd Font Mono
+font-family = Liga SFMono Nerd Font
 keybind = shift+enter=text:\x1b\r
 keybind = alt+backspace=text:\x1b\x7f
