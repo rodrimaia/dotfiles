@@ -44,6 +44,7 @@ cd ~/dotfiles
 
 - **Single command setup** - `./setup.sh` does everything
 - **OS detection** - automatically configures for macOS or Arch Linux
+- **Safe Neovim linking** - backs up existing `~/.config/nvim` and links it to `~/dotfiles/nvim`
 - **Platform-specific aliases** - organized by universal, macOS, and Linux
 - **Modern terminal experience** - Ghostty + Fish + Starship
 - **Development workflow** - extensive git, npm/yarn, and tmux shortcuts

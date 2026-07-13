@@ -160,8 +160,11 @@ create_symlinks() {
     ln -sf ~/dotfiles/.alias ~/.alias
     
     # LazyVim setup
-    mkdir -p ~/.config/nvim
-    ln -sf ~/dotfiles/nvim/* ~/.config/nvim/
+    mkdir -p ~/.config
+    if [ -e ~/.config/nvim ] && [ ! -L ~/.config/nvim ]; then
+        mv ~/.config/nvim ~/.config/nvim.backup.$(date +%Y%m%d%H%M%S)
+    fi
+    ln -sfn ~/dotfiles/nvim ~/.config/nvim
     
     # Ghostty config
     mkdir -p ~/.config/ghostty
