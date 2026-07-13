@@ -22,6 +22,12 @@ else
 fi
 ln -sf "$HOME/.tmux/.tmux.conf" "$HOME/.tmux.conf"
 
+if [ ! -e "$HOME/.config/nvim/init.lua" ]; then
+  mkdir -p "$HOME/.config"
+  git clone https://github.com/LazyVim/starter "$HOME/.config/nvim"
+  rm -rf "$HOME/.config/nvim/.git"
+fi
+
 if command -v fish >/dev/null 2>&1; then
   fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 

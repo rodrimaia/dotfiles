@@ -21,7 +21,7 @@ This is a **cross-platform** personal dotfiles repository supporting both **macO
 - **Theme**: Snazzy with custom color palette
 
 ### Development Environment
-- **Editor**: Neovim with LazyVim
+- **Editor**: Neovim with the official LazyVim starter
 - **Version managers**: mise, pnpm, bun
 - **Package managers**:
   - macOS: Homebrew
@@ -36,7 +36,7 @@ This is a **cross-platform** personal dotfiles repository supporting both **macO
 - `home/dot_config/ghostty/config` - Terminal emulator theme and settings
 - `home/dot_config/starship.toml` - Starship prompt configuration with custom styling
 - `home/dot_alias` - Platform-organized aliases (universal, macOS-specific, Linux-specific)
-- `home/dot_config/nvim/` - LazyVim configuration
+- LazyVim is bootstrapped from the official starter during first apply; Neovim config is not managed file-by-file by chezmoi
 - `provision/mac/Brewfile` - macOS Homebrew packages
 
 ## Setup Commands
@@ -51,7 +51,7 @@ The chezmoi apply will:
 - Detect macOS vs Arch Linux
 - Install all necessary packages
 - Set up version managers (mise, pnpm, bun)
-- Apply LazyVim configuration for Neovim
+- Install the official LazyVim starter for Neovim when `~/.config/nvim/init.lua` does not exist
 - Create `~/dotfiles` as a symlink to the chezmoi source directory
 - Initialize tmux configuration submodule (gpakosz/.tmux)
 - Install Fisher plugin manager and Fish plugins

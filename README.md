@@ -21,7 +21,7 @@ The first apply provisions the machine with chezmoi scripts, then creates `~/dot
 - **Navigation**: [zoxide](https://github.com/ajeetdsouza/zoxide) for directory jumping
 
 ### Development Tools
-- **Editor**: Neovim with LazyVim
+- **Editor**: Neovim with the official LazyVim starter
 - **Version Managers**: mise, pnpm, bun
 - **Search**: fzf, the_silver_searcher (ag)
 - **Git**: tig terminal interface + extensive aliases
@@ -42,7 +42,7 @@ The first apply provisions the machine with chezmoi scripts, then creates `~/dot
 
 - **Single command setup** - `chezmoi init rodrimaia/dotfiles --apply` does everything
 - **OS detection** - automatically configures for macOS or Arch Linux
-- **chezmoi-managed config** - applies files directly into `~` and `~/.config`
+- **chezmoi-managed config** - applies dotfiles directly into `~` and `~/.config`
 - **Platform-specific aliases** - organized by universal, macOS, and Linux
 - **Modern terminal experience** - Ghostty + Fish + Starship
 - **Development workflow** - extensive git, npm, and tmux shortcuts
@@ -57,7 +57,6 @@ dotfiles/
 │   ├── dot_alias         # ~/.alias
 │   ├── dot_config/fish/  # ~/.config/fish
 │   ├── dot_config/ghostty/ # ~/.config/ghostty
-│   ├── dot_config/nvim/  # ~/.config/nvim
 │   ├── dot_config/starship.toml # ~/.config/starship.toml
 │   └── run_once_*.tmpl   # one-time provisioning scripts
 └── provision/mac/        # macOS-specific provisioning
