@@ -1,6 +1,7 @@
 brew "pkg-config"
 brew "chezmoi"
 brew "fish"
+brew "direnv"
 brew "fzf"
 brew "fd"
 brew "gh"

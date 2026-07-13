@@ -17,7 +17,7 @@ The first apply provisions the machine with chezmoi scripts, then creates `~/dot
 - **Terminal**: [Ghostty](https://github.com/ghostty/ghostty) with Snazzy theme
 - **Shell**: [Fish](https://fishshell.com/) with extensive aliases
 - **Prompt**: [Starship](https://starship.rs/)
-- **Multiplexer**: tmux with tmuxinator session management
+- **Multiplexer**: tmux
 - **Navigation**: [zoxide](https://github.com/ajeetdsouza/zoxide) for directory jumping
 
 ### Development Tools
@@ -45,7 +45,7 @@ The first apply provisions the machine with chezmoi scripts, then creates `~/dot
 - **chezmoi-managed config** - applies files directly into `~` and `~/.config`
 - **Platform-specific aliases** - organized by universal, macOS, and Linux
 - **Modern terminal experience** - Ghostty + Fish + Starship
-- **Development workflow** - extensive git, npm/yarn, and tmux shortcuts
+- **Development workflow** - extensive git, npm, and tmux shortcuts
 - **macOS dock organization** - automated dock setup with categorized apps
 
 ## File Structure
@@ -60,8 +60,7 @@ dotfiles/
 │   ├── dot_config/nvim/  # ~/.config/nvim
 │   ├── dot_config/starship.toml # ~/.config/starship.toml
 │   └── run_once_*.tmpl   # one-time provisioning scripts
-├── provision/mac/        # macOS-specific provisioning
-└── wallpapers & scripts  # Wallpaper assets and utilities
+└── provision/mac/        # macOS-specific provisioning
 ```
 
 ---

@@ -26,7 +26,7 @@ This is a **cross-platform** personal dotfiles repository supporting both **macO
 - **Package managers**:
   - macOS: Homebrew
   - Arch Linux: pacman + yay (AUR)
-- **Terminal multiplexer**: tmux with tmuxinator
+- **Terminal multiplexer**: tmux
 
 ### Key Configuration Files
 - `.chezmoiroot` - points chezmoi at `home/`
@@ -71,19 +71,19 @@ The chezmoi apply will:
 
 ### Arch Linux
 - pacman + yay package management
-- Linux-specific aliases (arch utilities, xclip, etc.)
+- Linux-specific aliases (Arch utilities, etc.)
 
 ## Development Workflow Aliases
 
 ### Universal Aliases (All Platforms)
 - **Git**: `gst`, `gaa`, `gcmsg`, `gco`, `gd`, `gdc`
-- **Package managers**: `yr`, `yrd`, `nr`, `ni`, `nis`, `nisd`
-- **Tmux**: `tn`, `mux`, `txs`, `txo`, `txn`
+- **Package managers**: `nr`, `ni`, `nis`, `nisd`
+- **Tmux**: `tn`
 - **Editing**: `v`, `vf`, `valias`, `vrc`
 
 ### Platform-Specific Aliases
 - **macOS**: `brewup`, `brewclean`
-- **Linux**: `y` (yay), `ys`, `arch_update_all`, `setclip`, `getclip`
+- **Linux**: `ys`, `arch_update_all`
 
 ## Path Configuration
 

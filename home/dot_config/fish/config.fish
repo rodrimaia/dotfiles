@@ -20,7 +20,6 @@ zoxide init fish | source
 set PATH $PATH /Users/rodrigo/.local/bin
 
 # Fix direnv slowness in tmux - use async mode
-# Disabled done.fish plugin (moved to done.fish.disabled) as it causes 5s delays in tmux
 set -g direnv_fish_mode eval_after_arrow
 direnv hook fish | source
 
