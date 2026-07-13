@@ -4,7 +4,7 @@ export SPACESHIP_KUBECONTEXT_SHOW=false
 export SPACESHIP_PACKAGE_SHOW=false
 export SPACESHIP_DOCKER_SHOW=false
 export SPACESHIP_GIT_STATUS_COLOR=magenta
-source ~/dotfiles/.alias
+source ~/.alias
 export GOPATH=~/.go
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=("dir" rbenv vcs)
@@ -16,7 +16,7 @@ export VAULT_ADDR=https://vault.faunadb.net
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
-source ~/dotfiles/.env
+[ -f ~/.env ] && source ~/.env
 #eval "$(pyenv init -)"
 
 

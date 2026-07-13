@@ -1,7 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
-source ~/dotfiles/.alias
+source ~/.alias
 
 # source fish profile
 if test -f ~/.fishprofile
@@ -15,9 +15,6 @@ starship init fish | source
 
 # Initialize zoxide
 zoxide init fish | source
-
-# Initialize atuin shell history
-atuin init fish | source
 
 # Created by `pipx` on 2025-10-06 12:22:30
 set PATH $PATH /Users/rodrigo/.local/bin

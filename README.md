@@ -1,17 +1,15 @@
 # dotfiles
 
-Cross-platform personal dotfiles for **macOS** and **Arch Linux** development environments.
+Cross-platform personal dotfiles for **macOS** and **Arch Linux** development environments, managed by [chezmoi](https://www.chezmoi.io/).
 
 ## Quick Setup
 
 ```bash
-# Clone the repository
-git clone https://github.com/rodrimaia/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-
-# Single command setup (detects OS automatically)
-./setup.sh
+# Install chezmoi, clone this repo, and apply it
+chezmoi init rodrimaia/dotfiles --apply
 ```
+
+The first apply provisions the machine with chezmoi scripts, then creates `~/dotfiles` as a symlink to the chezmoi source directory so existing muscle memory still works.
 
 ## What's Included
 
@@ -20,10 +18,10 @@ cd ~/dotfiles
 - **Shell**: [Fish](https://fishshell.com/) with extensive aliases
 - **Prompt**: [Starship](https://starship.rs/)
 - **Multiplexer**: tmux with tmuxinator session management
-- **Navigation**: [z](https://github.com/jethrokuan/z) for Fish-native directory jumping (via Fisher)
+- **Navigation**: [zoxide](https://github.com/ajeetdsouza/zoxide) for directory jumping
 
 ### Development Tools
-- **Editors**: Neovim with LazyVim (primary) + Cursor (AI-powered)
+- **Editor**: Neovim with LazyVim
 - **Version Managers**: mise, pnpm, bun
 - **Search**: fzf, the_silver_searcher (ag)
 - **Git**: tig terminal interface + extensive aliases
@@ -42,9 +40,9 @@ cd ~/dotfiles
 
 ## Key Features
 
-- **Single command setup** - `./setup.sh` does everything
+- **Single command setup** - `chezmoi init rodrimaia/dotfiles --apply` does everything
 - **OS detection** - automatically configures for macOS or Arch Linux
-- **Safe Neovim linking** - backs up existing `~/.config/nvim` and links it to `~/dotfiles/nvim`
+- **chezmoi-managed config** - applies files directly into `~` and `~/.config`
 - **Platform-specific aliases** - organized by universal, macOS, and Linux
 - **Modern terminal experience** - Ghostty + Fish + Starship
 - **Development workflow** - extensive git, npm/yarn, and tmux shortcuts
@@ -54,15 +52,14 @@ cd ~/dotfiles
 
 ```
 dotfiles/
-├── setup.sh              # Main cross-platform setup script
-├── config.fish           # Fish shell configuration  
-├── config.ghostty        # Terminal emulator settings
-├── starship.toml         # Starship prompt configuration
-├── .alias                # Platform-organized aliases
-├── nvim/                 # LazyVim configuration
-│   ├── init.lua          # Main entry point
-│   ├── lua/config/       # Core LazyVim configuration
-│   └── lua/plugins/      # Custom plugin configurations
+├── .chezmoiroot          # Points chezmoi at home/ as the source-state root
+├── home/                 # chezmoi source-state mirror of $HOME
+│   ├── dot_alias         # ~/.alias
+│   ├── dot_config/fish/  # ~/.config/fish
+│   ├── dot_config/ghostty/ # ~/.config/ghostty
+│   ├── dot_config/nvim/  # ~/.config/nvim
+│   ├── dot_config/starship.toml # ~/.config/starship.toml
+│   └── run_once_*.tmpl   # one-time provisioning scripts
 ├── provision/mac/        # macOS-specific provisioning
 └── wallpapers & scripts  # Wallpaper assets and utilities
 ```

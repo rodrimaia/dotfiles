@@ -4,22 +4,24 @@ This file provides universal guidance for assistants working in this repository.
 
 ## Repository Overview
 
-This is a **cross-platform** personal dotfiles repository supporting both **macOS** and **Arch Linux**. The setup uses modern terminal tooling with Ghostty, Fish shell, and Starship prompt, with a single command setup for either platform.
+This is a **cross-platform** personal dotfiles repository supporting both **macOS** and **Arch Linux**. Dotfiles and provisioning are managed through chezmoi, with Ghostty, Fish shell, and Starship prompt as the terminal stack.
 
 ## Key Architecture
 
 ### Cross-Platform Setup
-- **Setup script**: `./setup.sh` - Detects OS and installs everything automatically
+- **Entry point**: `chezmoi init rodrimaia/dotfiles --apply` - Detects OS and installs everything automatically through chezmoi scripts
 - **Supported platforms**: macOS (Homebrew) and Arch Linux (pacman/yay)
+- **Source layout**: `.chezmoiroot` points to `home/`, which mirrors `$HOME`
+- **Convenience path**: the post-apply script creates `~/dotfiles` as a symlink to chezmoi's source directory
 
 ### Terminal Stack
-- **Terminal emulator**: Ghostty (configured in `config.ghostty`)
-- **Shell**: Fish (configured in `config.fish`)
+- **Terminal emulator**: Ghostty (configured in `home/dot_config/ghostty/config`)
+- **Shell**: Fish (configured in `home/dot_config/fish/config.fish`)
 - **Prompt**: Starship
 - **Theme**: Snazzy with custom color palette
 
 ### Development Environment
-- **Editors**: Neovim with LazyVim (primary) + Cursor (AI-powered)
+- **Editor**: Neovim with LazyVim
 - **Version managers**: mise, pnpm, bun
 - **Package managers**:
   - macOS: Homebrew
@@ -27,12 +29,14 @@ This is a **cross-platform** personal dotfiles repository supporting both **macO
 - **Terminal multiplexer**: tmux with tmuxinator
 
 ### Key Configuration Files
-- `setup.sh` - **Main setup script** - detects OS and installs everything
-- `config.fish` - Fish shell with environment variables and cross-platform paths
-- `config.ghostty` - Terminal emulator theme and settings
-- `starship.toml` - Starship prompt configuration with custom styling
-- `.alias` - Platform-organized aliases (universal, macOS-specific, Linux-specific)
-- LazyVim configuration (installed automatically via setup.sh)
+- `.chezmoiroot` - points chezmoi at `home/`
+- `home/run_once_before_00-install-packages.sh.tmpl` - OS package installation
+- `home/run_once_after_00-setup-tools.sh.tmpl` - tmux, Fisher, Claude config, Fish shell, dock setup, and `~/dotfiles` symlink
+- `home/dot_config/fish/config.fish` - Fish shell with environment variables and cross-platform paths
+- `home/dot_config/ghostty/config` - Terminal emulator theme and settings
+- `home/dot_config/starship.toml` - Starship prompt configuration with custom styling
+- `home/dot_alias` - Platform-organized aliases (universal, macOS-specific, Linux-specific)
+- `home/dot_config/nvim/` - LazyVim configuration
 - `provision/mac/Brewfile` - macOS Homebrew packages
 
 ## Setup Commands
@@ -40,17 +44,17 @@ This is a **cross-platform** personal dotfiles repository supporting both **macO
 ### **Installation**
 ```bash
 # Single command setup - detects OS automatically
-./setup.sh
+chezmoi init rodrimaia/dotfiles --apply
 ```
 
-This script will:
+The chezmoi apply will:
 - Detect macOS vs Arch Linux
 - Install all necessary packages
 - Set up version managers (mise, pnpm, bun)
-- Install LazyVim starter configuration for Neovim
-- Create all symbolic links
+- Apply LazyVim configuration for Neovim
+- Create `~/dotfiles` as a symlink to the chezmoi source directory
 - Initialize tmux configuration submodule (gpakosz/.tmux)
-- Install Fisher plugin manager and z directory jumping tool
+- Install Fisher plugin manager and Fish plugins
 - Configure Fish as default shell
 - Clean and organize macOS dock with categorized apps (macOS only)
 
@@ -60,7 +64,7 @@ This script will:
 - Homebrew package management via `provision/mac/Brewfile`
 - macOS-specific aliases (`brewup`, `brewclean`)
 - Automated dock organization with `dockutil`:
-  - **Development Tools**: Cursor, VSCode, Ghostty, Hyper
+  - **Development Tools**: Ghostty
   - **Productivity**: Notion, Obsidian, Todoist, Slack, Passwords, System Settings
   - **Entertainment/Communication**: Spotify, Chrome, WhatsApp, Telegram
   - Categories separated by spacers for better organization

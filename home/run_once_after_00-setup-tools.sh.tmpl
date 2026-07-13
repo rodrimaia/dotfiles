@@ -1,0 +1,54 @@
+#!/bin/sh
+set -eu
+
+SOURCE_DIR="{{ .chezmoi.workingTree }}"
+DOTFILES_LINK="$HOME/dotfiles"
+
+if [ "$SOURCE_DIR" != "$DOTFILES_LINK" ]; then
+  if [ -e "$DOTFILES_LINK" ] && [ ! -L "$DOTFILES_LINK" ]; then
+    mv "$DOTFILES_LINK" "$DOTFILES_LINK.backup.$(date +%Y%m%d%H%M%S)"
+  fi
+  ln -sfn "$SOURCE_DIR" "$DOTFILES_LINK"
+fi
+
+if [ ! -d "$HOME/.claude/.git" ]; then
+  git clone git@github.com:rodrimaia/claude-config.git "$HOME/.claude"
+fi
+
+if [ ! -d "$HOME/.tmux" ]; then
+  git clone https://github.com/gpakosz/.tmux.git "$HOME/.tmux"
+else
+  git -C "$HOME/.tmux" pull
+fi
+ln -sf "$HOME/.tmux/.tmux.conf" "$HOME/.tmux.conf"
+
+if command -v fish >/dev/null 2>&1; then
+  fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
+  fish -c "fisher install franciscolourenco/done"
+
+  fish_path="$(command -v fish)"
+  if ! grep -q "$fish_path" /etc/shells; then
+    printf '%s\n' "$fish_path" | sudo tee -a /etc/shells >/dev/null
+  fi
+
+  if [ "${SHELL:-}" != "$fish_path" ]; then
+    chsh -s "$fish_path"
+  fi
+fi
+
+if [ "{{ .chezmoi.os }}" = "darwin" ] && command -v dockutil >/dev/null 2>&1; then
+  dockutil --remove all --no-restart
+  dockutil --add /Applications/Ghostty.app --no-restart
+  dockutil --add '' --type spacer --section apps --no-restart
+  dockutil --add /Applications/Notion.app --no-restart
+  dockutil --add /Applications/Obsidian.app --no-restart
+  dockutil --add /Applications/Todoist.app --no-restart
+  dockutil --add /Applications/Slack.app --no-restart
+  dockutil --add "/System/Applications/Passwords.app" --no-restart
+  dockutil --add "/System/Applications/System Settings.app" --no-restart
+  dockutil --add '' --type spacer --section apps --no-restart
+  dockutil --add /Applications/Spotify.app --no-restart
+  dockutil --add "/Applications/Google Chrome.app" --no-restart
+  dockutil --add /Applications/WhatsApp.app --no-restart
+  dockutil --add /Applications/Telegram.app
+fi

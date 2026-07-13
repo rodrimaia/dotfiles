@@ -5,11 +5,11 @@ clipboard-write = allow
 theme = light:Adwaita,dark:Snazzy
 #theme = Snazzy
 #font-family = FiraCode Nerd Font Mono
-font-family = Liga SFMono Nerd Font
-#font-family = Hack Nerd Font Mono
+#font-family = Liga SFMono Nerd Font
+font-family = Hack Nerd Font Mono
 keybind = shift+enter=text:\x1b\r
 keybind = alt+backspace=text:\x1b\x7f
-font-thicken-strength = 200
+font-thicken-strength = 100
 font-thicken = true
 
 
