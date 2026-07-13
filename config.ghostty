@@ -3,8 +3,28 @@
 clipboard-read = allow
 clipboard-write = allow
 theme = light:Adwaita,dark:Snazzy
+#theme = Snazzy
 #font-family = FiraCode Nerd Font Mono
-#font-family = Hack Nerd Font Mono
 font-family = Liga SFMono Nerd Font
+#font-family = Hack Nerd Font Mono
 keybind = shift+enter=text:\x1b\r
 keybind = alt+backspace=text:\x1b\x7f
+font-thicken-strength = 200
+font-thicken = true
+
+
+# ─── Visual: transparência e profundidade ──────────────────────────────
+background-opacity = 0.85
+background-blur-radius = 20
+unfocused-split-opacity = 0.7
+
+
+# ─── Cor ────────────────────────────────────────────────────────────────
+window-colorspace = display-p3
+
+# ─── Shell integration (fish) ───────────────────────────────────────────
+shell-integration = fish
+shell-integration-features = cursor,sudo,title
+
+window-subtitle = working-directory
+# ─── Título da janela ───────────────────────────────────────────────────
