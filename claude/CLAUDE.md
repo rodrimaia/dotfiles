@@ -1,1 +1,0 @@
-- never run git add . , always ask me to manually stage files before you commit
