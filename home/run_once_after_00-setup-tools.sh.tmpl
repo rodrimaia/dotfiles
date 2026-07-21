@@ -11,10 +11,6 @@ if [ "$SOURCE_DIR" != "$DOTFILES_LINK" ]; then
   ln -sfn "$SOURCE_DIR" "$DOTFILES_LINK"
 fi
 
-if [ ! -d "$HOME/.claude/.git" ]; then
-  git clone git@github.com:rodrimaia/claude-config.git "$HOME/.claude"
-fi
-
 if [ ! -d "$HOME/.tmux" ]; then
   git clone https://github.com/gpakosz/.tmux.git "$HOME/.tmux"
 else
