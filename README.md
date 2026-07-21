@@ -26,6 +26,7 @@ The first apply provisions the machine with chezmoi scripts, then creates `~/dot
 - **Version Managers**: mise, pnpm, bun
 - **Search**: fzf, the_silver_searcher (ag)
 - **Git**: tig terminal interface + extensive aliases
+- **AI tooling**: Claude Code, OpenCode, and [RTK](https://github.com/rtk-ai/rtk) with automatic command rewriting
 
 ### Cross-Platform Support
 

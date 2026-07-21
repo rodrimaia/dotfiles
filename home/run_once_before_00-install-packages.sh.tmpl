@@ -25,6 +25,7 @@ case "{{ .chezmoi.os }}" in
         tmux \
         direnv \
         fzf \
+        ripgrep \
         the_silver_searcher \
         git \
         tig \
@@ -47,6 +48,7 @@ case "{{ .chezmoi.os }}" in
 
       yay -S --needed --noconfirm ghostty-bin || true
       yay -S --needed --noconfirm herdr-bin
+      yay -S --needed --noconfirm rtk-bin
     else
       printf '%s\n' "Unsupported Linux distribution. This dotfiles repo supports Arch Linux."
       exit 1

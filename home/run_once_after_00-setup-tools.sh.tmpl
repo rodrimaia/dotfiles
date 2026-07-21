@@ -24,6 +24,11 @@ if [ ! -e "$HOME/.config/nvim/init.lua" ]; then
   rm -rf "$HOME/.config/nvim/.git"
 fi
 
+if command -v rtk >/dev/null 2>&1; then
+  rtk init -g --auto-patch
+  rtk init -g --opencode
+fi
+
 if command -v fish >/dev/null 2>&1; then
   fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 
