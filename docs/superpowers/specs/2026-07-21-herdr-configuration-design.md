@@ -8,24 +8,32 @@ Add Herdr to the cross-platform chezmoi setup with a small keymap that preserves
 
 Add `home/dot_config/herdr/config.toml`. Chezmoi will install it as `~/.config/herdr/config.toml` on macOS and Arch Linux.
 
-The keymap will use `ctrl+b` as its prefix and retain the useful bindings from `kunchenguid/dotfiles`:
+The keymap will use `ctrl+a`, matching the Oh My Tmux secondary prefix, and retain useful bindings from `kunchenguid/dotfiles` and Oh My Tmux:
 
 | Action | Binding |
 | --- | --- |
 | Focus pane left/down/up/right | `prefix+h/j/k/l` |
-| Split horizontally | `prefix+double_quote` |
-| Split vertically | `prefix+percent` |
+| Split horizontally | `prefix+double_quote`, `prefix+minus` |
+| Split vertically | `prefix+percent`, `prefix+shift+minus` |
 | Create tab | `prefix+c` |
+| Rename tab | `prefix+shift+t`, `prefix+comma` |
+| Previous/next tab | `prefix+p/n`, `prefix+ctrl+h/l` |
+| Jump to tab 1-9 | `prefix+1..9` |
 | Close tab | `prefix+ampersand` |
+| Cycle/last pane | `prefix+o`, `prefix+semicolon` |
+| Close pane | `prefix+x` |
+| Zoom pane | `prefix+z`, `prefix+plus` |
+| Enter resize mode | `prefix+r` |
 | Open workspace picker | `prefix+w` |
 | Open goto picker | `prefix+g` |
-| Enter copy mode | `prefix+[` |
+| Enter copy mode | `prefix+[`, `prefix+enter` |
+| Detach | `prefix+q`, `prefix+d` |
 
 Copy mode intentionally differs from the referenced config's `prefix+y`. The selected binding matches tmux and Herdr's current default. Copy mode's internal keys remain Herdr defaults because they are not configurable.
 
 The Agent panel will set `agent_panel_sort = "spaces"`, retaining the explicit grouping behavior from the referenced config.
 
-No direct, prefix-free bindings or broader key overrides will be added. This keeps the configuration small and avoids conflicts with shells, editors, Ghostty, and tmux.
+All bindings remain prefix-based. This avoids conflicts with shells, editors, Ghostty, and tmux.
 
 ## Installation
 

@@ -18,6 +18,7 @@ The first apply provisions the machine with chezmoi scripts, then creates `~/dot
 - **Shell**: [Fish](https://fishshell.com/) with extensive aliases
 - **Prompt**: [Starship](https://starship.rs/)
 - **Multiplexer**: tmux
+- **Agent multiplexer**: [Herdr](https://herdr.dev/) with tmux-style prefix keys
 - **Navigation**: [zoxide](https://github.com/ajeetdsouza/zoxide) for directory jumping
 
 ### Development Tools
@@ -44,7 +45,7 @@ The first apply provisions the machine with chezmoi scripts, then creates `~/dot
 - **OS detection** - automatically configures for macOS or Arch Linux
 - **chezmoi-managed config** - applies dotfiles directly into `~` and `~/.config`
 - **Platform-specific aliases** - organized by universal, macOS, and Linux
-- **Modern terminal experience** - Ghostty + Fish + Starship
+- **Modern terminal experience** - Ghostty + Fish + Starship + tmux-style Herdr keys
 - **Development workflow** - extensive git, npm, and tmux shortcuts
 - **macOS dock organization** - automated dock setup with categorized apps
 
@@ -57,6 +58,7 @@ dotfiles/
 │   ├── dot_alias         # ~/.alias
 │   ├── dot_config/fish/  # ~/.config/fish
 │   ├── dot_config/ghostty/ # ~/.config/ghostty
+│   ├── dot_config/herdr/ # ~/.config/herdr
 │   ├── dot_config/starship.toml # ~/.config/starship.toml
 │   └── run_once_*.tmpl   # one-time provisioning scripts
 └── provision/mac/        # macOS-specific provisioning

@@ -46,6 +46,7 @@ case "{{ .chezmoi.os }}" in
       fi
 
       yay -S --needed --noconfirm ghostty-bin || true
+      yay -S --needed --noconfirm herdr-bin
     else
       printf '%s\n' "Unsupported Linux distribution. This dotfiles repo supports Arch Linux."
       exit 1
