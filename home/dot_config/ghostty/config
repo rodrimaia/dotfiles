@@ -12,6 +12,8 @@ keybind = alt+backspace=text:\x1b\x7f
 font-thicken-strength = 100
 font-thicken = true
 
+font-size=17
+
 
 # ─── Visual: transparência e profundidade ──────────────────────────────
 background-opacity = 0.85
@@ -27,4 +29,5 @@ shell-integration = fish
 shell-integration-features = cursor,sudo,title
 
 window-subtitle = working-directory
+macos-titlebar-style = hidden
 # ─── Título da janela ───────────────────────────────────────────────────
