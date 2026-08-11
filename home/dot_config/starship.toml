@@ -1,6 +1,18 @@
 add_newline = true
 command_timeout = 200
-format = "$hostname[$directory$git_branch$git_status]($style)\n$character"
+format = "$hostname${custom.worktree}[$directory$git_branch$git_status]($style)\n$character"
+
+# Badge shown only inside a linked git worktree, so a treehouse shell is never
+# mistaken for the main checkout. Treehouse pool trees are detached HEAD, so
+# git_branch alone gives no hint. TREEHOUSE_DIR is set by `treehouse get`/`enter`.
+# Label: "#<slot>" for a pool tree (matches `treehouse status`), else the worktree name.
+[custom.worktree]
+description = "Identify the current git worktree"
+shell = ["bash", "--noprofile", "--norc"]
+when = '''[ -n "$TREEHOUSE_DIR" ] || case "$(git rev-parse --git-dir 2>/dev/null)" in */worktrees/*) true;; *) false;; esac'''
+command = '''top=${TREEHOUSE_DIR:-$(git rev-parse --show-toplevel)}; case $top in */.treehouse/*) echo "#$(basename "$(dirname "$top")")";; *) basename "$(git rev-parse --git-dir)";; esac'''
+format = "[🌳 $output]($style) "
+style = "bold #5AF78E"
 
 [hostname]
 ssh_only = true

@@ -34,7 +34,7 @@ This is a **cross-platform** personal dotfiles repository supporting both **macO
 - `home/run_once_after_00-setup-tools.sh.tmpl` - tmux, Fisher, Claude config, Fish shell, dock setup, and `~/dotfiles` symlink
 - `home/dot_config/fish/config.fish` - Fish shell with environment variables and cross-platform paths
 - `home/dot_config/ghostty/config` - Terminal emulator theme and settings
-- `home/dot_config/starship.toml` - Starship prompt configuration with custom styling
+- `home/dot_config/starship.toml` - Starship prompt configuration with custom styling; shows a 🌳 badge in git worktrees (`#<slot>` for treehouse pool trees)
 - `home/dot_alias` - Platform-organized aliases (universal, macOS-specific, Linux-specific)
 - LazyVim is bootstrapped from the official starter during first apply; Neovim config is not managed file-by-file by chezmoi
 - `provision/mac/Brewfile` - macOS Homebrew packages
