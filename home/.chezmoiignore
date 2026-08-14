@@ -1,0 +1,15 @@
+# Este source eh PUBLICO (github.com/rodrimaia/dotfiles).
+#
+# Config de agente mora no source PRIVADO ~/agents-config, aplicado com
+#   chezmoi -c ~/.config/chezmoi/agents.toml
+#
+# Os dirs abaixo estao bloqueados aqui de proposito: um `chezmoi add` sem o
+# `-c` cairia neste source e publicaria config de agente. Com o bloqueio, o
+# chezmoi recusa e avisa em vez de aceitar em silencio.
+.agents
+.claude
+.codex
+.config/opencode
+.cursor
+.opencode
+.pi
