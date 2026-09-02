@@ -30,3 +30,6 @@ copy_mode = ["prefix+[", "prefix+enter"]
 
 [ui]
 agent_panel_sort = "spaces"
+
+[experimental]
+pane_history = true

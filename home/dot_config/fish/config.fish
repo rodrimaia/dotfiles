@@ -19,6 +19,9 @@ zoxide init fish | source
 # Created by `pipx` on 2025-10-06 12:22:30
 set PATH $PATH /Users/rodrigo/.local/bin
 
+# bun global bin (bun add -g / bun install -g)
+set PATH $PATH /Users/rodrigo/.bun/bin
+
 # Fix direnv slowness in tmux - use async mode
 set -g direnv_fish_mode eval_after_arrow
 direnv hook fish | source
