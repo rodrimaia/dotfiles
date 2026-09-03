@@ -1,3 +1,4 @@
 .envs
 .env
 provision/mac/.macos
+.DS_Store
