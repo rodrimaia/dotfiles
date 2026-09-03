@@ -1,2 +1,2 @@
 #!/bin/sh
-scp -r "$@" homelab:~/ 
+rsync -ah --info=progress2 --partial "$@" homelab:~/
