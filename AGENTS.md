@@ -37,6 +37,7 @@ This is a **cross-platform** personal dotfiles repository supporting both **macO
 - `home/dot_config/starship.toml` - Starship prompt configuration with custom styling; shows a 🌳 badge in git worktrees (`#<slot>` for treehouse pool trees)
 - `home/dot_alias` - Platform-organized aliases (universal, macOS-specific, Linux-specific)
 - LazyVim is bootstrapped from the official starter during first apply; Neovim config is not managed file-by-file by chezmoi
+- `home/dot_local/bin/` - helper scripts installed to `~/.local/bin`; `git-sync-excluded` copies the paths listed in a repo's `.git/info/exclude` from the main worktree into another worktree
 - `provision/mac/Brewfile` - macOS Homebrew packages
 
 ## Setup Commands

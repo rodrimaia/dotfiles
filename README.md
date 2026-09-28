@@ -25,7 +25,8 @@ The first apply provisions the machine with chezmoi scripts, then creates `~/dot
 - **Editor**: Neovim with the official LazyVim starter
 - **Version Managers**: mise, pnpm, bun
 - **Search**: fzf, the_silver_searcher (ag)
-- **Git**: tig terminal interface + extensive aliases
+- **Git**: tig terminal interface + extensive aliases, plus `git sync-excluded`
+  to copy the `.git/info/exclude` files from the main worktree into a new one
 - **AI tooling**: Claude Code, OpenCode, and [RTK](https://github.com/rtk-ai/rtk) with automatic command rewriting
 
 ### Cross-Platform Support
@@ -61,6 +62,7 @@ dotfiles/
 │   ├── dot_config/ghostty/ # ~/.config/ghostty
 │   ├── dot_config/herdr/ # ~/.config/herdr
 │   ├── dot_config/starship.toml # ~/.config/starship.toml
+│   ├── dot_local/bin/     # ~/.local/bin helper scripts (on PATH)
 │   └── run_once_*.tmpl   # one-time provisioning scripts
 └── provision/mac/        # macOS-specific provisioning
 ```

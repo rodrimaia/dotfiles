@@ -1,0 +1,35 @@
+#!/bin/bash
+# Copy the local-only files listed in .git/info/exclude from the main worktree
+# into another worktree of the same repository.
+#
+# Usage: git sync-excluded <worktree-path>
+#        git-sync-excluded <worktree-path>
+#
+# Works in any repository: the source worktree and the exclude file are both
+# derived from the target path. Existing files in the target are overwritten.
+set -euo pipefail
+
+DEST=${1:-}
+[[ -n $DEST ]] || { echo "usage: ${0##*/} <worktree-path>" >&2; exit 1; }
+[[ -d $DEST ]] || { echo "error: not a directory: $DEST" >&2; exit 1; }
+DEST=$(cd "$DEST" && pwd)
+
+# Every worktree shares one common git dir; its parent is the main worktree.
+GIT_COMMON=$(git -C "$DEST" rev-parse --path-format=absolute --git-common-dir)
+SRC=$(dirname "$GIT_COMMON")
+EXCLUDE=$GIT_COMMON/info/exclude
+
+[[ $SRC != "$DEST" ]] || { echo "error: $DEST is the main worktree" >&2; exit 1; }
+[[ -f $EXCLUDE ]] || { echo "nothing to do: no $EXCLUDE"; exit 0; }
+
+# git expands the exclude patterns itself: every untracked file that matches.
+count=0
+while IFS= read -r -d '' file; do
+  mkdir -p "$DEST/$(dirname "$file")"
+  # -R keeps symlinks as symlinks (some excluded paths link to a directory).
+  cp -Rp "$SRC/$file" "$DEST/$file"
+  echo "  $file"
+  count=$((count + 1))
+done < <(git -C "$SRC" ls-files --others --ignored --exclude-from="$EXCLUDE" -z)
+
+echo "copied $count file(s) from $SRC to $DEST"
