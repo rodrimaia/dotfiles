@@ -1,0 +1,4 @@
+# Runs in every acquired worktree (new or reused slot). A failing command is
+# logged and the rest still run.
+[hooks]
+post_create = ["git sync-excluded .", "mise trust", "mise install"]

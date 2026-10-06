@@ -1,0 +1,8 @@
+# tdi/herdr-worktree-setup: runs on herdr's worktree.created event, cwd = new
+# worktree. Steps are fail-fast, so optional ones end in `|| true`.
+[default]
+steps = [
+  "git sync-excluded . || true",
+  "mise trust || true",
+  "mise install",
+]

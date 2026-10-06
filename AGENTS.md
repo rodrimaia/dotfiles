@@ -38,6 +38,9 @@ This is a **cross-platform** personal dotfiles repository supporting both **macO
 - `home/dot_alias` - Platform-organized aliases (universal, macOS-specific, Linux-specific)
 - LazyVim is bootstrapped from the official starter during first apply; Neovim config is not managed file-by-file by chezmoi
 - `home/dot_local/bin/` - helper scripts installed to `~/.local/bin`; `git-sync-excluded` copies the paths listed in a repo's `.git/info/exclude` from the main worktree into another worktree
+- Worktree setup hooks run `git sync-excluded .`, `mise trust` and `mise install` in each new worktree:
+  - `home/dot_config/treehouse/config.toml` - treehouse `post_create` hooks (`treehouse get`)
+  - `home/dot_config/herdr/plugins/config/tdi.worktree-setup/config.toml` - herdr `worktree.created`; needs the plugin installed once with `herdr plugin install tdi/herdr-worktree-setup`
 - `provision/mac/Brewfile` - macOS Homebrew packages
 
 ## Setup Commands

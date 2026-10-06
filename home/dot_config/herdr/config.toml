@@ -31,5 +31,11 @@ copy_mode = ["prefix+[", "prefix+enter"]
 [ui]
 agent_panel_sort = "spaces"
 
+[ui.sound]
+enabled = true
+
+[ui.toast]
+delivery = "herdr"
+
 [experimental]
 pane_history = true

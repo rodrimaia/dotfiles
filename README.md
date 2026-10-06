@@ -18,7 +18,7 @@ The first apply provisions the machine with chezmoi scripts, then creates `~/dot
 - **Shell**: [Fish](https://fishshell.com/) with extensive aliases
 - **Prompt**: [Starship](https://starship.rs/)
 - **Multiplexer**: tmux
-- **Agent multiplexer**: [Herdr](https://herdr.dev/) with tmux-style prefix keys
+- **Agent multiplexer**: [Herdr](https://herdr.dev/) with tmux-style prefix keys; new worktrees get setup through `herdr plugin install tdi/herdr-worktree-setup`
 - **Navigation**: [zoxide](https://github.com/ajeetdsouza/zoxide) for directory jumping
 
 ### Development Tools
@@ -60,8 +60,9 @@ dotfiles/
 │   ├── dot_alias         # ~/.alias
 │   ├── dot_config/fish/  # ~/.config/fish
 │   ├── dot_config/ghostty/ # ~/.config/ghostty
-│   ├── dot_config/herdr/ # ~/.config/herdr
+│   ├── dot_config/herdr/ # ~/.config/herdr (+ worktree-setup plugin config)
 │   ├── dot_config/starship.toml # ~/.config/starship.toml
+│   ├── dot_config/treehouse/ # ~/.config/treehouse (worktree setup hooks)
 │   ├── dot_local/bin/     # ~/.local/bin helper scripts (on PATH)
 │   └── run_once_*.tmpl   # one-time provisioning scripts
 └── provision/mac/        # macOS-specific provisioning
