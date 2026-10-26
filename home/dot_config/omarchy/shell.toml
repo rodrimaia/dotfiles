@@ -1,0 +1,7 @@
+[font]
+# Increase shell text and icon sizing from the 12 px default.
+base-size = 15
+
+[bar]
+# A roomier cross-axis width for the vertical (left/right) bar.
+size-vertical = 34

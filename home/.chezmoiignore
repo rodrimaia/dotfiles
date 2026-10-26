@@ -13,3 +13,8 @@
 .cursor
 .opencode
 .pi
+
+# Omarchy is only installed on the Arch Linux setup.
+{{ if ne .chezmoi.os "linux" }}
+.config/omarchy/
+{{ end }}
